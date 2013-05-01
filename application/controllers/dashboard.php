@@ -39,8 +39,10 @@ class Dashboard extends CI_Controller
     {
         $this->load->library('form_validation');
         if (! is_get()) {
-            $this->form_validation->set_rules('password', 'Password', 'required');
-            $this->form_validation->set_rules('passwordBaru', 'Password Baru', 'required|matches[ulangiPassword]');
+            $this->form_validation->set_message('required', 'Kolom %s tidak boleh kosong');
+
+            $this->form_validation->set_rules('password', 'Password', 'required|callback_password_check');
+            $this->form_validation->set_rules('passwordBaru', 'Password Baru', 'required|min_length[6]|matches[ulangiPassword]');
             $this->form_validation->set_rules('ulangiPassword', 'Ulangi Password', 'required');
 
             if ($this->form_validation->run() == TRUE) {
@@ -226,10 +228,26 @@ class Dashboard extends CI_Controller
         $this->data['yield'] = $this->view.'registrasi';
         $this->load->view($this->view.'layout', $this->data);
     }
-    
+
     public function konfirmasibayar ()
     {
         echo 'konfirmasi';
+    }
+
+    public function password_check ($pass)
+    {
+        $this->load->library('form_validation');
+        $this->load->model('akun_model','akun');
+
+        if ($user = $this->akun->get(session('uid'))) {
+            if ($user->password == md5($pass))
+                return true;
+                // die('true');
+        }
+
+        // die('false');
+        $this->form_validation->set_message('password_check', 'Password anda salah.');
+        return false;
     }
 
     private function do_upload ($field_name=null)
