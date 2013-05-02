@@ -36,11 +36,12 @@ Class Auth
                     return false;
                 }
                 set_session("un", $user->nama_akun);
+                set_session("aid", $user->id);
             } else {
                 set_session("username", $user->nama_akun);
+                set_session("uid", $user->id);
             }
 
-            set_session("uid", $user->id);
 
             return true;
         } else {

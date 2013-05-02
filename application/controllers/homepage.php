@@ -40,6 +40,11 @@ class Homepage extends CI_Controller {
 
     public function signup ()
     {
+        if (! is_get()) {
+            $username = $this->input->post('username');
+            $email = $this->input->post('email');
+            $password = $this->input->post('password');
+        }
         $this->data['yield'] = 'signup';
         $this->load->view('homepage', $this->data);
     }

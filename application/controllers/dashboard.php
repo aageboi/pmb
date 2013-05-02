@@ -8,7 +8,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
 
-        if (! session('username') OR ! session('uid'))
+        if (! session('username') AND ! session('uid'))
             redirect('login');
 
     }
@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller
         // $this->load->model('sekolahasal_model','sekolahasal');
 
         // $this->data['data'] = $this->pribadi->find(session('uid'));
-        $this->data['data'] = $this->pribadi
+        $pribadi = $this->pribadi
             ->with('sekolahasal')
             ->with('ortu')
             ->with('pil1')
@@ -28,6 +28,11 @@ class Dashboard extends CI_Controller
             ->with('provinsi')
             ->with('jalur')
             ->get_by('id_user', session('uid'));
+        
+        if (isset($pribadi['nama']))
+            $this->data['data'] = $pribadi;
+        else
+            $this->data['data'] = false;
 
         // echo $this->db->last_query();//die;
 

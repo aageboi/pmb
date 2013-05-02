@@ -11,11 +11,11 @@
             </tr>
             <tr>
                 <th>Jalur Masuk</th>
-                <td><?=$data['jalur']->nama_jalur?></td>
+                <td><?=(empty($data['jalur']))?$data['jalur']->nama_jalur:null?></td>
             </tr>
             <tr>
                 <th>Provinsi</th>
-                <td><?=$data['provinsi']->nama_provinsi?></td>
+                <td><?=(empty($data['provinsi']))?$data['provinsi']->nama_provinsi:null?></td>
             </tr>
         </table>
     </div>
@@ -52,5 +52,5 @@
 </div>
 <?#debug($data)?>
 <?php } else { ?>
-<h1>Anda belum membuat pendaftaran. </h1>
+<h2>Anda belum membuat pendaftaran. </h2>
 <?php } ?>
