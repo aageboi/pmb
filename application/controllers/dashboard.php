@@ -16,8 +16,7 @@ class Dashboard extends CI_Controller
     public function index()
     {
         $this->load->model('pribadi_model','pribadi');
-        // $this->load->model('ortu_model','ortu');
-        // $this->load->model('sekolahasal_model','sekolahasal');
+        $this->load->model('jadwal_model','jadwal');
 
         // $this->data['data'] = $this->pribadi->find(session('uid'));
         $pribadi = $this->pribadi
@@ -28,12 +27,13 @@ class Dashboard extends CI_Controller
             ->with('provinsi')
             ->with('jalur')
             ->get_by('id_user', session('uid'));
-        
+
         if (isset($pribadi['nama']))
             $this->data['data'] = $pribadi;
         else
             $this->data['data'] = false;
 
+        $this->data['jadwal_pembayaran'] = $this->jadwal->get(1);
         // echo $this->db->last_query();//die;
 
         $this->data['yield'] = $this->view.'index';
@@ -219,6 +219,9 @@ class Dashboard extends CI_Controller
             } else {
                 $result_pribadi = $this->pribadi->insert($_pribadi);
                 $idpribadi = $this->db->insert_id();
+
+                $nomor['nomor_ujian'] = $this->pmb->get_nomor_ujian($idpribadi);
+                $result_nomor = $this->pribadi->update($idpribadi,$nomor);
             }
 
             if (! $result_pribadi) {
@@ -236,7 +239,28 @@ class Dashboard extends CI_Controller
 
     public function konfirmasibayar ()
     {
-        echo 'konfirmasi';
+        $this->load->library('form_validation');
+        $this->load->model('pembayaran_model', 'bayar');
+        if (! is_get()) {
+            $data['payment_method'] = $this->input->post('method');
+            $data['payment_to'] = $this->input->post('to');
+            $data['payment_date'] = $this->input->post('date');
+            $data['desc'] = $this->input->post('desc');
+
+            if (isset($_FILES['bukti']) && !empty($_FILES['bukti']['name'])) {
+                if ($foto = $this->do_upload('bukti'))
+                    $data['attachment'] = $foto['upload_data']['file_name'];
+            }
+
+            if ($sukses = $this->bayar->insert($data)) {
+                set_message('Konfirmasi Pembayaran berhasil dikirim.');
+                redirect('dashboard');
+            } else {
+                set_message('Konfirmasi Pembayaran gagal dikirim.', 'error');
+            }
+        }
+        $this->data['yield'] = $this->view.'konfirmasi';
+        $this->load->view($this->view.'layout', $this->data);
     }
 
     public function password_check ($pass)

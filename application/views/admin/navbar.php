@@ -10,9 +10,13 @@
       <div class="nav-collapse collapse">
 
         <ul class="nav">
-          <li<?=(isset($page)OR!isset($page))?' class="active"':''?>><a href="<?=site_url('admin/')?>">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li<?=(! isset($page))?' class="active"':''?>><a href="<?=site_url('admin/')?>">Home</a></li>
+          <li class="dropdown<?=(isset($page)&&$page=='akun')?' active':''?>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="<?=site_url('admin/akun')?>">Akun</a></li>
+            </ul>
+          </li>
         </ul>
 
         <ul class="nav pull-right">

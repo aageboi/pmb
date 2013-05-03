@@ -68,6 +68,8 @@ class Akun extends CI_Controller {
 
         // post update
         if (! is_get()) {
+            $this->akun->skip_validation();
+
             $id = $this->input->post('id');
             $new_data = array(
                 'nama_akun' => strtolower($this->input->post('nama')),
@@ -77,14 +79,15 @@ class Akun extends CI_Controller {
                 'status' => $this->input->post('status'),
             );
 
-            if (! $this->input->post('password') && $this->input->post('password') == 'password')
+            if (! $this->input->post('pass') OR $this->input->post('pass') == 'password')
                 unset($new_data['password']);
 
-            $this->akun->skip_validation();
-            if ($result = $this->akun->update($id,$new_data))
+            if ($result = $this->akun->update($id,$new_data)) {
+                set_message('Update data user berhasil');
                 redirect('admin/akun');
-            else
+            } else {
                 set_message(validation_errors(),'error');
+            }
         }
 
         if (! $id) {

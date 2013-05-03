@@ -19,7 +19,7 @@ if (is_array($data) && isset($data['ortu']))
     <?php if (isset($data['sekolahasal']) && isset($data['sekolahasal']['id'])) { ?>
     <input type="hidden" name="id_sekolah" value="<?=$data['sekolahasal']['id']?>">
     <?php } ?>
-    <div class="row-fluid">
+    <div class="row-fluid" id="uploadFoto">
         <div class="span2">
             <?php if (isset($data['foto']) && ! empty($data['foto'])) { ?>
             <img src="<?=base_url()?>assets/img/upload/<?=$data['foto']?>" class="img-polaroid">
@@ -295,14 +295,14 @@ if (is_array($data) && isset($data['ortu']))
                 <input type="text" name="telp_ortu" class="span4" value="<?=isset($data['ortu'])?$data['ortu']['telp']:''?>">
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group" id="uploadTTD1">
             <label class="control-label span4" style="text-align:left" for="ttd_1">Tanda tangan</label>
             <div class="controls">
                 <input type="file" name="ttd_1">
                 <span class="help-block offset1">Ukuran foto maksimal 100Kb. Format foto: jpg, jpeg, png</span>
             </div>
         </div>
-        <div class="control-group">
+        <div class="control-group" id="uploadTTD2">
             <label class="control-label span4" style="text-align:left" for="ttd_1">Tanda tangan orang tua</label>
             <div class="controls">
                 <input type="file" name="ttd_2">

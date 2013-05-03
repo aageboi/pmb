@@ -14,6 +14,8 @@
                     <tr>
                         <th>Username</th>
                         <th>Email</th>
+                        <th>Role</th>
+                        <th>Status</th>
                         <th>Option</th>
                     </tr>
                     </thead>
@@ -22,6 +24,14 @@
                     <tr>
                         <td><?=$row->nama_akun?></td>
                         <td><?=$row->email?></td>
+                        <td><?=$row->role?></td>
+                        <td>
+                        <?php if ($row->status == '1') { ?>
+                        <span class="label label-success">Aktif</span>
+                        <?php } else { ?>
+                        <span class="label label-important">Non-aktif</span>
+                        <?php } ?>
+                        </td>
                         <td width="85px">
                             <a href="<?=site_url('admin/akun/edit/'.$row->id)?>" class="btn" title="edit"><i class="icon-edit"></i></a>
                             <a href="<?=site_url('admin/akun/delete/'.$row->id)?>" class="btn btn-danger" title="delete"><i class="icon-remove"></i></a>

@@ -9,7 +9,7 @@ class Akun_model extends MY_Model
         array(
             'field'   => 'nama',
             'label'   => 'Username',
-            'rules'   => 'trim|required'
+            'rules'   => 'trim|required|min_length[6]|alpha_numeric|is_unique[t_akun.nama_akun]'
         ),
         array(
             'field'   => 'pass',
@@ -20,13 +20,6 @@ class Akun_model extends MY_Model
             'field'   => 'email',
             'label'   => 'Alamat Email',
             'rules'   => 'trim|required|is_unique[t_akun.email]'
-        )
-    );
-
-    public $has_many = array('registrasi' =>
-        array(
-            'primary_key' => 'id_user',
-            'model' => 'registrasi_model'
         )
     );
 }

@@ -28,6 +28,7 @@ class Homepage extends CI_Controller {
     {
         $this->session->unset_userdata('em');
         $this->session->unset_userdata('username');
+        $this->session->unset_userdata('uid');
         set_message('Anda telah logout');
         redirect();
     }
@@ -40,10 +41,31 @@ class Homepage extends CI_Controller {
 
     public function signup ()
     {
+        $this->load->library('form_validation');
+        $this->load->model('akun_model', 'akun');
         if (! is_get()) {
-            $username = $this->input->post('username');
-            $email = $this->input->post('email');
-            $password = $this->input->post('password');
+
+            // $this->form_validation->set_rules('username', 'Username', 'required|min_length[6]|alpha_numeric');
+            // $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
+            // $this->form_validation->set_rules('password', 'Password', 'required');
+
+            // if ($this->form_validation->run() == TRUE) {
+                $signup['nama_akun'] = $this->input->post('nama');
+                $signup['email'] = $this->input->post('email');
+                $signup['password'] = md5($this->input->post('pass'));
+
+                if ($result = $this->akun->insert($signup)) {
+                    set_message('Akun baru berhasil dibuat. Silakan cek email anda untuk aktivasi akun.');
+                    redirect('login');
+                } else {
+                    set_message('Akun baru gagal dibuat.', 'error');
+
+                    // echo $this->db->last_query();//die;
+                    // var_dump($result);
+                    // debug($result, 1);
+                }
+            // }
+
         }
         $this->data['yield'] = 'signup';
         $this->load->view('homepage', $this->data);

@@ -2,6 +2,7 @@
   <div class="well sidebar-nav">
     <ul class="nav nav-list">
       <!--<li class="nav-header">Data Universitas</li>-->
+      <li class="nav-header">Menu</li>
       <li<?=(isset($page)&&$page=='soal')?' class="active"':''?>><a href="<?=site_url('admin/soal')?>">Bank Soal</a></li>
       <li<?=(isset($page)&&$page=='grade')?' class="active"':''?>><a href="<?=site_url('admin/grade')?>">Grade</a></li>
       <li<?=(isset($page)&&$page=='jadwal')?' class="active"':''?>><a href="<?=site_url('admin/jadwal')?>">Jadwal Pembayaran</a></li>
@@ -29,9 +30,9 @@
       <li><a href="#">Kapasitas Ruang</a></li>
       <li<?=(isset($page)&&$page=='kapasitas')?' class="active"':''?>><a href="<?=site_url('admin/kapasitas')?>">Kapasitas Ruang</a></li>
       <li<?=(isset($page)&&$page=='kriteria')?' class="active"':''?>><a href="<?=site_url('admin/kriteria')?>">Kriteria Kelulusan</a></li>
-      -->
       <li class="nav-header">Manage</li>
       <li<?=(isset($page)&&$page=='akun')?' class="active"':''?>><a href="<?=site_url('admin/akun')?>">Akun</a></li>
+      -->
     </ul>
   </div><!--/.well -->
 </div><!--/span-->
