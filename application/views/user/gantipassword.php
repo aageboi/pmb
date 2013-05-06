@@ -1,6 +1,6 @@
 <?php
     $class = (get_message('error')) ? 'error' : '';
-    echo validation_errors();
+    // echo validation_errors();
 ?>
 <form class="form-horizontal" method="post">
     <fieldset>

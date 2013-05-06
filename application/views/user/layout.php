@@ -11,6 +11,7 @@
               <li><a href="<?=site_url('dashboard')?>">Dashboard</a></li>
               <li><a href="<?=site_url('dashboard/registrasi')?>">Formulir Pendaftaran</a></li>
               <li><a href="<?=site_url('dashboard/konfirmasibayar')?>">Konfirmasi Pembayaran</a></li>
+              <li><a href="<?=site_url('dashboard/ujian')?>">Ujian Online</a></li>
               <li><a href="<?=site_url('dashboard/lihathasil')?>">Lihat hasil ujian</a></li>
               <li><a href="<?=site_url('dashboard/gantipassword')?>">Ganti Password</a></li>
               <li><a href="<?=site_url('logout')?>">Logout</a></li>

@@ -744,6 +744,7 @@ class MY_Model extends CI_Model
 
             if(is_array($this->validate))
             {
+                $this->form_validation->set_message('matches', 'Field %s tidak sama dengan %s.');
                 $this->form_validation->set_message('required', '%s tidak boleh kosong');
                 $this->form_validation->set_message('min_length', 'Minimal karakter untuk %s adalah %s');
                 $this->form_validation->set_message('valid_email', 'Alamat email tidak valid');

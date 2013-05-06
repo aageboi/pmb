@@ -10,7 +10,9 @@ class Dashboard extends CI_Controller
 
         if (! session('username') AND ! session('uid'))
             redirect('login');
-
+            
+        $this->data['uid'] = session('uid');
+        $this->data['uname'] = session('username');
     }
 
     public function index()
@@ -18,7 +20,6 @@ class Dashboard extends CI_Controller
         $this->load->model('pribadi_model','pribadi');
         $this->load->model('jadwal_model','jadwal');
 
-        // $this->data['data'] = $this->pribadi->find(session('uid'));
         $pribadi = $this->pribadi
             ->with('sekolahasal')
             ->with('ortu')
@@ -34,7 +35,6 @@ class Dashboard extends CI_Controller
             $this->data['data'] = false;
 
         $this->data['jadwal_pembayaran'] = $this->jadwal->get(1);
-        // echo $this->db->last_query();//die;
 
         $this->data['yield'] = $this->view.'index';
         $this->load->view($this->view.'layout', $this->data);
@@ -43,16 +43,26 @@ class Dashboard extends CI_Controller
     public function gantipassword ()
     {
         $this->load->library('form_validation');
+        
         if (! is_get()) {
-            $this->form_validation->set_message('required', 'Kolom %s tidak boleh kosong');
-
+            $this->form_validation->set_message('matches', '%s tidak sama dengan %s.');
+            $this->form_validation->set_message('required', '%s tidak boleh kosong');
+            $this->form_validation->set_message('min_length', 'Minimal karakter untuk %s adalah %s');
+            $this->form_validation->set_message('password_check', 'Password anda salah.');
+            
             $this->form_validation->set_rules('password', 'Password', 'required|callback_password_check');
             $this->form_validation->set_rules('passwordBaru', 'Password Baru', 'required|min_length[6]|matches[ulangiPassword]');
             $this->form_validation->set_rules('ulangiPassword', 'Ulangi Password', 'required');
 
             if ($this->form_validation->run() == TRUE) {
-                set_message('Update password berhasil');
-                redirect('dashboard');
+                $this->load->model('akun_model','akun');
+                $new['password'] = md5($this->input->post('passwordBaru'));
+                if ($result = $this->akun->update(session('uid'), $new, TRUE)) {
+                    set_message('Update password berhasil');
+                    redirect('dashboard');
+                } else {
+                    set_message('Update password gagal', 'error');
+                }
             }
         }
         $this->data['yield'] = $this->view.'gantipassword';
@@ -107,7 +117,6 @@ class Dashboard extends CI_Controller
         $this->load->model('ortu_model','ortu');
         $this->load->model('sekolahasal_model','sekolahasal');
 
-        // $this->data['data'] = $this->pribadi->find(session('uid'));
         $this->data['data'] = $this->pribadi
             ->with('sekolahasal')
             ->with('ortu')
@@ -192,7 +201,6 @@ class Dashboard extends CI_Controller
 
             if (! $result_ortu) {
                 set_message('Terjadi error ketika menyimpan data orangtua', 'error');
-                // return false;
             }
 
             // simpan data sekolah asal
@@ -210,7 +218,6 @@ class Dashboard extends CI_Controller
 
             if (! $result_sekolah) {
                 set_message('Terjadi error ketika menyimpan data sekolah', 'error');
-                // return false;
             }
 
             if (isset($_id)) {
@@ -262,20 +269,49 @@ class Dashboard extends CI_Controller
         $this->data['yield'] = $this->view.'konfirmasi';
         $this->load->view($this->view.'layout', $this->data);
     }
+    
+    public function ujian () 
+    {
+        $this->load->model('soal_model', 'soal');
+        $simpan[] = FALSE;
+        $this->data['data'] = $this->soal->find_all(4);
+        if (! is_get()) {
+
+            if (count($this->input->post('jawaban')) != 4) {
+                set_message('Anda belum menjawab seluruh pertanyaan.', 'error');
+            } else {
+                $this->load->model('hasil_model', 'hasil');
+                $jawaban = $this->input->post('jawaban');
+                foreach ($jawaban as $idsoal => $jawab) {
+                    $ujian['id_registrasi'] = session('uid');
+                    $ujian['id_soal'] = $idsoal;
+                    $ujian['jawaban'] = $jawab;
+                    if ($result = $this->hasil->insert($ujian)) 
+                        $simpan[] = TRUE;
+                    else
+                        $simpan[] = FALSE;
+                }
+                
+                if ($simpan) {
+                    set_session('ujian'.session('uid'), NULL);
+                    $this->session->unset_userdata('ujian'.session('uid'));
+                    set_message('Jawaban berhasil disimpan.');
+                    redirect('dashboard/lihathasil');
+                } else {
+                    set_message("Gagal menyimpan hasil jawaban.", 'error');
+                }
+            }
+        }
+        $this->load->view($this->view.'ujian', $this->data);
+    }
 
     public function password_check ($pass)
     {
-        $this->load->library('form_validation');
         $this->load->model('akun_model','akun');
-
         if ($user = $this->akun->get(session('uid'))) {
             if ($user->password == md5($pass))
                 return true;
-                // die('true');
         }
-
-        // die('false');
-        $this->form_validation->set_message('password_check', 'Password anda salah.');
         return false;
     }
 

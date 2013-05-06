@@ -11,7 +11,7 @@
                 <form class="form-horizontal" method="post" action="<?=site_url('admin/soal/edit')?>">
                   <?=$this->load->view('admin/error_message')?>
                   <div class="control-group">
-                    <select name="pel" id="pel" class="span3">
+                    <select name="pel" id="pel" class="span4">
                         <?php if ($pelajaran)
                         foreach ($pelajaran as $val => $text) { ?>
                         <option value="<?=$val?>" <?=(isset($data->id_pelajaran)&&$data->id_pelajaran==$val)?'selected':''?>><?=$text?></option>

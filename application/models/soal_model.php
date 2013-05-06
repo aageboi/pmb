@@ -17,11 +17,20 @@ class Soal_model extends MY_Model
             'rules'   => 'trim|required'
         )
     );
+    
+    public $belongs_to = array(
+        'pelajaran' => array(
+            'primary_key' => 'id_pelajaran',
+            'model' => 'pelajaran_model'
+        ),
+    );
 
-    public function find_all ()
+    public function find_all ($idpel = NULL)
     {
         $this->db->select('*,t_banksoal.id,pel.id as id_pel');
         $this->db->join('t_pelajaran pel', 'pel.id = t_banksoal.id_pelajaran');
+        if ($idpel)
+        $this->db->where('t_banksoal.id_pelajaran', $idpel);
         return $this->get_all();
     }
 }
