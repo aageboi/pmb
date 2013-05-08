@@ -30,16 +30,26 @@ Class Auth
                 return false;
             }
 
-            if ($role == 'admin') {
+            if ($role == 'superadmin') {
+                if ($user->role != 'superadmin') {
+                    set_message('User anda tidak diperbolehkan mengakses halaman ini.','error');
+                    return false;
+                }
+                set_session("un", $user->nama_akun);
+                set_session("aid", $user->id);
+                set_session("role", 'superadmin');
+            } elseif ($role == 'admin') {
                 if ($user->role != 'admin') {
                     set_message('User anda tidak diperbolehkan mengakses halaman ini.','error');
                     return false;
                 }
                 set_session("un", $user->nama_akun);
                 set_session("aid", $user->id);
+                set_session("role", 'admin');
             } else {
                 set_session("username", $user->nama_akun);
                 set_session("uid", $user->id);
+                set_session("role", 'user');
             }
 
 
