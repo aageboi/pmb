@@ -6,9 +6,11 @@
             <div class="span12">
                 <?=$this->load->view('breadcrumb')?>
                 <?=$this->load->view('admin/error_message')?>
+                <?php if (session('role') == 'superadmin') { ?>
                 <p>
-                    <a href="<?=site_url('admin/akun/add')?>" class="btn btn-primary">[+] Tambah</a>
+                    <a href="<?=site_url('admin/akun/add')?>" class="btn btn-primary"><i class="icon-plus-sign"></i> Tambah</a>
                 </p>
+                <?php } ?>
                 <table class="table table-bordered">
                     <thead>
                     <tr>

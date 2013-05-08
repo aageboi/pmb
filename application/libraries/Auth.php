@@ -30,8 +30,8 @@ Class Auth
                 return false;
             }
 
-            if ($role == 'admin') {
-                if ($user->role != 'superadmin') {
+            if ($role == 'admin') {                
+                if ($user->role != 'superadmin' && $user->role != 'admin') {
                     set_message('User anda tidak diperbolehkan mengakses halaman ini.','error');
                     return false;
                 }

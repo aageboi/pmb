@@ -12,6 +12,7 @@
       <li<?=(isset($page)&&$page=='prodi')?' class="active"':''?>><a href="<?=site_url('admin/prodi')?>">Program Studi</a></li>
       <li<?=(isset($page)&&$page=='ruang')?' class="active"':''?>><a href="<?=site_url('admin/ruang')?>">Ruang Ujian</a></li>
       <li<?=(isset($page)&&$page=='syarat')?' class="active"':''?>><a href="<?=site_url('admin/syarat')?>">Syarat Pendaftaran</a></li>
+      <?php if (session('role') == 'superadmin') { ?>
       <li class="nav-header">Master</li>
       <li<?=(isset($page)&&$page=='agama')?' class="active"':''?>><a href="<?=site_url('admin/agama')?>">Agama</a></li>
       <!--
@@ -33,6 +34,7 @@
       <li class="nav-header">Manage</li>
       <li<?=(isset($page)&&$page=='akun')?' class="active"':''?>><a href="<?=site_url('admin/akun')?>">Akun</a></li>
       -->
+      <?php } ?>
     </ul>
   </div><!--/.well -->
 </div><!--/span-->

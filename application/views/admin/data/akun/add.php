@@ -27,6 +27,7 @@
                       <input type="password" id="pass" placeholder="password" name="pass" value="<?=isset($data['pass']) ? $data['pass'] : ''?>">
                     </div>
                   </div>
+                  <?php if (session('role') == 'superadmin') { ?>                  
                   <div class="control-group">
                     <label class="control-label" for="role">Role</label>
                     <div class="controls">
@@ -36,6 +37,7 @@
                       </select>
                     </div>
                   </div>
+                  <?php } ?>
                   <div class="control-group">
                     <label class="control-label" for="status">Status</label>
                     <div class="controls">
