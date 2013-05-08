@@ -10,9 +10,13 @@
             <ul class="nav nav-list">
               <li><a href="<?=site_url('dashboard')?>">Dashboard</a></li>
               <li><a href="<?=site_url('dashboard/registrasi')?>">Formulir Pendaftaran</a></li>
+              <?php if ($this->pmb->is_registered()) { ?>
               <li><a href="<?=site_url('dashboard/konfirmasibayar')?>">Konfirmasi Pembayaran</a></li>
+              <?php } ?>
+              <?php if ($this->pmb->is_verified()) { ?>
               <li><a href="<?=site_url('dashboard/ujian')?>">Ujian Online</a></li>
               <li><a href="<?=site_url('dashboard/lihathasil')?>">Lihat hasil ujian</a></li>
+              <?php } ?>
               <li><a href="<?=site_url('dashboard/gantipassword')?>">Ganti Password</a></li>
               <li><a href="<?=site_url('logout')?>">Logout</a></li>
             </ul>
