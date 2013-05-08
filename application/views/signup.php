@@ -4,10 +4,10 @@
 
     <form class="form-horizontal" method="post">
       <div class="control-group <?=(form_error('nama'))?'error':''?>">
-        <label class="control-label" for="nama">Username</label>
+        <label class="control-label" for="nama">Nama</label>
         <div class="controls">
-          <input type="text" id="nama" placeholder="Username" name="nama" value="<?php echo set_value('nama'); ?>">
-            <span class="help-inline"><?php echo form_error('username'); ?></span>
+          <input type="text" id="nama" placeholder="Nama" name="nama" value="<?php echo set_value('nama'); ?>">
+            <span class="help-inline"><?php echo form_error('nama'); ?></span>
         </div>
       </div>
       <div class="control-group <?=(form_error('email'))?'error':''?>">
@@ -22,6 +22,13 @@
         <div class="controls">
           <input type="password" id="pass" placeholder="Password" name="pass">
             <span class="help-inline"><?php echo form_error('pass'); ?></span>
+        </div>
+      </div>
+      <div class="control-group <?=(form_error('passConf'))?'error':''?>">
+        <label class="control-label" for="passConf">Ulangi Password</label>
+        <div class="controls">
+          <input type="password" id="passConf" placeholder="Ulangi Password" name="passConf">
+            <span class="help-inline"><?php echo form_error('passConf'); ?></span>
         </div>
       </div>
       <div class="control-group">

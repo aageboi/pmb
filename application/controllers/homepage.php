@@ -43,13 +43,21 @@ class Homepage extends CI_Controller {
     {
         $this->load->library('form_validation');
         $this->load->model('akun_model', 'akun');
+        $this->akun->skip_validation();
+        
         if (! is_get()) {
+            $this->form_validation->set_message('matches', 'Field %s tidak sama dengan %s.');
+            $this->form_validation->set_message('required', '%s tidak boleh kosong');
+            $this->form_validation->set_message('min_length', 'Minimal karakter untuk %s adalah %s');
+            $this->form_validation->set_message('valid_email', 'Alamat email tidak valid');
+            $this->form_validation->set_message('is_unique', '%s tidak tersedia. Silakan gunakan yg lainnya.');
+            
+            $this->form_validation->set_rules('nama', 'Nama', 'trim|required|min_length[5]');
+            $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[t_akun.email]');
+            $this->form_validation->set_rules('pass', 'Password', 'trim|required|matches[passConf]');
+            $this->form_validation->set_rules('passConf', 'Ulangi Password', 'trim|required');
 
-            // $this->form_validation->set_rules('username', 'Username', 'required|min_length[6]|alpha_numeric');
-            // $this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-            // $this->form_validation->set_rules('password', 'Password', 'required');
-
-            // if ($this->form_validation->run() == TRUE) {
+            if ($this->form_validation->run() == TRUE) {
                 $signup['nama_akun'] = $this->input->post('nama');
                 $signup['email'] = $this->input->post('email');
                 $signup['password'] = md5($this->input->post('pass'));
@@ -59,12 +67,8 @@ class Homepage extends CI_Controller {
                     redirect('login');
                 } else {
                     set_message('Akun baru gagal dibuat.', 'error');
-
-                    // echo $this->db->last_query();//die;
-                    // var_dump($result);
-                    // debug($result, 1);
                 }
-            // }
+            }
 
         }
         $this->data['yield'] = 'signup';
