@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.1
+-- version 4.0.0
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 29, 2013 at 01:14 PM
--- Server version: 5.5.27-0ubuntu2
--- PHP Version: 5.4.6-1ubuntu1
+-- Generation Time: May 10, 2013 at 02:33 PM
+-- Server version: 5.5.31-0ubuntu0.13.04.1
+-- PHP Version: 5.4.9-4ubuntu2
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -59,20 +59,20 @@ CREATE TABLE IF NOT EXISTS `t_akun` (
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `role` enum('admin','user') NOT NULL DEFAULT 'user',
+  `role` enum('superadmin','admin','user') NOT NULL DEFAULT 'user',
   `status` char(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `t_akun`
 --
 
 INSERT INTO `t_akun` (`id`, `nama_akun`, `email`, `password`, `created_at`, `role`, `status`) VALUES
-(1, 'ngadmin', 'ngadmin@untar.ac.id', 'ac43724f16e9241d990427ab7c8f4228', '2013-04-16 17:44:32', 'admin', '1'),
-(3, 'user biasa', 'admin@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2013-04-16 17:57:42', 'user', '0'),
+(1, 'ngadmin', 'ngadmin@untar.ac.id', 'ac43724f16e9241d990427ab7c8f4228', '2013-04-16 17:44:32', 'superadmin', '1'),
+(3, 'admin1', 'admin@gmail.com', 'ac43724f16e9241d990427ab7c8f4228', '2013-04-16 17:57:42', 'admin', '1'),
 (4, 'administrator', 'user@biasa.com', '827ccb0eea8a706c4c34a16891f84e7b', '2013-04-17 17:14:49', 'user', '1'),
-(5, 'admin', 'admin@biasa.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2013-04-17 17:15:02', 'user', '0');
+(5, 'saya bukan admin', 'admin@biasa.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2013-04-17 17:15:02', 'user', '0');
 
 -- --------------------------------------------------------
 
@@ -172,9 +172,10 @@ INSERT INTO `t_grade` (`id`, `nama_grade`, `nilai_min`, `nilai_max`) VALUES
 DROP TABLE IF EXISTS `t_hasil`;
 CREATE TABLE IF NOT EXISTS `t_hasil` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_registrasi` int(11) NOT NULL,
+  `id_pribadi` int(11) NOT NULL,
   `id_soal` int(11) NOT NULL,
   `jawaban` varchar(50) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
@@ -401,6 +402,24 @@ INSERT INTO `t_pelajaran` (`id`, `kd_pel`, `nama_pel`, `kriteria`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `t_pembayaran`
+--
+
+DROP TABLE IF EXISTS `t_pembayaran`;
+CREATE TABLE IF NOT EXISTS `t_pembayaran` (
+  `id` int(11) NOT NULL,
+  `payment_method` varchar(20) NOT NULL,
+  `payment_to` varchar(50) NOT NULL,
+  `payment_date` date NOT NULL,
+  `desc` text NOT NULL,
+  `attachment` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `id_akun` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `t_pendidikanterakhir`
 --
 
@@ -494,7 +513,7 @@ CREATE TABLE IF NOT EXISTS `t_pribadi` (
 --
 
 INSERT INTO `t_pribadi` (`id`, `id_user`, `id_provinsi`, `id_jenkel`, `id_agama`, `id_nikah`, `id_sumber`, `id_kwn`, `id_ortu`, `id_sekolah`, `nama`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `hp`, `email`, `foto`, `ttd_1`, `ttd_2`, `nomor_ujian`, `is_verified`, `pil_1`, `pil_2`, `id_jalur`) VALUES
-(4, 4, 1, 1, 3, 1, 3, 1, 3, 3, 'Heri Gunawan Budiyanto', 'Bandung', '1985-12-30', 'Gg H. Abdulrahiim no.7', 'Sukapura', '04', '04', 'Bandung', '40285', '0227334332', '08562070196', 'user@biasa.com', 'Heri_Gunawan_B.jpg', '', '', '', '0', 3, 4, 2);
+(4, 4, 1, 1, 3, 1, 3, 1, 3, 3, 'Heri Gunawan Budiyanto', 'Bandung', '1985-12-30', 'Gg H. Abdulrahiim no.7', 'Sukapura', '04', '04', 'Bandung', '40285', '0227334332', '08562070196', 'user@biasa.com', 'Heri_Gunawan_B.jpg', '', '', '', '1', 3, 4, 2);
 
 -- --------------------------------------------------------
 

@@ -36,7 +36,7 @@
                         </td>
                         <td width="85px">
                             <a href="<?=site_url('admin/akun/edit/'.$row->id)?>" class="btn" title="edit"><i class="icon-edit"></i></a>
-                            <a href="<?=site_url('admin/akun/delete/'.$row->id)?>" class="btn btn-danger" title="delete"><i class="icon-remove"></i></a>
+                            <a href="<?=site_url('admin/akun/delete/'.$row->id)?>" class="btn btn-danger" title="delete" onclick="return confirm('Hapus data?');"><i class="icon-remove"></i></a>
                         </td>
                     </tr>
                     <?php } ?>

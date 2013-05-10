@@ -33,7 +33,7 @@
         </div>
         <?php } else { ?>
 
-        <div class="span4">
+        <div class="span3">
 <!--
           <h2>Pengumuman</h2>
 -->
@@ -48,13 +48,13 @@
             <a href="<?=site_url('login')?>">lupa nomor registrasi</a>
           </p>
         </div>
-        <div class="span3">
-            <form class="form-horizontal" method="post" action="<?=site_url('login')?>">
+        <div class="span4">
+            <form class="well form-horizontal" method="post" action="<?=site_url('login')?>">
               <div class="control-group">
-                  <input type="text" placeholder="Email" name="username">
+                  <input type="text" placeholder="Alamat Email" name="username" class="input-block-level">
               </div>
               <div class="control-group">
-                  <input type="password" placeholder="Password" name="password">
+                  <input type="password" placeholder="Password" name="password" class="input-block-level">
               </div>
               <div class="control-group">
                   <button type="submit" class="btn btn-primary btn-small">Login</button><br><br>

@@ -11,7 +11,6 @@ class Dashboard extends CI_Controller {
 
     public function index()
     {
-        $data['yield'] = 'admin/dashboard';
-        $this->load->view('admin/layout', $data);
+        $this->load->view('admin/dashboard');
     }
 }

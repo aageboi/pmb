@@ -65,4 +65,17 @@ Class Pmb
 
         return FALSE;
     }
+    
+    public function registrasi_id ($id = NULL)
+    {
+        $userid = ($id) ? $id : $this->to->session->userdata('uid');
+        
+        if ($userid) {
+            $this->to->load->model('pribadi_model', 'pribadi');
+            if ($reg = $this->to->pribadi->get_by('id_user', $userid)) {
+                return $reg['id'];
+            }
+        }
+        return FALSE;
+    }
 }

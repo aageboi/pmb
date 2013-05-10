@@ -7,7 +7,7 @@
                 <?=$this->load->view('breadcrumb')?>
                 <?=$this->load->view('admin/error_message')?>
                 <p>
-                    <a href="<?=site_url('admin/pendidikan/add')?>" class="btn btn-primary">[+] Tambah</a>
+                    <a href="<?=site_url('admin/pendidikan/add')?>" class="btn btn-primary"><i class="icon-plus"></i> Tambah</a>
                 </p>
                 <table class="table table-bordered">
                     <thead>
@@ -22,7 +22,7 @@
                         <td><?=$row->pendidikan?></td>
                         <td width="85px">
                             <a href="<?=site_url('admin/pendidikan/edit/'.$row->id)?>" class="btn" title="edit"><i class="icon-edit"></i></a>
-                            <a href="<?=site_url('admin/pendidikan/delete/'.$row->id)?>" class="btn btn-danger" title="delete"><i class="icon-remove"></i></a>
+                            <a href="<?=site_url('admin/pendidikan/delete/'.$row->id)?>" class="btn btn-danger" title="delete" onclick="return confirm('Hapus data?');"><i class="icon-remove"></i></a>
                         </td>
                     </tr>
                     <?php } ?>

@@ -10,7 +10,7 @@ class Dashboard extends CI_Controller
 
         if (! session('username') AND ! session('uid'))
             redirect('login');
-            
+
         $this->data['uid'] = session('uid');
         $this->data['uname'] = session('username');
     }
@@ -43,13 +43,13 @@ class Dashboard extends CI_Controller
     public function gantipassword ()
     {
         $this->load->library('form_validation');
-        
+
         if (! is_get()) {
             $this->form_validation->set_message('matches', '%s tidak sama dengan %s.');
             $this->form_validation->set_message('required', '%s tidak boleh kosong');
             $this->form_validation->set_message('min_length', 'Minimal karakter untuk %s adalah %s');
             $this->form_validation->set_message('password_check', 'Password anda salah.');
-            
+
             $this->form_validation->set_rules('password', 'Password', 'required|callback_password_check');
             $this->form_validation->set_rules('passwordBaru', 'Password Baru', 'required|min_length[6]|matches[ulangiPassword]');
             $this->form_validation->set_rules('ulangiPassword', 'Ulangi Password', 'required');
@@ -251,26 +251,29 @@ class Dashboard extends CI_Controller
         if (! is_get()) {
             $data['payment_method'] = $this->input->post('method');
             $data['payment_to'] = $this->input->post('to');
-            $data['payment_date'] = $this->input->post('date');
+            $data['payment_date'] = date('Y-m-d',strtotime($this->input->post('date')));
             $data['desc'] = $this->input->post('desc');
+            $data['id_pribadi'] = $this->pmb->registrasi_id();
 
             if (isset($_FILES['bukti']) && !empty($_FILES['bukti']['name'])) {
-                if ($foto = $this->do_upload('bukti'))
+                if ($foto = $this->do_upload('bukti')) {
                     $data['attachment'] = $foto['upload_data']['file_name'];
+
+                    if ($sukses = $this->bayar->insert($data)) {
+                        set_message('Konfirmasi Pembayaran berhasil dikirim.');
+                        redirect('dashboard');
+                    }
+                }
+            } else {
+                set_message('Harap lampirkan bukti transfer.', 'error');
             }
 
-            if ($sukses = $this->bayar->insert($data)) {
-                set_message('Konfirmasi Pembayaran berhasil dikirim.');
-                redirect('dashboard');
-            } else {
-                set_message('Konfirmasi Pembayaran gagal dikirim.', 'error');
-            }
         }
         $this->data['yield'] = $this->view.'konfirmasi';
         $this->load->view($this->view.'layout', $this->data);
     }
-    
-    public function ujian () 
+
+    public function ujian ()
     {
         $this->load->model('soal_model', 'soal');
         $simpan[] = FALSE;
@@ -283,15 +286,15 @@ class Dashboard extends CI_Controller
                 $this->load->model('hasil_model', 'hasil');
                 $jawaban = $this->input->post('jawaban');
                 foreach ($jawaban as $idsoal => $jawab) {
-                    $ujian['id_registrasi'] = session('uid');
+                    $ujian['id_pribadi'] = session('uid');
                     $ujian['id_soal'] = $idsoal;
                     $ujian['jawaban'] = $jawab;
-                    if ($result = $this->hasil->insert($ujian)) 
+                    if ($result = $this->hasil->insert($ujian))
                         $simpan[] = TRUE;
                     else
                         $simpan[] = FALSE;
                 }
-                
+
                 if ($simpan) {
                     set_session('ujian'.session('uid'), NULL);
                     $this->session->unset_userdata('ujian'.session('uid'));

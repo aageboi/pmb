@@ -35,8 +35,8 @@
 <form class="form-signin" method="post">
     <h2 class="form-signin-heading">Login</h2>
     <?=$this->load->view('admin/error_message')?>
-    <input type="text" class="input-block-level" placeholder="username" name="email" value="<?=$this->input->post('email')?>" autocomplete="off">
+    <input type="text" class="input-block-level" placeholder="email" name="email" value="<?=$this->input->post('email')?>" autocomplete="off">
     <input type="password" class="input-block-level" placeholder="password" name="password">
-    <button class="btn btn-large btn-primary" type="submit">masuk</button>
+    <button class="btn btn-large btn-primary" type="submit"><i class="icon-lock"></i> masuk</button>
 </form>
 <?=$this->load->view('footer')?>

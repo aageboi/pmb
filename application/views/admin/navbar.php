@@ -10,11 +10,12 @@
       <div class="nav-collapse collapse">
 
         <ul class="nav">
-          <li<?=(! isset($page))?' class="active"':''?>><a href="<?=site_url('admin/')?>">Home</a></li>
-          <li class="dropdown<?=(isset($page)&&$page=='akun')?' active':''?>">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Manage <b class="caret"></b></a>
+          <li<?=(! isset($page))?' class="active"':''?>><a href="<?=site_url('admin/')?>"><i class="icon-home"></i> Home</a></li>
+          <li class="dropdown<?=(isset($page)&&$page=='manage')?' active':''?>">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-chevron-down"></i> Manage <b class="caret"></b></a>
             <ul class="dropdown-menu">
-              <li><a href="<?=site_url('admin/akun')?>">Akun</a></li>
+              <li><a href="<?=site_url('admin/akun')?>"><i class="icon-user"></i> Akun</a></li>
+              <li><a href="<?=site_url('admin/registrasi')?>"><i class="icon-user"></i> Registrasi</a></li>
             </ul>
           </li>
         </ul>

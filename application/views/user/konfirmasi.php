@@ -24,19 +24,20 @@
             </div>
         </div>
 
+        <div class="control-group <?=(form_error('amount'))?'error':''?>">
+            <label class="control-label" for="amount">Jumlah Transfer</label>
+            <div class="controls">
+                <span class="add-on">Rp.</span>
+                <input type="text" name="amount" id="amount" placeholder="Jumlah" class="span3" value="<?=set_value('amount')?>">
+                <span class="help-inline"><?php echo form_error('amount'); ?></span>
+            </div>
+        </div>
+        
         <div class="control-group <?=(form_error('date'))?'error':''?>">
             <label class="control-label" for="date">Tanggal Pembayaran</label>
             <div class="controls">
-                <input type="text" name="date" id="date" placeholder="<?=date('d-m-Y')?>" class="span3">
+                <input type="text" name="date" id="date" placeholder="<?=date('d-m-Y')?>" class="span3" value="<?=set_value('date')?>">
                 <span class="help-inline"><?php echo form_error('date'); ?></span>
-            </div>
-        </div>
-
-        <div class="control-group <?=(form_error('desc'))?'error':''?>">
-            <label class="control-label" for="desc">Keterangan</label>
-            <div class="controls">
-                <textarea name="desc" id="desc" class="span8" rows="5"></textarea>
-                <span class="help-inline"><?php echo form_error('desc'); ?></span>
             </div>
         </div>
 
@@ -49,9 +50,19 @@
             </div>
         </div>
 
+        <div class="control-group <?=(form_error('desc'))?'error':''?>">
+            <label class="control-label" for="desc">Keterangan</label>
+            <div class="controls">
+                <textarea name="desc" id="desc" class="span8" rows="5"><?=set_value('desc')?></textarea>
+                <span class="help-inline"><?php echo form_error('desc'); ?></span>
+            </div>
+        </div>
+
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Simpan</button>
-            <button type="button" class="btn">Batal</button>
+            <button type="submit" class="btn btn-primary btn-large"><i class="icon-ok"></i> Simpan</button>
+            <a href="<?=site_url('dashboard')?>">
+                <button type="button" class="btn"><i class="icon-remove"></i> Batal</button>
+            </a>
         </div>
     </fieldset>
 </form>

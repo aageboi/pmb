@@ -3,22 +3,21 @@
 <div class="row-fluid">
     <div class="span3">
         <div class="well sidebar-nav">
-            <ul class="nav nav-list">
+            <ul class="nav">
               <li><strong><?=ucfirst(session('username'))?></strong></li>
             </ul>
-            <hr>
-            <ul class="nav nav-list">
-              <li><a href="<?=site_url('dashboard')?>">Dashboard</a></li>
-              <li><a href="<?=site_url('dashboard/registrasi')?>">Formulir Pendaftaran</a></li>
+            <ul class="nav nav-tabs">
+              <li><a href="<?=site_url('dashboard')?>"><i class="icon-home"></i> Dashboard</a></li>
+              <li><a href="<?=site_url('dashboard/registrasi')?>"><i class="icon-list"></i> Formulir Pendaftaran</a></li>
               <?php if ($this->pmb->is_registered()) { ?>
-              <li><a href="<?=site_url('dashboard/konfirmasibayar')?>">Konfirmasi Pembayaran</a></li>
+              <li><a href="<?=site_url('dashboard/konfirmasibayar')?>"><i class="icon-tags"></i> Konfirmasi Pembayaran</a></li>
               <?php } ?>
               <?php if ($this->pmb->is_verified()) { ?>
-              <li><a href="<?=site_url('dashboard/ujian')?>">Ujian Online</a></li>
-              <li><a href="<?=site_url('dashboard/lihathasil')?>">Lihat hasil ujian</a></li>
+              <li><a href="<?=site_url('dashboard/ujian')?>"><i class="icon-pencil"></i> Ujian Online</a></li>
+              <li><a href="<?=site_url('dashboard/lihathasil')?>"><i class="icon-book"></i> Lihat hasil ujian</a></li>
               <?php } ?>
-              <li><a href="<?=site_url('dashboard/gantipassword')?>">Ganti Password</a></li>
-              <li><a href="<?=site_url('logout')?>">Logout</a></li>
+              <li><a href="<?=site_url('dashboard/gantipassword')?>"><i class="icon-lock"></i> Ganti Password</a></li>
+              <li><a href="<?=site_url('logout')?>" onclick="return confirm('Anda hendak logout?');"><i class="icon-off"></i> Logout</a></li>
             </ul>
         </div>
     </div>

@@ -8,7 +8,7 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="<?=base_url()?>assets/css/bootstrap.css" rel="stylesheet">
+    <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?=base_url()?>assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -22,6 +22,7 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?=base_url()?>assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="<?=base_url()?>assets/ico/apple-touch-icon-57-precomposed.png">
     <link rel="shortcut icon" href="<?=base_url()?>assets/ico/favicon.png">
+    <script src="<?=base_url()?>assets/js/jquery.js"></script>
   </head>
 
   <body>

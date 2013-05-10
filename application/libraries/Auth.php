@@ -30,20 +30,25 @@ Class Auth
                 return false;
             }
 
-            if ($role == 'admin') {                
+            if ($role == 'admin') {
                 if ($user->role != 'superadmin' && $user->role != 'admin') {
                     set_message('User anda tidak diperbolehkan mengakses halaman ini.','error');
                     return false;
+                } else {
+                    set_session("un", $user->nama_akun);
+                    set_session("aid", $user->id);
+                    set_session("role", strtolower($user->role));
                 }
-                set_session("un", $user->nama_akun);
-                set_session("aid", $user->id);
-                set_session("role", strtolower($user->role));
             } else {
-                set_session("username", $user->nama_akun);
-                set_session("uid", $user->id);
-                set_session("role", 'user');
+                if ($user->role == 'user') {
+                    set_session("username", $user->nama_akun);
+                    set_session("uid", $user->id);
+                    set_session("role", 'user');
+                } else {
+                    set_message('Untuk admin silakan login di dashboard admin.','error');
+                    return false;
+                }
             }
-
 
             return true;
         } else {

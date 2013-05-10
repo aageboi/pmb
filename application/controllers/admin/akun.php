@@ -12,7 +12,7 @@ class Akun extends CI_Controller {
 
         $this->load->model('akun_model','akun');
 
-        $this->data['page'] = 'akun';
+        $this->data['page'] = 'manage';
         $this->data['breadcrumb'] = array(
             'Home' => 'admin',
             'Data' => 'admin/akun',
@@ -37,7 +37,7 @@ class Akun extends CI_Controller {
             set_message('Anda tidak memiliki hak untuk mengakses halaman ini', 'error');
             redirect('admin/akun');
         }
-            
+
         $this->data['breadcrumb']['Tambah'] = null;
         // post new
         if (! is_get()) {
@@ -86,6 +86,9 @@ class Akun extends CI_Controller {
                 'role' => $this->input->post('role'),
                 'status' => $this->input->post('status'),
             );
+
+            if (! $this->input->post('role'))
+                unset($new_data['role']);
 
             if (! $this->input->post('pass') OR $this->input->post('pass') == 'password')
                 unset($new_data['password']);

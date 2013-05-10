@@ -5,10 +5,12 @@
     </div>
     <div class="span9">
         <table class="table table-bordered">
+            <?php if ($this->pmb->is_verified()) { ?>
             <tr>
                 <th>Nomor Ujian</th>
                 <td><?=$data['nomor_ujian']?></td>
             </tr>
+            <?php } ?>
             <tr>
                 <th>Nama</th>
                 <td><?=$data['nama']?></td>
