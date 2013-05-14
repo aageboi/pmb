@@ -2,10 +2,10 @@
 -- version 4.0.0
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 10, 2013 at 02:33 PM
--- Server version: 5.5.31-0ubuntu0.13.04.1
--- PHP Version: 5.4.9-4ubuntu2
+-- Inang: localhost
+-- Waktu pembuatan: 14 Mei 2013 pada 17.02
+-- Versi Server: 5.5.31-0ubuntu0.13.04.1
+-- Versi PHP: 5.4.9-4ubuntu2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `sim_pmb`
+-- Basis data: `sim_pmb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_agama`
+-- Struktur dari tabel `t_agama`
 --
 
 DROP TABLE IF EXISTS `t_agama`;
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `t_agama` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
--- Dumping data for table `t_agama`
+-- Dumping data untuk tabel `t_agama`
 --
 
 INSERT INTO `t_agama` (`id`, `agama`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `t_agama` (`id`, `agama`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_akun`
+-- Struktur dari tabel `t_akun`
 --
 
 DROP TABLE IF EXISTS `t_akun`;
@@ -62,22 +62,23 @@ CREATE TABLE IF NOT EXISTS `t_akun` (
   `role` enum('superadmin','admin','user') NOT NULL DEFAULT 'user',
   `status` char(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 --
--- Dumping data for table `t_akun`
+-- Dumping data untuk tabel `t_akun`
 --
 
 INSERT INTO `t_akun` (`id`, `nama_akun`, `email`, `password`, `created_at`, `role`, `status`) VALUES
-(1, 'ngadmin', 'ngadmin@untar.ac.id', 'ac43724f16e9241d990427ab7c8f4228', '2013-04-16 17:44:32', 'superadmin', '1'),
+(1, 'ngadmin', 'ngadmin@untar.ac.id', 'ac43724f16e9241d990427ab7c8f4228', '2013-04-16 17:44:32', 'admin', '1'),
 (3, 'admin1', 'admin@gmail.com', 'ac43724f16e9241d990427ab7c8f4228', '2013-04-16 17:57:42', 'admin', '1'),
 (4, 'administrator', 'user@biasa.com', '827ccb0eea8a706c4c34a16891f84e7b', '2013-04-17 17:14:49', 'user', '1'),
-(5, 'saya bukan admin', 'admin@biasa.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2013-04-17 17:15:02', 'user', '0');
+(5, 'saya bukan admin', 'admin@biasa.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2013-04-17 17:15:02', 'user', '0'),
+(8, 'heri gunawan', 'daftarjadiadmin@gmail.com', 'ac43724f16e9241d990427ab7c8f4228', '2013-05-14 09:58:03', 'admin', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_banksoal`
+-- Struktur dari tabel `t_banksoal`
 --
 
 DROP TABLE IF EXISTS `t_banksoal`;
@@ -96,7 +97,7 @@ CREATE TABLE IF NOT EXISTS `t_banksoal` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `t_banksoal`
+-- Dumping data untuk tabel `t_banksoal`
 --
 
 INSERT INTO `t_banksoal` (`id`, `id_prodi`, `id_pelajaran`, `isi_soal`, `isi_pilihan_a`, `isi_pilihan_b`, `isi_pilihan_c`, `isi_pilihan_d`, `jawaban`, `no_urut`) VALUES
@@ -108,7 +109,7 @@ INSERT INTO `t_banksoal` (`id`, `id_prodi`, `id_pelajaran`, `isi_soal`, `isi_pil
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_biayakuliah`
+-- Struktur dari tabel `t_biayakuliah`
 --
 
 DROP TABLE IF EXISTS `t_biayakuliah`;
@@ -126,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `t_biayakuliah` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_gambar`
+-- Struktur dari tabel `t_gambar`
 --
 
 DROP TABLE IF EXISTS `t_gambar`;
@@ -141,7 +142,7 @@ CREATE TABLE IF NOT EXISTS `t_gambar` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_grade`
+-- Struktur dari tabel `t_grade`
 --
 
 DROP TABLE IF EXISTS `t_grade`;
@@ -154,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `t_grade` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `t_grade`
+-- Dumping data untuk tabel `t_grade`
 --
 
 INSERT INTO `t_grade` (`id`, `nama_grade`, `nilai_min`, `nilai_max`) VALUES
@@ -166,7 +167,7 @@ INSERT INTO `t_grade` (`id`, `nama_grade`, `nilai_min`, `nilai_max`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_hasil`
+-- Struktur dari tabel `t_hasil`
 --
 
 DROP TABLE IF EXISTS `t_hasil`;
@@ -177,12 +178,22 @@ CREATE TABLE IF NOT EXISTS `t_hasil` (
   `jawaban` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data untuk tabel `t_hasil`
+--
+
+INSERT INTO `t_hasil` (`id`, `id_pribadi`, `id_soal`, `jawaban`, `created_at`) VALUES
+(1, 4, 2, 'c', '2013-05-10 07:51:04'),
+(2, 4, 3, 'b', '2013-05-10 07:51:04'),
+(3, 4, 4, 'c', '2013-05-10 07:51:04'),
+(4, 4, 6, 'b', '2013-05-10 07:51:04');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_jadwalpembayaran`
+-- Struktur dari tabel `t_jadwalpembayaran`
 --
 
 DROP TABLE IF EXISTS `t_jadwalpembayaran`;
@@ -193,7 +204,7 @@ CREATE TABLE IF NOT EXISTS `t_jadwalpembayaran` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
--- Dumping data for table `t_jadwalpembayaran`
+-- Dumping data untuk tabel `t_jadwalpembayaran`
 --
 
 INSERT INTO `t_jadwalpembayaran` (`id`, `jadwal`) VALUES
@@ -202,7 +213,7 @@ INSERT INTO `t_jadwalpembayaran` (`id`, `jadwal`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_jalurpendaftaran`
+-- Struktur dari tabel `t_jalurpendaftaran`
 --
 
 DROP TABLE IF EXISTS `t_jalurpendaftaran`;
@@ -213,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `t_jalurpendaftaran` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `t_jalurpendaftaran`
+-- Dumping data untuk tabel `t_jalurpendaftaran`
 --
 
 INSERT INTO `t_jalurpendaftaran` (`id`, `nama_jalur`) VALUES
@@ -226,7 +237,7 @@ INSERT INTO `t_jalurpendaftaran` (`id`, `nama_jalur`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_jeniskelamin`
+-- Struktur dari tabel `t_jeniskelamin`
 --
 
 DROP TABLE IF EXISTS `t_jeniskelamin`;
@@ -238,7 +249,7 @@ CREATE TABLE IF NOT EXISTS `t_jeniskelamin` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `t_jeniskelamin`
+-- Dumping data untuk tabel `t_jeniskelamin`
 --
 
 INSERT INTO `t_jeniskelamin` (`id`, `kd_jenkel`, `jenkel`) VALUES
@@ -248,7 +259,7 @@ INSERT INTO `t_jeniskelamin` (`id`, `kd_jenkel`, `jenkel`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_jurusansmta`
+-- Struktur dari tabel `t_jurusansmta`
 --
 
 DROP TABLE IF EXISTS `t_jurusansmta`;
@@ -260,7 +271,7 @@ CREATE TABLE IF NOT EXISTS `t_jurusansmta` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `t_jurusansmta`
+-- Dumping data untuk tabel `t_jurusansmta`
 --
 
 INSERT INTO `t_jurusansmta` (`id`, `kd_jurusan`, `nama_jurusan`) VALUES
@@ -271,7 +282,7 @@ INSERT INTO `t_jurusansmta` (`id`, `kd_jurusan`, `nama_jurusan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_kapasitasruang`
+-- Struktur dari tabel `t_kapasitasruang`
 --
 
 DROP TABLE IF EXISTS `t_kapasitasruang`;
@@ -284,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `t_kapasitasruang` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_kewarganegaraan`
+-- Struktur dari tabel `t_kewarganegaraan`
 --
 
 DROP TABLE IF EXISTS `t_kewarganegaraan`;
@@ -295,7 +306,7 @@ CREATE TABLE IF NOT EXISTS `t_kewarganegaraan` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `t_kewarganegaraan`
+-- Dumping data untuk tabel `t_kewarganegaraan`
 --
 
 INSERT INTO `t_kewarganegaraan` (`id`, `kewarganegaraan`) VALUES
@@ -305,7 +316,7 @@ INSERT INTO `t_kewarganegaraan` (`id`, `kewarganegaraan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_kriteria_kelulusan`
+-- Struktur dari tabel `t_kriteria_kelulusan`
 --
 
 DROP TABLE IF EXISTS `t_kriteria_kelulusan`;
@@ -319,7 +330,7 @@ CREATE TABLE IF NOT EXISTS `t_kriteria_kelulusan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_ortu`
+-- Struktur dari tabel `t_ortu`
 --
 
 DROP TABLE IF EXISTS `t_ortu`;
@@ -342,7 +353,7 @@ CREATE TABLE IF NOT EXISTS `t_ortu` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `t_ortu`
+-- Dumping data untuk tabel `t_ortu`
 --
 
 INSERT INTO `t_ortu` (`id`, `id_provinsi`, `id_pendidikan`, `id_pekerjaan`, `nama`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `is_ortu`) VALUES
@@ -351,7 +362,7 @@ INSERT INTO `t_ortu` (`id`, `id_provinsi`, `id_pendidikan`, `id_pekerjaan`, `nam
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_pekerjaan`
+-- Struktur dari tabel `t_pekerjaan`
 --
 
 DROP TABLE IF EXISTS `t_pekerjaan`;
@@ -362,7 +373,7 @@ CREATE TABLE IF NOT EXISTS `t_pekerjaan` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Dumping data for table `t_pekerjaan`
+-- Dumping data untuk tabel `t_pekerjaan`
 --
 
 INSERT INTO `t_pekerjaan` (`id`, `nama_pekerjaan`) VALUES
@@ -376,7 +387,7 @@ INSERT INTO `t_pekerjaan` (`id`, `nama_pekerjaan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_pelajaran`
+-- Struktur dari tabel `t_pelajaran`
 --
 
 DROP TABLE IF EXISTS `t_pelajaran`;
@@ -389,7 +400,7 @@ CREATE TABLE IF NOT EXISTS `t_pelajaran` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Dumping data for table `t_pelajaran`
+-- Dumping data untuk tabel `t_pelajaran`
 --
 
 INSERT INTO `t_pelajaran` (`id`, `kd_pel`, `nama_pel`, `kriteria`) VALUES
@@ -402,7 +413,7 @@ INSERT INTO `t_pelajaran` (`id`, `kd_pel`, `nama_pel`, `kriteria`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_pembayaran`
+-- Struktur dari tabel `t_pembayaran`
 --
 
 DROP TABLE IF EXISTS `t_pembayaran`;
@@ -420,7 +431,7 @@ CREATE TABLE IF NOT EXISTS `t_pembayaran` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_pendidikanterakhir`
+-- Struktur dari tabel `t_pendidikanterakhir`
 --
 
 DROP TABLE IF EXISTS `t_pendidikanterakhir`;
@@ -431,7 +442,7 @@ CREATE TABLE IF NOT EXISTS `t_pendidikanterakhir` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
--- Dumping data for table `t_pendidikanterakhir`
+-- Dumping data untuk tabel `t_pendidikanterakhir`
 --
 
 INSERT INTO `t_pendidikanterakhir` (`id`, `pendidikan`) VALUES
@@ -448,7 +459,7 @@ INSERT INTO `t_pendidikanterakhir` (`id`, `pendidikan`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_periode`
+-- Struktur dari tabel `t_periode`
 --
 
 DROP TABLE IF EXISTS `t_periode`;
@@ -460,7 +471,7 @@ CREATE TABLE IF NOT EXISTS `t_periode` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `t_periode`
+-- Dumping data untuk tabel `t_periode`
 --
 
 INSERT INTO `t_periode` (`id`, `nama_per`, `id_jalur`) VALUES
@@ -470,7 +481,7 @@ INSERT INTO `t_periode` (`id`, `nama_per`, `id_jalur`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_pribadi`
+-- Struktur dari tabel `t_pribadi`
 --
 
 DROP TABLE IF EXISTS `t_pribadi`;
@@ -509,7 +520,7 @@ CREATE TABLE IF NOT EXISTS `t_pribadi` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='tabel data pribadi' AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `t_pribadi`
+-- Dumping data untuk tabel `t_pribadi`
 --
 
 INSERT INTO `t_pribadi` (`id`, `id_user`, `id_provinsi`, `id_jenkel`, `id_agama`, `id_nikah`, `id_sumber`, `id_kwn`, `id_ortu`, `id_sekolah`, `nama`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `hp`, `email`, `foto`, `ttd_1`, `ttd_2`, `nomor_ujian`, `is_verified`, `pil_1`, `pil_2`, `id_jalur`) VALUES
@@ -518,7 +529,7 @@ INSERT INTO `t_pribadi` (`id`, `id_user`, `id_provinsi`, `id_jenkel`, `id_agama`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_prodi`
+-- Struktur dari tabel `t_prodi`
 --
 
 DROP TABLE IF EXISTS `t_prodi`;
@@ -530,7 +541,7 @@ CREATE TABLE IF NOT EXISTS `t_prodi` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `t_prodi`
+-- Dumping data untuk tabel `t_prodi`
 --
 
 INSERT INTO `t_prodi` (`id`, `kd_prodi`, `nama_prodi`) VALUES
@@ -542,7 +553,7 @@ INSERT INTO `t_prodi` (`id`, `kd_prodi`, `nama_prodi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_provinsi`
+-- Struktur dari tabel `t_provinsi`
 --
 
 DROP TABLE IF EXISTS `t_provinsi`;
@@ -554,7 +565,7 @@ CREATE TABLE IF NOT EXISTS `t_provinsi` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `t_provinsi`
+-- Dumping data untuk tabel `t_provinsi`
 --
 
 INSERT INTO `t_provinsi` (`id`, `kd_provinsi`, `nama_provinsi`) VALUES
@@ -564,7 +575,7 @@ INSERT INTO `t_provinsi` (`id`, `kd_provinsi`, `nama_provinsi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_ruangujian`
+-- Struktur dari tabel `t_ruangujian`
 --
 
 DROP TABLE IF EXISTS `t_ruangujian`;
@@ -578,7 +589,7 @@ CREATE TABLE IF NOT EXISTS `t_ruangujian` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `t_ruangujian`
+-- Dumping data untuk tabel `t_ruangujian`
 --
 
 INSERT INTO `t_ruangujian` (`id`, `id_pelajaran`, `nama_ruang`, `lokasi`, `kapasitas`) VALUES
@@ -590,7 +601,7 @@ INSERT INTO `t_ruangujian` (`id`, `id_pelajaran`, `nama_ruang`, `lokasi`, `kapas
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_sekolah`
+-- Struktur dari tabel `t_sekolah`
 --
 
 DROP TABLE IF EXISTS `t_sekolah`;
@@ -604,7 +615,7 @@ CREATE TABLE IF NOT EXISTS `t_sekolah` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `t_sekolah`
+-- Dumping data untuk tabel `t_sekolah`
 --
 
 INSERT INTO `t_sekolah` (`id`, `id_provinsi`, `nama_sekolah`, `alamat`, `kota`) VALUES
@@ -614,7 +625,7 @@ INSERT INTO `t_sekolah` (`id`, `id_provinsi`, `nama_sekolah`, `alamat`, `kota`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_sekolahasal`
+-- Struktur dari tabel `t_sekolahasal`
 --
 
 DROP TABLE IF EXISTS `t_sekolahasal`;
@@ -627,7 +638,7 @@ CREATE TABLE IF NOT EXISTS `t_sekolahasal` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `t_sekolahasal`
+-- Dumping data untuk tabel `t_sekolahasal`
 --
 
 INSERT INTO `t_sekolahasal` (`id`, `id_sekolah`, `id_jurusan`, `tahun_lulus`) VALUES
@@ -636,7 +647,7 @@ INSERT INTO `t_sekolahasal` (`id`, `id_sekolah`, `id_jurusan`, `tahun_lulus`) VA
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_statuskelulusan`
+-- Struktur dari tabel `t_statuskelulusan`
 --
 
 DROP TABLE IF EXISTS `t_statuskelulusan`;
@@ -650,7 +661,7 @@ CREATE TABLE IF NOT EXISTS `t_statuskelulusan` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_statusnikah`
+-- Struktur dari tabel `t_statusnikah`
 --
 
 DROP TABLE IF EXISTS `t_statusnikah`;
@@ -661,7 +672,7 @@ CREATE TABLE IF NOT EXISTS `t_statusnikah` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
--- Dumping data for table `t_statusnikah`
+-- Dumping data untuk tabel `t_statusnikah`
 --
 
 INSERT INTO `t_statusnikah` (`id`, `status`) VALUES
@@ -672,7 +683,7 @@ INSERT INTO `t_statusnikah` (`id`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_sumberbiaya`
+-- Struktur dari tabel `t_sumberbiaya`
 --
 
 DROP TABLE IF EXISTS `t_sumberbiaya`;
@@ -683,7 +694,7 @@ CREATE TABLE IF NOT EXISTS `t_sumberbiaya` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
--- Dumping data for table `t_sumberbiaya`
+-- Dumping data untuk tabel `t_sumberbiaya`
 --
 
 INSERT INTO `t_sumberbiaya` (`id`, `sumber_biaya`) VALUES
@@ -695,7 +706,7 @@ INSERT INTO `t_sumberbiaya` (`id`, `sumber_biaya`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `t_syaratpendaftaran`
+-- Struktur dari tabel `t_syaratpendaftaran`
 --
 
 DROP TABLE IF EXISTS `t_syaratpendaftaran`;
@@ -706,7 +717,7 @@ CREATE TABLE IF NOT EXISTS `t_syaratpendaftaran` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
--- Dumping data for table `t_syaratpendaftaran`
+-- Dumping data untuk tabel `t_syaratpendaftaran`
 --
 
 INSERT INTO `t_syaratpendaftaran` (`id`, `syarat`) VALUES
