@@ -24,11 +24,6 @@ class Pembayaran_model extends MY_Model
             'field'   => 'amount',
             'label'   => 'Jumlah Pembayaran',
             'rules'   => 'trim|required'
-        ),
-        array(
-            'field'   => 'bukti',
-            'label'   => 'Bukti Pembayaran',
-            'rules'   => 'trim|required'
-        ),
+        )
     );
 }
