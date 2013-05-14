@@ -23,9 +23,9 @@ class Akun extends CI_Controller {
     public function index()
     {
         $this->data['breadcrumb']['Daftar'] = null;
-        if (session('role') == 'admin')
-            $this->data['data'] = $this->akun->get_many_by('role', 'user');
-        else
+        // if (session('role') == 'admin')
+            // $this->data['data'] = $this->akun->get_many_by('role', 'user');
+        // else
             $this->data['data'] = $this->akun->get_all();
         $this->data['yield'] = $this->view.'/list';
         $this->load->view('admin/layout', $this->data);
@@ -33,10 +33,10 @@ class Akun extends CI_Controller {
 
     public function add ()
     {
-        if (session('role') != 'superadmin') {
-            set_message('Anda tidak memiliki hak untuk mengakses halaman ini', 'error');
-            redirect('admin/akun');
-        }
+        // if (session('role') != 'superadmin') {
+            // set_message('Anda tidak memiliki hak untuk mengakses halaman ini', 'error');
+            // redirect('admin/akun');
+        // }
 
         $this->data['breadcrumb']['Tambah'] = null;
         // post new

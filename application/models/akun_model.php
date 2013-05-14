@@ -8,8 +8,8 @@ class Akun_model extends MY_Model
     protected $validate = array(
         array(
             'field'   => 'nama',
-            'label'   => 'Username',
-            'rules'   => 'trim|required|min_length[6]|alpha_numeric|is_unique[t_akun.nama_akun]'
+            'label'   => 'Nama Akun',
+            'rules'   => 'trim|required|min_length[6]'
         ),
         array(
             'field'   => 'pass',
