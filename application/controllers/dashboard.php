@@ -69,6 +69,37 @@ class Dashboard extends CI_Controller
         $this->load->view($this->view.'layout', $this->data);
     }
 
+    public function profile ()
+    {
+        $this->load->library('form_validation');
+        $this->load->model('akun_model','akun');
+        $this->data['data'] = $this->akun->get(session('uid'));
+
+        if (! is_get()) {
+            $this->form_validation->set_message('matches', '%s tidak sama dengan %s.');
+            $this->form_validation->set_message('required', '%s tidak boleh kosong');
+            $this->form_validation->set_message('min_length', 'Minimal karakter untuk %s adalah %s');
+
+            $this->form_validation->set_rules('nama', 'Nama Akun', 'trim|required|min_length[6]');
+
+            $this->data['data']->nama_akun = $this->input->post('nama');
+
+            if ($this->form_validation->run() == TRUE) {
+                $new['nama_akun'] = $this->input->post('nama');
+                if ($result = $this->akun->update(session('uid'), $new, TRUE)) {
+                    $this->session->unset_userdata('username');
+                    set_session("username", $new['nama_akun']);
+                    set_message('Update profile berhasil');
+                    redirect('dashboard/profile');
+                } else {
+                    set_message('Update profile gagal', 'error');
+                }
+            }
+        }
+        $this->data['yield'] = $this->view.'profile';
+        $this->load->view($this->view.'layout', $this->data);
+    }
+
     public function lihathasil ()
     {
         $this->data['yield'] = $this->view.'lihathasil';

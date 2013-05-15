@@ -4,7 +4,7 @@
     <div class="span3">
         <div class="well sidebar-nav">
             <ul class="nav">
-              <li><strong><?=ucfirst(session('username'))?></strong></li>
+              <li><i class="icon-chevron-down"></i> <strong><?=ucfirst(session('username'))?></strong></li>
             </ul>
             <ul class="nav nav-tabs">
               <li><a href="<?=site_url('dashboard')?>"><i class="icon-home"></i> Dashboard</a></li>
@@ -16,6 +16,7 @@
               <li><a href="<?=site_url('dashboard/ujian')?>"><i class="icon-pencil"></i> Ujian Online</a></li>
               <li><a href="<?=site_url('dashboard/lihathasil')?>"><i class="icon-book"></i> Lihat hasil ujian</a></li>
               <?php } ?>
+              <li><a href="<?=site_url('dashboard/profile')?>"><i class="icon-user"></i> Profile</a></li>
               <li><a href="<?=site_url('dashboard/gantipassword')?>"><i class="icon-lock"></i> Ganti Password</a></li>
               <li><a href="<?=site_url('logout')?>" onclick="return confirm('Anda hendak logout?');"><i class="icon-off"></i> Logout</a></li>
             </ul>

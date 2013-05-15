@@ -30,8 +30,7 @@
         </div>
 
         <div class="form-actions">
-            <button type="submit" class="btn btn-primary">Simpan</button>
-            <button type="button" class="btn">Batal</button>
+            <button type="submit" class="btn btn-primary btn-large"><i class="icon-ok"></i> Simpan</button>
         </div>
     </fieldset>
 </form>
