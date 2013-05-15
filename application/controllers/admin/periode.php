@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Periode extends CI_Controller {
+class periode extends CI_Controller
+{
     private $view = "admin/master/periode";
 
     public function __construct ()

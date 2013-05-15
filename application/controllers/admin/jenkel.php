@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jenkel extends CI_Controller {
+class jenkel extends CI_Controller
+{
     private $view = "admin/master/jenkel";
 
     public function __construct ()

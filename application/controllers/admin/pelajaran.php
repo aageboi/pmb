@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Pelajaran extends CI_Controller {
+class pelajaran extends CI_Controller
+{
     private $view = "admin/master/pelajaran";
 
     public function __construct ()

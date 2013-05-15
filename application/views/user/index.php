@@ -149,10 +149,10 @@
         <br>
         <ul class="unstyled inline">
             <li><span class="badge badge-inverse">1</span> <a href="<?=site_url('dashboard/registrasi')?>">Registrasi</a></li>
-            <li><span class="badge badge-inverse">2</span> <a href="<?=site_url('dashboard/')?>">Transfer Bank</a></li>
-            <li><span class="badge badge-inverse">3</span> <a href="<?=site_url('dashboard/konfirmasibayar')?>">Konfirmasi Pembayaran</a></li>
-            <li><span class="badge badge-inverse">4</span> <a href="<?=site_url('dashboard/kartu')?>">Cetak Kartu Ujian</a></li>
+            <li><span class="badge badge-inverse">2</span> <a href="<?=site_url('dashboard')?>">Transfer Bank</a></li>
+            <li><span class="badge badge-inverse">3</span> <a href="<?=site_url('dashboard')?>">Konfirmasi Pembayaran</a></li>
+            <li><span class="badge badge-inverse">4</span> <a href="<?=site_url('dashboard')?>">Cetak Kartu Ujian</a></li>
         </ul>
     </div>
 </div>
-<?php } ?>
+<?php }

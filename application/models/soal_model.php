@@ -17,7 +17,7 @@ class Soal_model extends MY_Model
             'rules'   => 'trim|required'
         )
     );
-    
+
     public $belongs_to = array(
         'pelajaran' => array(
             'primary_key' => 'id_pelajaran',
@@ -31,6 +31,8 @@ class Soal_model extends MY_Model
         $this->db->join('t_pelajaran pel', 'pel.id = t_banksoal.id_pelajaran');
         if ($idpel)
         $this->db->where('t_banksoal.id_pelajaran', $idpel);
+        $this->db->order_by('t_banksoal.id', 'random');
+
         return $this->get_all();
     }
 }

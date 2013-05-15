@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Agama extends CI_Controller {
+class agama extends CI_Controller
+{
     private $view = "admin/master/agama";
     private $data;
 

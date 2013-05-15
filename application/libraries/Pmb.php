@@ -11,7 +11,7 @@ Class Pmb
     public function get_avatar ($id = NULL)
     {
         $userid = ($id) ? $id : $this->to->session->userdata('uid');
-        
+
         if ($userid) {
             $this->to->load->model('pribadi_model','pribadi');
             if ($user = $this->to->pribadi->get_by('id_user',$userid)) {
@@ -34,14 +34,15 @@ Class Pmb
             for ($i=4; $i>$len; $i--) {
                 $before_char .= '0';
             }
+
             return date('y').$jalur.$before_char.$id;
         }
     }
-    
+
     public function is_registered ($id = NULL)
     {
         $userid = ($id) ? $id : $this->to->session->userdata('uid');
-        
+
         if ($userid) {
             $this->to->load->model('pribadi_model','pribadi');
             if ($user = $this->to->pribadi->get_by('id_user',$userid))
@@ -50,11 +51,11 @@ Class Pmb
 
         return FALSE;
     }
-    
+
     public function is_verified ($id = NULL)
     {
         $userid = ($id) ? $id : $this->to->session->userdata('uid');
-        
+
         if ($userid) {
             $this->to->load->model('pribadi_model','pribadi');
             if ($user = $this->to->pribadi->get_by('id_user',$userid)) {
@@ -65,17 +66,26 @@ Class Pmb
 
         return FALSE;
     }
-    
+
     public function registrasi_id ($id = NULL)
     {
         $userid = ($id) ? $id : $this->to->session->userdata('uid');
-        
+
         if ($userid) {
             $this->to->load->model('pribadi_model', 'pribadi');
             if ($reg = $this->to->pribadi->get_by('id_user', $userid)) {
                 return $reg['id'];
             }
         }
+
+        return FALSE;
+    }
+
+    public function already_test ($id = NULL)
+    {
+        $this->to->load->model('hasil_model', 'hasil');
+        if ($already = $this->to->hasil->get_by('id_pribadi', $this->registrasi_id($id)))
+            return TRUE;
         return FALSE;
     }
 }

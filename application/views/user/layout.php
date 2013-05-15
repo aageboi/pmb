@@ -13,6 +13,7 @@
               <li><a href="<?=site_url('dashboard/konfirmasibayar')?>"><i class="icon-tags"></i> Konfirmasi Pembayaran</a></li>
               <?php } ?>
               <?php if ($this->pmb->is_verified()) { ?>
+              <li><a href="<?=site_url('dashboard/cetak')?>"><i class="icon-print"></i> Cetak Kartu Ujian</a></li>
               <li><a href="<?=site_url('dashboard/ujian')?>"><i class="icon-pencil"></i> Ujian Online</a></li>
               <li><a href="<?=site_url('dashboard/lihathasil')?>"><i class="icon-book"></i> Lihat hasil ujian</a></li>
               <?php } ?>

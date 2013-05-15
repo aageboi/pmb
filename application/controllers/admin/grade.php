@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Grade extends CI_Controller {
+class grade extends CI_Controller
+{
     private $view = "admin/master/grade";
 
     public function __construct ()

@@ -45,7 +45,6 @@
         margin-top: 28px;
       }
 
-
       /* Customize the navbar links to be fill the entire space of the .navbar */
       .navbar .navbar-inner {
         padding: 0;
@@ -82,9 +81,9 @@
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li <?=(!isset($page))?'class="active"':''?>><a href="<?=site_url()?>">Home</a></li>
-                <li <?=(isset($page)&&$page=='petunjuk')?'class="active"':''?>><a href="<?=site_url('petunjuk')?>">Petunjuk</a></li>
-                <li <?=(isset($page)&&$page=='pengumuman')?'class="active"':''?>><a href="<?=site_url('pengumuman')?>">Pengumuman</a></li>
+                <li <?=(!isset($page))?'class="active"':''?>><a href="<?=site_url()?>"><i class="icon-home"></i> Home</a></li>
+                <li <?=(isset($page)&&$page=='petunjuk')?'class="active"':''?>><a href="<?=site_url('petunjuk')?>"><i class="icon-question-sign"></i> Petunjuk</a></li>
+                <li <?=(isset($page)&&$page=='pengumuman')?'class="active"':''?>><a href="<?=site_url('pengumuman')?>"><i class="icon-info-sign"></i> Pengumuman</a></li>
               </ul>
             </div>
           </div>

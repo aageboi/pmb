@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kriteria extends CI_Controller {
+class kriteria extends CI_Controller
+{
     private $view = "admin/master/kriteria";
 
     public function __construct ()

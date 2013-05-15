@@ -1,4 +1,5 @@
 <?=$this->load->view('tinymce')?>
+<?php $arr_tingkat = array('mudah','sedang','sukar'); ?>
     <div class="container-fluid">
       <div class="row-fluid">
         <?=$this->load->view('admin/menu')?>
@@ -16,6 +17,17 @@
                         foreach ($pelajaran as $val => $text) { ?>
                         <option value="<?=$val?>" <?=(isset($data->id_pelajaran)&&$data->id_pelajaran==$val)?'selected':''?>><?=$text?></option>
                         <?php } ?>
+                    </select>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong>Tingkat kesulitan</strong>&nbsp;
+                    <select name="tipe" id="tipe" class="span2">
+                        <?php
+                        $i = 1;
+                        foreach ($arr_tingkat as $tingkat) { ?>
+                        <option value="<?=$i?>"<?=($data->tingkat==$i)?' selected':''?>><?=ucfirst($tingkat)?></option>
+                        <?php
+                            $i++;
+                        } ?>
                     </select>
                   </div>
                   <div class="control-group">

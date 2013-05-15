@@ -55,15 +55,17 @@
     <![endif]-->
 
     <script>
-    function countdown(element, minutes, seconds) {
+    function countdown(element, minutes, seconds)
+    {
         // set time for the particular countdown
         var time = minutes*60 + seconds;
         var interval = setInterval(function() {
             var el = document.getElementById(element);
             // if the time is 0 then end the counter
-            if(time == 0) {
+            if (time == 0) {
                 el.innerHTML = "countdown's over!";
                 clearInterval(interval);
+
                 return;
             }
             var minutes = Math.floor( time / 60 );

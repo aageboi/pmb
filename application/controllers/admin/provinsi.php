@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Provinsi extends CI_Controller {
+class provinsi extends CI_Controller
+{
     private $view = "admin/master/provinsi";
 
     public function __construct ()

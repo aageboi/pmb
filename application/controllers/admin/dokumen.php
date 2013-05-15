@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dokumen extends CI_Controller {
+class dokumen extends CI_Controller
+{
     private $view = "admin/master/dokumen";
 
     public function __construct ()

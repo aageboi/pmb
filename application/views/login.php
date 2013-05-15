@@ -28,4 +28,3 @@
 </div>
 <hr>
 <?=$this->load->view('footer')?>
-

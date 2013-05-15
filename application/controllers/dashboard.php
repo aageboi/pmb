@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
+class dashboard extends CI_Controller
 {
     private $view = 'user/';
 
@@ -102,6 +102,12 @@ class Dashboard extends CI_Controller
 
     public function lihathasil ()
     {
+        $this->load->model('hasil_model', 'hasil');
+        // $this->data['data'] = $this->hasil->with('soal')
+        //      ->get_many_by('id_pribadi', $this->pmb->registrasi_id());
+        $this->data['data'] = $this->hasil->find_all(
+            array('id_pribadi' => $this->pmb->registrasi_id())
+        );
         $this->data['yield'] = $this->view.'lihathasil';
         $this->load->view($this->view.'layout', $this->data);
     }
@@ -306,6 +312,24 @@ class Dashboard extends CI_Controller
 
     public function ujian ()
     {
+        if ($this->pmb->already_test()) {
+            set_message('Anda sudah melakukan test sebelumnya.', 'error');
+            redirect('dashboard/lihathasil');
+        } else {
+            if (! is_get())
+                redirect('dashboard/mulaiujian');
+            else {
+                $this->data['yield'] = $this->view.'konfirmasimulai';
+                $this->load->view($this->view.'layout', $this->data);
+            }
+        }
+    }
+
+    public function mulaiujian ()
+    {
+        if ($this->pmb->already_test())
+            redirect('dashboard/lihathasil');
+
         $this->load->model('soal_model', 'soal');
         $simpan[] = FALSE;
         $this->data['data'] = $this->soal->find_all(4);
@@ -346,6 +370,7 @@ class Dashboard extends CI_Controller
             if ($user->password == md5($pass))
                 return true;
         }
+
         return false;
     }
 
@@ -361,9 +386,11 @@ class Dashboard extends CI_Controller
 
         if (! $this->upload->do_upload($field_name)) {
             set_message($this->upload->display_errors(), 'error');
+
             return false;
         } else {
             $data = array('upload_data' => $this->upload->data());
+
             return $data;
         }
     }

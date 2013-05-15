@@ -46,6 +46,7 @@ class Pribadi_model extends MY_Model
         $this->db->join('t_provinsi p', 't_pribadi.id_provinsi = p.id');
         $this->db->join('t_ortu o', 't_pribadi.id = o.id_pribadi');
         $this->db->join('t_sekolahasal s', 't_pribadi.id = s.id_pribadi');
+
         return $this->as_array()->get_by('id_user',$userid);
     }
 

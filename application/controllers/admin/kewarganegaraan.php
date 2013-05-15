@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class kewarganegaraan extends CI_Controller {
+class kewarganegaraan extends CI_Controller
+{
     private $view = "admin/master/kewarganegaraan";
 
     public function __construct ()

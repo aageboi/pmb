@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jadwal extends CI_Controller {
+class jadwal extends CI_Controller
+{
     private $view = "admin/master/jadwal";
 
     public function __construct ()

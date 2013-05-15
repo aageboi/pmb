@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Soal extends CI_Controller {
+class soal extends CI_Controller
+{
     private $view = "admin/data/soal";
 
     public function __construct ()
@@ -43,6 +44,7 @@ class Soal extends CI_Controller {
             $this->data['pilihan_c'] = $_data['isi_pilihan_c'] = $this->input->post('pilihan_c');
             $this->data['pilihan_d'] = $_data['isi_pilihan_d'] = $this->input->post('pilihan_d');
             $this->data['jawaban'] = $_data['jawaban'] = $this->input->post('jawaban');
+            $this->data['tipe'] = $_data['tingkat'] = $this->input->post('tipe');
             // $this->data['urut'] = $_data['no_urut'] = $this->input->post('urut');
             if ($result = $this->soal->insert($_data))
                 redirect('admin/soal');
@@ -68,6 +70,7 @@ class Soal extends CI_Controller {
                 'isi_pilihan_c' => $this->input->post('pilihan_c'),
                 'isi_pilihan_d' => $this->input->post('pilihan_d'),
                 'jawaban' => $this->input->post('jawaban'),
+                'tingkat' => $this->input->post('tipe'),
                 // 'no_urut' => $this->input->post('urut'),
             );
             if ($result = $this->soal->update($_id,$new_data))

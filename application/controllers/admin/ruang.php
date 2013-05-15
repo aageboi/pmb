@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Ruang extends CI_Controller {
+class ruang extends CI_Controller
+{
     private $view = "admin/master/ruang";
 
     public function __construct ()

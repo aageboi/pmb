@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Jalur extends CI_Controller {
+class jalur extends CI_Controller
+{
     private $view = "admin/master/jalur";
 
     public function __construct ()

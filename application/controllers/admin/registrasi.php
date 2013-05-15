@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Registrasi extends CI_Controller {
+class registrasi extends CI_Controller
+{
     private $view = "admin/data/registrasi";
     private $data;
 

@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Syarat extends CI_Controller {
+class syarat extends CI_Controller
+{
     private $view = "admin/master/syarat";
 
     public function __construct ()

@@ -17,6 +17,13 @@
                         <option value="<?=$val?>" <?=(isset($data['id_pelajaran'])&&$data['id_pelajaran']==$val)?'selected':''?>><?=$text?></option>
                         <?php } ?>
                     </select>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <strong>Tingkat kesulitan</strong>&nbsp;
+                    <select name="tipe" id="tipe" class="span2">
+                        <option value="1">Mudah</option>
+                        <option value="2">Sedang</option>
+                        <option value="3">Sulit</option>
+                    </select>
                   </div>
                   <div class="control-group">
                       <!--

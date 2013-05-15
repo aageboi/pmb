@@ -32,7 +32,7 @@
                 <span class="help-inline"><?php echo form_error('amount'); ?></span>
             </div>
         </div>
-        
+
         <div class="control-group <?=(form_error('date'))?'error':''?>">
             <label class="control-label" for="date">Tanggal Pembayaran</label>
             <div class="controls">

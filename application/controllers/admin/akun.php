@@ -1,6 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Akun extends CI_Controller {
+class akun extends CI_Controller
+{
     private $view = "admin/data/akun";
     private $data;
 

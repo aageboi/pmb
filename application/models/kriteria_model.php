@@ -16,6 +16,7 @@ class Kriteria_model extends MY_Model
     public function find_all ()
     {
         $this->db->join('t_pelajaran', 't_pelajaran.id = t_kriteriakelulusan.id_pelajaran');
+
         return $this->get_all();
     }
 }
