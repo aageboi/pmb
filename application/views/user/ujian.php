@@ -110,9 +110,9 @@
       ?>
       <div class="row-fluid marketing" id="q<?=$i?>">
 
-        <p class="lead">
-            <?= strip_tags($row->isi_soal) ?>
-        </p>
+        <h3 class="lead">
+            <?= $row->isi_soal ?>
+        </h3>
 
         <div class="span12">
           <p>

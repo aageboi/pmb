@@ -28,7 +28,7 @@
                             <?php } elseif ($row->tingkat == 2) { ?>
                             <span class="label label-warning">sedang</span>
                             <?php } else { ?>
-                            <span class="label label-important">sukar</span>
+                            <span class="label label-inverse">sukar</span>
                             <?php } ?>
                         </td>
                         <td><?=$row->isi_soal?></td>

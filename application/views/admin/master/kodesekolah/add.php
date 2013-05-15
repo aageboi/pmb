@@ -10,6 +10,12 @@
                 <form class="form-horizontal" method="post">
                   <?=$this->load->view('admin/error_message')?>
                   <div class="control-group">
+                    <label class="control-label" for="kode">Kode Sekolah</label>
+                    <div class="controls">
+                      <input type="text" id="kode" class="span2" placeholder="kode sekolah" name="kode" value="<?=isset($data['kode']) ? $data['kode'] : ''?>">
+                    </div>
+                  </div>
+                  <div class="control-group">
                     <label class="control-label" for="nama">Nama Sekolah</label>
                     <div class="controls">
                       <input type="text" id="nama" placeholder="nama" name="nama" value="<?=isset($data['syarat']) ? $data['syarat'] : ''?>">

@@ -316,9 +316,15 @@ class dashboard extends CI_Controller
             set_message('Anda sudah melakukan test sebelumnya.', 'error');
             redirect('dashboard/lihathasil');
         } else {
-            if (! is_get())
+            if (! is_get()) {
+                $idpelajaran = $this->input->post('idpel');
+                set_session('ujian_mulai', time());
+                set_session('ujian_uid', session('uid'));
+                set_session('ujian_mapel', $idpelajaran);
                 redirect('dashboard/mulaiujian');
-            else {
+            } else {
+                $this->load->model('pelajaran_model','pelajaran');
+                $this->data['data'] = $this->pelajaran->get_all();
                 $this->data['yield'] = $this->view.'konfirmasimulai';
                 $this->load->view($this->view.'layout', $this->data);
             }
@@ -330,9 +336,12 @@ class dashboard extends CI_Controller
         if ($this->pmb->already_test())
             redirect('dashboard/lihathasil');
 
+        if (! session('ujian_mapel') OR ! session('ujian_uid') OR ! session('ujian_mulai'))
+            redirect('dashboard/lihathasil');
+
         $this->load->model('soal_model', 'soal');
         $simpan[] = FALSE;
-        $this->data['data'] = $this->soal->find_all(4);
+        $this->data['data'] = $this->soal->find_all(session('ujian_mapel'));
         if (! is_get()) {
 
             if (count($this->input->post('jawaban')) != 4) {

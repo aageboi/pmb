@@ -12,6 +12,7 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
+                        <th width="100px">Kode Sekolah</th>
                         <th>Nama Sekolah</th>
                         <th>Kota</th>
                     </tr>
@@ -19,6 +20,7 @@
                     <tbody>
                     <?php foreach ($data as $key => $row) { ?>
                     <tr>
+                        <td><?=$row->kode_sekolah?></td>
                         <td><?=$row->nama_sekolah?></td>
                         <td><?=$row->kota?></td>
                         <td width="85px">

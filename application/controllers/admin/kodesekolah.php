@@ -37,6 +37,7 @@ class kodesekolah extends CI_Controller
 
         // post new
         if (! is_get()) {
+            $this->data['kode'] = $_data['kode_sekolah'] = $this->input->post('kode');
             $this->data['nama'] = $_data['nama_sekolah'] = $this->input->post('nama');
             $this->data['alamat'] = $_data['alamat'] = $this->input->post('alamat');
             $this->data['kota'] = $_data['kota'] = $this->input->post('kota');
@@ -58,6 +59,7 @@ class kodesekolah extends CI_Controller
         if (! is_get()) {
             $_id = $this->input->post('id');
             $new_data = array(
+                'kode_sekolah' => $this->input->post('kode'),
                 'nama_sekolah' => $this->input->post('nama'),
                 'kota' => $this->input->post('kota'),
                 'id_provinsi' => $this->input->post('provinsi'),
