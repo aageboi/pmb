@@ -86,6 +86,7 @@ if ( ! function_exists('set_message')) {
     function set_message ($value,$name='info') {
         $TO =& get_instance();
         return $TO->session->set_flashdata($name,$value);
+        // return $TO->session->keep_flashdata($name);
     }
 }
 

@@ -41,7 +41,7 @@
           <br><br>
           <form class="form-search">
             <input type="text" class="input-medium search-query" name="idreg" placeholder="Nomor Ujian">
-            <button type="submit" class="btn btn-primary btn-mini">cari</button>
+            <button type="submit" class="btn"><i class="icon-search"></i></button>
           </form>
           <p>
             Nomor registrasi sepuluh digit contoh : 011161XXXX<br>
@@ -57,7 +57,7 @@
                   <input type="password" placeholder="Password" name="password" class="input-block-level">
               </div>
               <div class="control-group">
-                  <button type="submit" class="btn btn-primary btn-small">Login</button><br><br>
+                  <button type="submit" class="btn btn-primary"><i class="icon-lock"></i> Login</button><br><br>
                   <ul>
                       <li>
                     <a href="<?=site_url('signup')?>">Buat akun baru</a><br>
