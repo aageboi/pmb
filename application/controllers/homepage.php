@@ -80,7 +80,7 @@ class homepage extends CI_Controller
 
             $this->form_validation->set_rules('nama', 'Nama', 'trim|required|min_length[5]');
             $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|is_unique[t_akun.email]');
-            $this->form_validation->set_rules('pass', 'Password', 'trim|required|matches[passConf]');
+            $this->form_validation->set_rules('pass', 'Password', 'trim|required|matches[passConf]|min_length[6]');
             $this->form_validation->set_rules('passConf', 'Ulangi Password', 'trim|required');
 
             if ($this->form_validation->run() == TRUE) {

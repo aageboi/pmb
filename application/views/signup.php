@@ -24,6 +24,7 @@
         <div class="controls">
           <input type="password" id="pass" placeholder="Password" name="pass">
             <span class="help-inline"><?php echo form_error('pass'); ?></span>
+			<span class="help-block">minimal 6 karakter</span>
         </div>
       </div>
       <div class="control-group <?=(form_error('passConf'))?'error':''?>">
@@ -31,6 +32,7 @@
         <div class="controls">
           <input type="password" id="passConf" placeholder="Ulangi Password" name="passConf">
             <span class="help-inline"><?php echo form_error('passConf'); ?></span>
+			<span class="help-block">harus sama dengan password di atas</span>
         </div>
       </div>
       <div class="control-group">
