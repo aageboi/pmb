@@ -289,6 +289,7 @@ class dashboard extends CI_Controller
             $data['payment_method'] = $this->input->post('method');
             $data['payment_to'] = $this->input->post('to');
             $data['payment_date'] = date('Y-m-d',strtotime($this->input->post('date')));
+            $data['payment_amount'] = intval(str_replace(array(',','.'),'',$this->input->post('amount')));
             $data['desc'] = $this->input->post('desc');
             $data['id_akun'] = $this->pmb->registrasi_id();
 
