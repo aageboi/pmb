@@ -63,7 +63,18 @@ class akun extends CI_Controller
             redirect('admin/akun');
         }
         if ($this->akun->delete($id)) {
-            set_message('Hapus data berhasil','info');
+            $this->load->model('pribadi_model', 'pribadi');
+            $this->load->model('sekolahasal_model', 'sekolahasal');
+            $this->load->model('ortu_model', 'ortu');
+
+            $reg = $this->pribadi->get_by('id_user', $id);
+            if (! $this->pribadi->delete_by('id_user', $id))
+                set_message('Hapus data registrasi gagal','error');
+            if (! $this->ortu->delete($reg['id']))
+                set_message('Hapus data orang tua gagal','error');
+            if (! $this->sekolahasal->delete($reg['id']))
+                set_message('Hapus data sekolah asal gagal','error');
+            set_message('Hapus data berhasil');
         } else {
             set_message('Hapus data gagal','error');
         }

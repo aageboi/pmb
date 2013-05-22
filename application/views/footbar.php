@@ -57,7 +57,7 @@
                   <input type="password" placeholder="Password" name="password" class="input-block-level">
               </div>
               <div class="control-group">
-                  <button type="submit" class="btn btn-primary"><i class="icon-lock"></i> Login</button><br><br>
+                  <button type="submit" class="btn btn-primary"><i class="icon-lock"></i> masuk</button><br><br>
                   <ul>
                       <li>
                     <a href="<?=site_url('signup')?>">Buat akun baru</a><br>

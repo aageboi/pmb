@@ -5,7 +5,7 @@
   <div class="span3">&nbsp;</div>
   <div class="span5">
     <form class="well form-signin" method="post" action="<?=site_url('login')?>">
-      <h2>Silakan login</h2>
+      <h2>silakan login</h2>
       <?=$this->load->view('error_message')?>
       <div class="control-group">
         <div class="controls">
@@ -19,7 +19,15 @@
       </div>
       <div class="control-group">
         <div class="controls">
-          <button type="submit" class="btn btn-primary btn-large">Masuk</button>
+          <button type="submit" class="btn btn-primary btn-large"><i class="icon-lock"></i> masuk</button><br><br>
+          <ul>
+              <li>
+            <a href="<?=site_url('signup')?>">Buat akun baru</a><br>
+          </li>
+              <li>
+            <a href="<?=site_url('forgot')?>">Lupa password</a><br>
+          </li>
+          </ul>
         </div>
       </div>
     </form>

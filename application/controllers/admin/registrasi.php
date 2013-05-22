@@ -54,11 +54,21 @@ class registrasi extends CI_Controller
             set_message('ID tidak boleh kosong','error');
             redirect('admin/registrasi');
         }
-        if ($this->pribadi->delete($id)) {
-            set_message('Hapus data berhasil','info');
-        } else {
-            set_message('Hapus data gagal','error');
+
+        if ($data = $this->pribadi->get($id)) {
+            $this->load->model('ortu_model', 'ortu');
+            $this->load->model('sekolahasal_model', 'sekolahasal');
+            if ($this->pribadi->delete($id)) {
+                if (! $this->ortu->delete($data['id_ortu']))
+                    set_message('Hapus data orang tua gagal','error');
+                if (! $this->sekolahasal->delete($data['id_sekolah']))
+                    set_message('Hapus data sekolah asal gagal','error');
+                set_message('Hapus data registrasi berhasil');
+            } else {
+                set_message('Hapus data gagal','error');
+            }
         }
+
         redirect('admin/registrasi');
     }
 }
