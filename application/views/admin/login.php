@@ -55,8 +55,11 @@
       <form class="form-signin pull-left" method="post" action="<?=site_url('admin/sessions/login')?>">
         <h2 class="form-signin-heading">Login</h2>
         <input type="text" class="input-block-level" placeholder="email" name="email" value="<?=$this->input->post('email')?>" autocomplete="off">
-        <input type="password" class="input-block-level" placeholder="password" name="password">
-        <button class="btn btn-large btn-primary" type="submit"><i class="icon-lock"></i> masuk</button>
+        <span class="help-block">contoh: namauser@gmail.com</span>
+		<input type="password" class="input-block-level" placeholder="password" name="password">
+        <span class="help-block">minimal 6 karakter</span>
+		<button class="btn btn-large btn-primary" type="submit"><i class="icon-lock"></i> masuk</button>
+		
       </form>
 
       <form class="form-signup well pull-right" method="post" action="<?=site_url('admin/sessions/daftar')?>">
@@ -64,24 +67,28 @@
         <div class="control-group <?=(form_error('namax'))?'error':''?>">
             <div class="controls">
                 <input type="text" name="namax" placeholder="nama akun" value="<?=$this->input->post('namax')?>">
+				<span class="help-block">minimal 6 karakter</span>
                 <?php if (form_error('namax')) { ?><br><span class="help-inline"><?php echo form_error('namax'); ?></span><?php } ?>
             </div>
         </div>
         <div class="control-group <?=(form_error('emailx'))?'error':''?>">
             <div class="controls">
                 <input type="text" name="emailx" placeholder="email" value="<?=$this->input->post('emailx')?>" autocomplete="off">
+				<span class="help-block">contoh: namauser@gmail.com</span>
                 <?php if (form_error('emailx')) { ?><br><span class="help-inline"><?php echo form_error('emailx'); ?></span><?php } ?>
             </div>
         </div>
         <div class="control-group <?=(form_error('passwordx'))?'error':''?>">
             <div class="controls">
                 <input type="password" name="passwordx" placeholder="password">
+				<span class="help-block">minimal 6 karakter</span>
                 <?php if (form_error('passwordx')) { ?><br><span class="help-inline"><?php echo form_error('passwordx'); ?></span><?php } ?>
             </div>
         </div>
         <div class="control-group <?=(form_error('ulangiPassword'))?'error':''?>">
             <div class="controls">
                 <input type="password" name="ulangiPassword" placeholder="ulangi password">
+				<span class="help-block">harus sama dengan diatas</span>
                 <?php if (form_error('ulangiPassword')) { ?><br><span class="help-inline"><?php echo form_error('ulangiPassword'); ?></span><?php } ?>
             </div>
         </div>

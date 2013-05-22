@@ -7,6 +7,7 @@
             <div class="controls">
                 <input type="text" name="nama" id="nama" value="<?= $data->nama_akun ?>">
                 <span class="help-inline"><?php echo form_error('nama'); ?></span>
+				<span class="help-block">minimal 6 karakter</span>
             </div>
         </div>
 

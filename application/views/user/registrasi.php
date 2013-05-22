@@ -299,14 +299,14 @@ if (is_array($data) && isset($data['ortu']))
             <label class="control-label span4" style="text-align:left" for="ttd_1">Tanda tangan</label>
             <div class="controls">
                 <input type="file" name="ttd_1">
-                <span class="help-block offset1">Ukuran foto maksimal 100Kb. Format foto: jpg, jpeg, png</span>
+                <span class="help-block offset1">Ukuran file maksimal 100Kb. Format file: jpg, jpeg, png</span>
             </div>
         </div>
         <div class="control-group" id="uploadTTD2">
             <label class="control-label span4" style="text-align:left" for="ttd_1">Tanda tangan orang tua</label>
             <div class="controls">
                 <input type="file" name="ttd_2">
-                <span class="help-block offset1">Ukuran foto maksimal 100Kb. Format foto: jpg, jpeg, png</span>
+                <span class="help-block offset1">Ukuran file maksimal 100Kb. Format file: jpg, jpeg, png</span>
             </div>
         </div>
     </div>

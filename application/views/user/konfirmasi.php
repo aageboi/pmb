@@ -38,6 +38,7 @@
             <div class="controls">
                 <input type="text" name="date" id="date" placeholder="<?=date('d-m-Y')?>" class="span3" value="<?=set_value('date')?>">
                 <span class="help-inline"><?php echo form_error('date'); ?></span>
+				<span class="help-block">DD-MM-YYYY</span>
             </div>
         </div>
 
@@ -45,7 +46,7 @@
             <label class="control-label" for="bukti">Upload bukti pembayaran</label>
             <div class="controls">
                 <input type="file" name="bukti">
-                <span class="help-block">Ukuran maksimal 100Kb. Format foto: jpg, jpeg, png</span>
+                <span class="help-block">Ukuran file maksimal 100Kb. Format file: jpg, jpeg, png</span>
                 <span class="help-inline"><?php echo form_error('bukti'); ?></span>
             </div>
         </div>
@@ -55,6 +56,7 @@
             <div class="controls">
                 <textarea name="desc" id="desc" class="span8" rows="5"><?=set_value('desc')?></textarea>
                 <span class="help-inline"><?php echo form_error('desc'); ?></span>
+				<span class="help-block">isikan keterangan yang diperlukan</span>
             </div>
         </div>
 

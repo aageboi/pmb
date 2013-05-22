@@ -18,6 +18,7 @@
             <div class="controls">
                 <input type="password" name="passwordBaru" id="passwordBaru" placeholder="password baru">
                 <span class="help-inline"><?php echo form_error('passwordBaru'); ?></span>
+				<span class="help-block">minimal 6 karakter</span>
             </div>
         </div>
 
@@ -26,6 +27,7 @@
             <div class="controls">
                 <input type="password" name="ulangiPassword" id="ulangiPassword" placeholder="ulangi password baru">
                 <span class="help-inline"><?php echo form_error('ulangiPassword'); ?></span>
+				<span class="help-block">harus sama dengan diatas</span>
             </div>
         </div>
 
