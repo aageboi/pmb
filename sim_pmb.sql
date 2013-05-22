@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 16, 2013 at 01:29 AM
+-- Generation Time: May 22, 2013 at 09:40 PM
 -- Server version: 5.5.31-0ubuntu0.13.04.1
 -- PHP Version: 5.4.9-4ubuntu2
 
@@ -26,7 +26,6 @@ SET time_zone = "+00:00";
 -- Table structure for table `t_agama`
 --
 
-DROP TABLE IF EXISTS `t_agama`;
 CREATE TABLE IF NOT EXISTS `t_agama` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `agama` varchar(50) NOT NULL,
@@ -52,7 +51,6 @@ INSERT INTO `t_agama` (`id`, `agama`) VALUES
 -- Table structure for table `t_akun`
 --
 
-DROP TABLE IF EXISTS `t_akun`;
 CREATE TABLE IF NOT EXISTS `t_akun` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_akun` varchar(100) NOT NULL,
@@ -81,7 +79,6 @@ INSERT INTO `t_akun` (`id`, `nama_akun`, `email`, `password`, `created_at`, `rol
 -- Table structure for table `t_banksoal`
 --
 
-DROP TABLE IF EXISTS `t_banksoal`;
 CREATE TABLE IF NOT EXISTS `t_banksoal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_prodi` int(11) NOT NULL,
@@ -114,7 +111,6 @@ INSERT INTO `t_banksoal` (`id`, `id_prodi`, `id_pelajaran`, `isi_soal`, `isi_pil
 -- Table structure for table `t_biayakuliah`
 --
 
-DROP TABLE IF EXISTS `t_biayakuliah`;
 CREATE TABLE IF NOT EXISTS `t_biayakuliah` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_grade` int(11) NOT NULL,
@@ -132,7 +128,6 @@ CREATE TABLE IF NOT EXISTS `t_biayakuliah` (
 -- Table structure for table `t_gambar`
 --
 
-DROP TABLE IF EXISTS `t_gambar`;
 CREATE TABLE IF NOT EXISTS `t_gambar` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_registrasi` int(11) NOT NULL,
@@ -147,7 +142,6 @@ CREATE TABLE IF NOT EXISTS `t_gambar` (
 -- Table structure for table `t_grade`
 --
 
-DROP TABLE IF EXISTS `t_grade`;
 CREATE TABLE IF NOT EXISTS `t_grade` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_grade` char(5) NOT NULL,
@@ -172,7 +166,6 @@ INSERT INTO `t_grade` (`id`, `nama_grade`, `nilai_min`, `nilai_max`) VALUES
 -- Table structure for table `t_hasil`
 --
 
-DROP TABLE IF EXISTS `t_hasil`;
 CREATE TABLE IF NOT EXISTS `t_hasil` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pribadi` int(11) NOT NULL,
@@ -188,7 +181,6 @@ CREATE TABLE IF NOT EXISTS `t_hasil` (
 -- Table structure for table `t_jadwalpembayaran`
 --
 
-DROP TABLE IF EXISTS `t_jadwalpembayaran`;
 CREATE TABLE IF NOT EXISTS `t_jadwalpembayaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `jadwal` varchar(100) NOT NULL,
@@ -208,7 +200,6 @@ INSERT INTO `t_jadwalpembayaran` (`id`, `jadwal`) VALUES
 -- Table structure for table `t_jalurpendaftaran`
 --
 
-DROP TABLE IF EXISTS `t_jalurpendaftaran`;
 CREATE TABLE IF NOT EXISTS `t_jalurpendaftaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_jalur` varchar(100) NOT NULL,
@@ -232,7 +223,6 @@ INSERT INTO `t_jalurpendaftaran` (`id`, `nama_jalur`) VALUES
 -- Table structure for table `t_jeniskelamin`
 --
 
-DROP TABLE IF EXISTS `t_jeniskelamin`;
 CREATE TABLE IF NOT EXISTS `t_jeniskelamin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kd_jenkel` char(5) NOT NULL,
@@ -254,7 +244,6 @@ INSERT INTO `t_jeniskelamin` (`id`, `kd_jenkel`, `jenkel`) VALUES
 -- Table structure for table `t_jurusansmta`
 --
 
-DROP TABLE IF EXISTS `t_jurusansmta`;
 CREATE TABLE IF NOT EXISTS `t_jurusansmta` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kd_jurusan` char(5) NOT NULL,
@@ -277,7 +266,6 @@ INSERT INTO `t_jurusansmta` (`id`, `kd_jurusan`, `nama_jurusan`) VALUES
 -- Table structure for table `t_kapasitasruang`
 --
 
-DROP TABLE IF EXISTS `t_kapasitasruang`;
 CREATE TABLE IF NOT EXISTS `t_kapasitasruang` (
   `kd_kapasitas` int(11) NOT NULL AUTO_INCREMENT,
   `kapasitas` int(11) NOT NULL,
@@ -290,7 +278,6 @@ CREATE TABLE IF NOT EXISTS `t_kapasitasruang` (
 -- Table structure for table `t_kewarganegaraan`
 --
 
-DROP TABLE IF EXISTS `t_kewarganegaraan`;
 CREATE TABLE IF NOT EXISTS `t_kewarganegaraan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kewarganegaraan` varchar(100) NOT NULL,
@@ -311,7 +298,6 @@ INSERT INTO `t_kewarganegaraan` (`id`, `kewarganegaraan`) VALUES
 -- Table structure for table `t_kriteria_kelulusan`
 --
 
-DROP TABLE IF EXISTS `t_kriteria_kelulusan`;
 CREATE TABLE IF NOT EXISTS `t_kriteria_kelulusan` (
   `kd_kriteria` int(11) NOT NULL AUTO_INCREMENT,
   `kd_pelajaran` int(11) NOT NULL,
@@ -325,7 +311,6 @@ CREATE TABLE IF NOT EXISTS `t_kriteria_kelulusan` (
 -- Table structure for table `t_ortu`
 --
 
-DROP TABLE IF EXISTS `t_ortu`;
 CREATE TABLE IF NOT EXISTS `t_ortu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_provinsi` int(11) NOT NULL,
@@ -357,7 +342,6 @@ INSERT INTO `t_ortu` (`id`, `id_provinsi`, `id_pendidikan`, `id_pekerjaan`, `nam
 -- Table structure for table `t_pekerjaan`
 --
 
-DROP TABLE IF EXISTS `t_pekerjaan`;
 CREATE TABLE IF NOT EXISTS `t_pekerjaan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_pekerjaan` varchar(100) NOT NULL,
@@ -382,7 +366,6 @@ INSERT INTO `t_pekerjaan` (`id`, `nama_pekerjaan`) VALUES
 -- Table structure for table `t_pelajaran`
 --
 
-DROP TABLE IF EXISTS `t_pelajaran`;
 CREATE TABLE IF NOT EXISTS `t_pelajaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kd_pel` char(5) NOT NULL,
@@ -408,17 +391,24 @@ INSERT INTO `t_pelajaran` (`id`, `kd_pel`, `nama_pel`, `kriteria`) VALUES
 -- Table structure for table `t_pembayaran`
 --
 
-DROP TABLE IF EXISTS `t_pembayaran`;
 CREATE TABLE IF NOT EXISTS `t_pembayaran` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `payment_method` varchar(20) NOT NULL,
   `payment_to` varchar(50) NOT NULL,
   `payment_date` date NOT NULL,
   `desc` text NOT NULL,
   `attachment` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `id_akun` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `id_akun` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `t_pembayaran`
+--
+
+INSERT INTO `t_pembayaran` (`id`, `payment_method`, `payment_to`, `payment_date`, `desc`, `attachment`, `created_at`, `id_akun`) VALUES
+(2, 'direct', 'bca', '2013-05-22', 'untuk biaya atas nama Heri Gunawan', 'babal7.jpg', '2013-05-22 14:35:54', 4);
 
 -- --------------------------------------------------------
 
@@ -426,7 +416,6 @@ CREATE TABLE IF NOT EXISTS `t_pembayaran` (
 -- Table structure for table `t_pendidikanterakhir`
 --
 
-DROP TABLE IF EXISTS `t_pendidikanterakhir`;
 CREATE TABLE IF NOT EXISTS `t_pendidikanterakhir` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pendidikan` varchar(100) NOT NULL,
@@ -454,7 +443,6 @@ INSERT INTO `t_pendidikanterakhir` (`id`, `pendidikan`) VALUES
 -- Table structure for table `t_periode`
 --
 
-DROP TABLE IF EXISTS `t_periode`;
 CREATE TABLE IF NOT EXISTS `t_periode` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_per` varchar(10) NOT NULL,
@@ -476,7 +464,6 @@ INSERT INTO `t_periode` (`id`, `nama_per`, `id_jalur`) VALUES
 -- Table structure for table `t_pribadi`
 --
 
-DROP TABLE IF EXISTS `t_pribadi`;
 CREATE TABLE IF NOT EXISTS `t_pribadi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
@@ -524,7 +511,6 @@ INSERT INTO `t_pribadi` (`id`, `id_user`, `id_provinsi`, `id_jenkel`, `id_agama`
 -- Table structure for table `t_prodi`
 --
 
-DROP TABLE IF EXISTS `t_prodi`;
 CREATE TABLE IF NOT EXISTS `t_prodi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kd_prodi` char(5) NOT NULL,
@@ -548,7 +534,6 @@ INSERT INTO `t_prodi` (`id`, `kd_prodi`, `nama_prodi`) VALUES
 -- Table structure for table `t_provinsi`
 --
 
-DROP TABLE IF EXISTS `t_provinsi`;
 CREATE TABLE IF NOT EXISTS `t_provinsi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kd_provinsi` char(5) NOT NULL,
@@ -570,7 +555,6 @@ INSERT INTO `t_provinsi` (`id`, `kd_provinsi`, `nama_provinsi`) VALUES
 -- Table structure for table `t_ruangujian`
 --
 
-DROP TABLE IF EXISTS `t_ruangujian`;
 CREATE TABLE IF NOT EXISTS `t_ruangujian` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pelajaran` int(11) NOT NULL,
@@ -596,7 +580,6 @@ INSERT INTO `t_ruangujian` (`id`, `id_pelajaran`, `nama_ruang`, `lokasi`, `kapas
 -- Table structure for table `t_sekolah`
 --
 
-DROP TABLE IF EXISTS `t_sekolah`;
 CREATE TABLE IF NOT EXISTS `t_sekolah` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kode_sekolah` varchar(10) NOT NULL,
@@ -623,7 +606,6 @@ INSERT INTO `t_sekolah` (`id`, `kode_sekolah`, `id_provinsi`, `nama_sekolah`, `a
 -- Table structure for table `t_sekolahasal`
 --
 
-DROP TABLE IF EXISTS `t_sekolahasal`;
 CREATE TABLE IF NOT EXISTS `t_sekolahasal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_sekolah` int(11) NOT NULL,
@@ -645,7 +627,6 @@ INSERT INTO `t_sekolahasal` (`id`, `id_sekolah`, `id_jurusan`, `tahun_lulus`) VA
 -- Table structure for table `t_statuskelulusan`
 --
 
-DROP TABLE IF EXISTS `t_statuskelulusan`;
 CREATE TABLE IF NOT EXISTS `t_statuskelulusan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_registrasi` char(5) NOT NULL,
@@ -659,7 +640,6 @@ CREATE TABLE IF NOT EXISTS `t_statuskelulusan` (
 -- Table structure for table `t_statusnikah`
 --
 
-DROP TABLE IF EXISTS `t_statusnikah`;
 CREATE TABLE IF NOT EXISTS `t_statusnikah` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` varchar(50) NOT NULL,
@@ -681,7 +661,6 @@ INSERT INTO `t_statusnikah` (`id`, `status`) VALUES
 -- Table structure for table `t_sumberbiaya`
 --
 
-DROP TABLE IF EXISTS `t_sumberbiaya`;
 CREATE TABLE IF NOT EXISTS `t_sumberbiaya` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sumber_biaya` varchar(100) NOT NULL,
@@ -704,7 +683,6 @@ INSERT INTO `t_sumberbiaya` (`id`, `sumber_biaya`) VALUES
 -- Table structure for table `t_syaratpendaftaran`
 --
 
-DROP TABLE IF EXISTS `t_syaratpendaftaran`;
 CREATE TABLE IF NOT EXISTS `t_syaratpendaftaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `syarat` text NOT NULL,

@@ -8,6 +8,7 @@
         <div class="controls">
           <input type="text" id="nama" placeholder="Nama" name="nama" value="<?php echo set_value('nama'); ?>">
             <span class="help-inline"><?php echo form_error('nama'); ?></span>
+            <span class="help-block">Minimal 5 karakter</span>
         </div>
       </div>
       <div class="control-group <?=(form_error('email'))?'error':''?>">
@@ -15,6 +16,7 @@
         <div class="controls">
           <input type="text" id="email" placeholder="Email" name="email" value="<?php echo set_value('email'); ?>">
             <span class="help-inline"><?php echo form_error('email'); ?></span>
+            <span class="help-block">contoh: namauser@gmail.com</span>
         </div>
       </div>
       <div class="control-group <?=(form_error('pass'))?'error':''?>">

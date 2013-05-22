@@ -290,7 +290,7 @@ class dashboard extends CI_Controller
             $data['payment_to'] = $this->input->post('to');
             $data['payment_date'] = date('Y-m-d',strtotime($this->input->post('date')));
             $data['desc'] = $this->input->post('desc');
-            $data['id_pribadi'] = $this->pmb->registrasi_id();
+            $data['id_akun'] = $this->pmb->registrasi_id();
 
             if (isset($_FILES['bukti']) && !empty($_FILES['bukti']['name'])) {
                 if ($foto = $this->do_upload('bukti')) {
@@ -370,6 +370,28 @@ class dashboard extends CI_Controller
             }
         }
         $this->load->view($this->view.'ujian', $this->data);
+    }
+
+    public function cetak ()
+    {
+        $this->load->model('pribadi_model','pribadi');
+        $this->load->model('jadwal_model','jadwal');
+
+        $pribadi = $this->pribadi
+            ->with('sekolahasal')
+            ->with('pil1')
+            ->with('pil2')
+            ->get_by('id_user', session('uid'));
+
+        if (! isset($pribadi['nama']))
+            redirect('dashboard');
+
+        if (! $this->pmb->is_verified())
+            redirect('dashboard');
+
+        $this->data['data'] = $pribadi;
+        $this->data['yield'] = $this->view.'cetakkartu';
+        $this->load->view($this->view.'layout', $this->data);
     }
 
     public function password_check ($pass)
