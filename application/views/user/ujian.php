@@ -46,6 +46,8 @@
         margin-top: 28px;
       }
       .jawaban {resize:none;}
+      .masthead{top:0;position:fixed;width:55%;background-color:#fff;z-index:100;}
+      .muted{color:rgb(162, 14, 14) !important;}
     </style>
     <link href="<?=base_url()?>assets/css/bootstrap-responsive.css" rel="stylesheet">
 
@@ -63,7 +65,7 @@
             var el = document.getElementById(element);
             // if the time is 0 then end the counter
             if (time == 0) {
-                el.innerHTML = "countdown's over!";
+                el.innerHTML = "waktu habis";
                 clearInterval(interval);
 
                 return;
@@ -97,7 +99,12 @@
         <ul class="nav nav-pills pull-right">
           <li class="active"><h1 id="cdwn">00:00:00</h1></li>
         </ul>
-        <h3 class="muted">Soal Ujian</h3>
+        <h4 class="muted">Soal Ujian Saringan Masuk Univ. Tarumanegara <?=date('Y')?></h4>
+        <ul class="nav nav-tabs">
+          <li class="active"><a href="#"><?=$this->pmb->get_mapel(session('ujian_mapel'))?></a></li>
+          <li><a href="#">Bahasa Inggris</a></li>
+          <li><a href="#">Bahasa Indonesia</a></li>
+        </ul>
       </div>
 
       <hr>
@@ -110,44 +117,24 @@
       ?>
       <div class="row-fluid marketing" id="q<?=$i?>">
 
-        <h3 class="lead">
-            <?= $row->isi_soal ?>
-        </h3>
+        <span class="pull-left"><?=$i?>. &nbsp;</span><?= $row->isi_soal ?>
 
         <div class="span12">
           <p>
-            <div class="input-prepend">
-              <span class="add-on"><input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-a-<?=$row->id?>" value="a"></span>
-              <span class="add-on"><label for="jawaban-a-<?=$row->id?>"><?=$row->isi_pilihan_a?></label></span>
-            </div>
+                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-a-<?=$row->id?>" value="a">
+                  a. <?=$row->isi_pilihan_a?>
           </p>
           <p>
-            <div class="input-prepend">
-              <span class="add-on"><input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-b-<?=$row->id?>" value="b"></span>
-              <span class="add-on"><label for="jawaban-b-<?=$row->id?>"><?=$row->isi_pilihan_b?></label></span>
-            </div>
+              <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-b-<?=$row->id?>" value="b">
+              b. <?=$row->isi_pilihan_b?>
           </p>
           <p>
-            <div class="input-prepend">
-              <span class="add-on"><input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-c-<?=$row->id?>" value="c"></span>
-              <span class="add-on"><label for="jawaban-c-<?=$row->id?>"><?=$row->isi_pilihan_c?></label></span>
-            </div>
+              <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-c-<?=$row->id?>" value="c">
+              c. <?=$row->isi_pilihan_c?>
           </p>
           <p>
-            <div class="input-prepend">
-              <span class="add-on"><input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-d-<?=$row->id?>" value="d"></span>
-              <span class="add-on"><label for="jawaban-d-<?=$row->id?>"><?=$row->isi_pilihan_d?></label></span>
-            </div>
-          </p>
-          <p align="center">
-            <?php if ($i > 1) { ?>
-            <input type="button" class="prevQuestion" value=" &laquo; sebelumnya" rel='<?=$i?>'>
-            <?php } ?>
-            <?php if (count($data) == $i) { ?>
-            <input type="submit" class="nextQuestion" value="Kirim" rel='<?=$i+1?>'>
-            <?php } else { ?>
-            <input type="button" class="nextQuestion" value="selanjutnya &raquo; " rel='<?=$i+1?>'>
-            <?php } ?>
+              <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-d-<?=$row->id?>" value="d">
+              d. <?=$row->isi_pilihan_d?>
           </p>
         </div>
       </div>
@@ -155,38 +142,10 @@
         $i++;
       }
       ?>
-      </form>
-      <input type="hidden" id="totalQuestion" value="<?=count($data)?>" />
-      <input type="hidden" id="currentQuestion" value="1" />
 
-      <script>
-        $(function(){
-            var cq = $("#currentQuestion").val();
-            var tq = $("#totalQuestion").val();
-            $('.marketing').hide();
-            $('#q'+cq).show();
-            $(".marketing").delegate('.nextQuestion','click',function(){
-                nq = $(this).attr('rel');
-                if (nq > tq) {
-                    selesai = confirm('Selesai menjawab semua soal?');
-                    if (selesai)
-                        alert('Terima kasih');
-                    else
-                        return false;
-                } else {
-                    $("#currentQuestion").val(nq);
-                    $('.marketing').hide();
-                    $('#q'+nq).show();
-                }
-            });
-            $(".marketing").delegate('.prevQuestion','click',function(){
-                pq = $(this).attr('rel');
-                pq = pq - 1;
-                $("#currentQuestion").val(pq);
-                $('.marketing').hide();
-                $('#q'+pq).show();
-            });
-        });
-      </script>
+        <p align="center">
+            <button type="submit" class="btn btn-primary btn-large">kirim</button>
+        </p>
+      </form>
 
 <?=$this->load->view('footer')?>

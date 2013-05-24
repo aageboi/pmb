@@ -7,7 +7,7 @@
         <table class="table table-bordered">
             <?php if ($this->pmb->is_verified()) { ?>
             <tr>
-                <th>Nomor Ujian</th>
+                <th>Nomor Registrasi</th>
                 <td><?=$data['nomor_ujian']?></td>
             </tr>
             <?php } ?>

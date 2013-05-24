@@ -6,7 +6,7 @@
             <div class="span12">
                 <?=$this->load->view('breadcrumb')?>
 
-                <h3>Data Jenis Kelamin</h3>
+                <h3>Data Program Studi</h3>
                 <form class="form-horizontal" method="post">
                   <?=$this->load->view('admin/error_message')?>
                   <div class="control-group">

@@ -27,7 +27,9 @@ Class Pmb
     {
         $this->to->load->model('pribadi_model','pribadi');
         if ($user = $this->to->pribadi->get($id)) {
-            $jalur = $user['id_jalur'];
+            $this->to->load->model('prodi_model','prodi');
+            $prodi = $this->to->prodi->get($user['pil_1']);
+            // $jalur = $user['id_jalur'];
 
             $before_char = '';
             $len = strlen($id);
@@ -35,7 +37,8 @@ Class Pmb
                 $before_char .= '0';
             }
 
-            return date('y').$jalur.$before_char.$id;
+            // return date('y').$jalur.$before_char.$id;
+            return $prodi->kd_prodi.$before_char.$id;
         }
     }
 
@@ -79,6 +82,14 @@ Class Pmb
         }
 
         return FALSE;
+    }
+
+    public function get_mapel ($id)
+    {
+        $this->to->load->model('pelajaran_model', 'pel');
+        if ($pel = $this->to->pel->get($id))
+            return $pel->nama_pel;
+        return false;
     }
 
     public function already_test ($id = NULL)

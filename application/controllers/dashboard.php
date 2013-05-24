@@ -285,6 +285,12 @@ class dashboard extends CI_Controller
     {
         $this->load->library('form_validation');
         $this->load->model('pembayaran_model', 'bayar');
+
+        if (! $this->is_registered()) {
+            set_message('Anda harus isi formulir pendaftaran dan menyimpan datanya terlebih dahulu.','error');
+            redirect('dashboard/registrasi');
+        }
+
         if (! is_get()) {
             $data['payment_method'] = $this->input->post('method');
             $data['payment_to'] = $this->input->post('to');
@@ -402,6 +408,16 @@ class dashboard extends CI_Controller
             if ($user->password == md5($pass))
                 return true;
         }
+
+        return false;
+    }
+
+    private function is_registered ()
+    {
+        $this->load->model('pribadi_model','pribadi');
+
+        if ($this->pribadi->get_by('id_user', session('uid')))
+            return true;
 
         return false;
     }

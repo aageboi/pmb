@@ -11,8 +11,8 @@
                     <tr>
                         <th>Foto</th>
                         <th>TTD</th>
-                        <th>TTD<br>Ortu</th>
-                        <th>Bukti<br>Transfer</th>
+                        <th>TTD<br>Ortu</th><!--
+                        <th>Bukti<br>Transfer</th>-->
                         <th>Biodata</th>
                         <th>Status</th>
                         <th>Option</th>
@@ -29,8 +29,8 @@
                         <?php } ?></td>
                         <td><?php if ($row['ttd_2']) { ?>
                             <img src='<?=base_url()?>assets/img/upload/<?=$row['ttd_2']?>' class="img-polaroid" width='60px'>
-                        <?php } ?></td>
-                        <td>-</td>
+                        <?php } ?></td><!--
+                        <td>-</td>-->
                         <td>
                             <strong><?=$row['nama']?></strong><br>
                             <?=$row['tempat_lahir']?>, <?=$row['tanggal_lahir']?><br>
@@ -49,7 +49,7 @@
                             <?php } else { ?>
                             <a href="<?=site_url('admin/registrasi/verify/'.$row['id'].'/deaktif')?>" class="btn btn-warning" title="Batalkan verifikasi untuk data ini" onclick="return confirm('Batalkan verifikasi untuk data ini?');"><i class="icon-star-empty"></i></a>
                             <?php } ?>
-                            <a href="<?=site_url('admin/registrasi/delete/'.$row['id'])?>" class="btn btn-danger" title="delete"><i class="icon-remove"></i></a>
+                            <a href="<?=site_url('admin/registrasi/delete/'.$row['id'])?>" class="btn btn-danger" title="delete" onclick="return confirm('Hapus data registrasi ini?');"><i class="icon-remove"></i></a>
                         </td>
                     </tr>
                     <?php } ?>

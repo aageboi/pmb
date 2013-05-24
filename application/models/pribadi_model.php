@@ -33,6 +33,12 @@ class Pribadi_model extends MY_Model
         ),
     );
 
+    // public $has_many => array(
+        // 'pembayaran' => array(
+            // 'model' => 'pembayaran_model'
+        // )
+    // );
+
     // masih ada bug di function with() nya MY_MODEL
     public function find ($userid = NULL)
     {
@@ -40,12 +46,13 @@ class Pribadi_model extends MY_Model
             return false;
 
         $this->db->select(
-            't_pribadi.*,s.*,'.
+            't_pribadi.*,s.*,b.*,'.
             'o.nama as nama_ortu,'
         );
         $this->db->join('t_provinsi p', 't_pribadi.id_provinsi = p.id');
         $this->db->join('t_ortu o', 't_pribadi.id = o.id_pribadi');
         $this->db->join('t_sekolahasal s', 't_pribadi.id = s.id_pribadi');
+        $this->db->join('t_pembayaran b', 't_pribadi.id = b.id_akun');
 
         return $this->as_array()->get_by('id_user',$userid);
     }
