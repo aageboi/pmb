@@ -33,10 +33,15 @@ class prodi extends CI_Controller
         $this->data['breadcrumb']['Tambah'] = null;
         $this->data['yield'] = $this->view.'/add';
 
+        $this->load->model('jurusan_model', 'jurusan');
+        $this->data['jurusan'] = $this->jurusan->get_all();
+
         // post new
         if (! is_get()) {
             $_data['kd_prodi'] = $this->input->post('kode');
             $_data['nama_prodi'] = $this->input->post('nama');
+            $_data['kd_jurusan'] = $this->input->post('jurusan');
+            $_data['ujian_gambar'] = $this->input->post('gambar');
             if ($result = $this->prodi->insert($_data))
                 redirect('admin/prodi');
             else
@@ -50,12 +55,17 @@ class prodi extends CI_Controller
         $this->data['breadcrumb']['Edit'] = null;
         $this->data['yield'] = $this->view.'/edit';
 
+        $this->load->model('jurusan_model', 'jurusan');
+        $this->data['jurusan'] = $this->jurusan->get_all();
+
         // post update
         if (! is_get()) {
             $_id = $this->input->post('id');
             $new_data = array(
                 'kd_prodi' => $this->input->post('kode'),
+                'kd_jurusan' => $this->input->post('jurusan'),
                 'nama_prodi' => $this->input->post('nama'),
+                'ujian_gambar' => $this->input->post('gambar'),
             );
             if ($result = $this->prodi->update($_id,$new_data))
                 redirect('admin/prodi');

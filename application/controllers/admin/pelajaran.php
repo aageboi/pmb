@@ -37,6 +37,9 @@ class pelajaran extends CI_Controller
         if (! is_get()) {
             $this->data['kriteria'] = $_data['kriteria'] = $this->input->post('kriteria');
             $this->data['nama'] = $_data['nama_pel'] = $this->input->post('nama');
+            $kd_pel = ($this->input->post('ipa'))
+                ? strtolower($this->input->post('ipa')) : 'ips';
+            $this->data['ipa'] = $_data['kd_pel'] = $kd_pel;
             if ($result = $this->pelajaran->insert($_data))
                 redirect('admin/pelajaran');
             else
@@ -53,9 +56,12 @@ class pelajaran extends CI_Controller
         // post update
         if (! is_get()) {
             $_id = $this->input->post('id');
+            $kd_pel = ($this->input->post('ipa'))
+                ? strtolower($this->input->post('ipa')) : 'ips';
             $new_data = array(
                 'kriteria' => $this->input->post('kriteria'),
                 'nama_pel' => $this->input->post('nama'),
+                'kd_pel' => $kd_pel,
             );
             if ($result = $this->pelajaran->update($_id,$new_data))
                 redirect('admin/pelajaran');

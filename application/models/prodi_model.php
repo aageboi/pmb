@@ -12,11 +12,11 @@ class Prodi_model extends MY_Model
         // )
     // );
 
-    public $belongs_to = array('pribadi' =>
-        array(
+    public $belongs_to = array(
+        'pribadi' => array(
             'primary_key' => 'id_pribadi',
             'model' => 'pribadi_model'
-        )
+        ),
     );
 
     protected $validate = array(

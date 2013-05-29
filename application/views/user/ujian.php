@@ -57,29 +57,38 @@
     <![endif]-->
 
     <script>
-    function countdown(element, minutes, seconds)
+    function countdown(element, hours, minutes, seconds)
+    // function countdown(element, minutes, seconds)
     {
         // set time for the particular countdown
-        var time = minutes*60 + seconds;
+        var time = hours*3600 + minutes*60 + seconds;
+        // var time = minutes*60 + seconds;
         var interval = setInterval(function() {
             var el = document.getElementById(element);
             // if the time is 0 then end the counter
             if (time == 0) {
                 el.innerHTML = "waktu habis";
                 clearInterval(interval);
-
                 return;
             }
-            var minutes = Math.floor( time / 60 );
+            var hours = Math.floor( time / 3600 );
+            if (hours < 10) hours = "0" + hours;
+
+            var minutes = time % 3600;
+            var minutes = Math.floor( minutes / 60 );
             if (minutes < 10) minutes = "0" + minutes;
+
             var seconds = time % 60;
+
             if (seconds < 10) seconds = "0" + seconds;
-            var text = minutes + ':' + seconds;
+            var text = hours + ':' + minutes + ':' + seconds;
+            // var text = hours + ':' + minutes + ':' + seconds;
             el.innerHTML = text;
             time--;
         }, 1000);
     }
-    countdown("cdwn", 45, 0);
+    countdown("cdwn", 2, 0, 0);
+    // countdown("cdwn", 59, 0);
     </script>
 
     <!-- Fav and touch icons -->
@@ -94,32 +103,50 @@
   <body>
 
     <div class="container-narrow">
-
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
           <li class="active"><h1 id="cdwn">00:00:00</h1></li>
         </ul>
         <h4 class="muted">Soal Ujian Saringan Masuk Univ. Tarumanegara <?=date('Y')?></h4>
-        <ul class="nav nav-tabs">
-          <li class="active"><a href="#"><?=$this->pmb->get_mapel(session('ujian_mapel'))?></a></li>
-          <li><a href="#">Bahasa Inggris</a></li>
-          <li><a href="#">Bahasa Indonesia</a></li>
+        <ul class="nav nav-tabs" id="soal">
+            <?php
+            $j = 0;
+            foreach ($data['nama_pel'] as $q => $mapel) { ?>
+            <li<?=($j==0)?' class="active"':''?>>
+                <a href="#<?=strtolower(str_replace(' ','',$mapel))?>" data-toggle="tab">
+                    <?=str_replace('Bahasa','B.',$mapel)?>
+                </a>
+            </li>
+            <?php
+                $j++;
+            } ?>
         </ul>
       </div>
 
       <hr>
+
+  <form method="post">
+  <div class="tab-content" id="soalContent">
+
+        <br>
       <?=$this->load->view('error_message')?>
 
-      <form method="post">
-      <?php $i=1;
-        if ($data)
-        foreach ($data as $key => $row) {
+      <?php
+        $m = 0;
+        foreach ($data['nama_pel'] as $q => $mapel) {
+            $i = 1;
       ?>
-      <div class="row-fluid marketing" id="q<?=$i?>">
 
-        <span class="pull-left"><?=$i?>. &nbsp;</span><?= $row->isi_soal ?>
+      <div class="tab-pane fade<?=($m==0)?' active in':''?>" id="<?=strtolower(str_replace(' ','',$mapel))?>">
 
-        <div class="span12">
+        <?php foreach ($data['soal'][$m] as $key => $row) { ?>
+
+        <br>
+        <p>
+            <span class="pull-left"><?=$i?>. &nbsp;</span>
+            <?= trim(str_replace(array('<p>','</p>','<div id="__tbSetup">&nbsp;</div>'),'',$row->isi_soal), "\n") ?>
+        </p>
+
           <p>
                   <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-a-<?=$row->id?>" value="a">
                   a. <?=$row->isi_pilihan_a?>
@@ -136,16 +163,30 @@
               <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-d-<?=$row->id?>" value="d">
               d. <?=$row->isi_pilihan_d?>
           </p>
-        </div>
+          <hr>
+
+        <?php
+            $i++;
+        } ?>
+
       </div>
+
       <?php
-        $i++;
+        $m++;
       }
       ?>
 
+  </div>
         <p align="center">
             <button type="submit" class="btn btn-primary btn-large">kirim</button>
         </p>
-      </form>
+  </form>
 
+<script>
+  $('#soal a:first').tab('show');
+  $('#soal a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
+</script>
 <?=$this->load->view('footer')?>

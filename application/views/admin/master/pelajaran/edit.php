@@ -30,6 +30,12 @@
                     </div>
                   </div>
                   <div class="control-group">
+                    <label class="control-label" for="ipa">IPA</label>
+                    <div class="controls">
+                      <input type="checkbox" id="ipa" name="ipa" value="ipa" <?=isset($data->kd_pel)&&(strtolower($data->kd_pel)=='ipa') ? "checked='checked'" : ''?>>
+                    </div>
+                  </div>
+                  <div class="control-group">
                     <div class="controls">
                         <input type="hidden" name="id" value="<?=$data->id?>">
                         <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Simpan</button>

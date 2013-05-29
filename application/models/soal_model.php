@@ -35,4 +35,23 @@ class Soal_model extends MY_Model
 
         return $this->get_all();
     }
+
+    public function find_question ($prodi = 'ips')
+    {
+        $soal = array();
+
+        if ($prodi == 'ips')
+            $this->db->where('kd_pel', $prodi);
+
+        if ($result = $this->db->get('t_pelajaran')->result()) {
+            $i = 0;
+            foreach ($result as $key => $row) {
+                $soal['nama_pel'][$i] = $row->nama_pel;
+                $soal['soal'][$i] = $this->get_many_by('id_pelajaran', $row->id);
+                $i++;
+            }
+        }
+
+        return $soal;
+    }
 }

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 22, 2013 at 09:40 PM
+-- Generation Time: May 30, 2013 at 01:59 AM
 -- Server version: 5.5.31-0ubuntu0.13.04.1
 -- PHP Version: 5.4.9-4ubuntu2
 
@@ -26,6 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `t_agama`
 --
 
+DROP TABLE IF EXISTS `t_agama`;
 CREATE TABLE IF NOT EXISTS `t_agama` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `agama` varchar(50) NOT NULL,
@@ -51,6 +52,7 @@ INSERT INTO `t_agama` (`id`, `agama`) VALUES
 -- Table structure for table `t_akun`
 --
 
+DROP TABLE IF EXISTS `t_akun`;
 CREATE TABLE IF NOT EXISTS `t_akun` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_akun` varchar(100) NOT NULL,
@@ -60,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `t_akun` (
   `role` enum('superadmin','admin','user') NOT NULL DEFAULT 'user',
   `status` char(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `t_akun`
@@ -68,10 +70,7 @@ CREATE TABLE IF NOT EXISTS `t_akun` (
 
 INSERT INTO `t_akun` (`id`, `nama_akun`, `email`, `password`, `created_at`, `role`, `status`) VALUES
 (1, 'ngadmin', 'ngadmin@untar.ac.id', 'ac43724f16e9241d990427ab7c8f4228', '2013-04-16 17:44:32', 'admin', '1'),
-(3, 'admin1', 'admin@gmail.com', 'ac43724f16e9241d990427ab7c8f4228', '2013-04-16 17:57:42', 'admin', '1'),
-(4, 'Heri Gunawan B', 'user@biasa.com', '827ccb0eea8a706c4c34a16891f84e7b', '2013-04-17 17:14:49', 'user', '1'),
-(5, 'saya bukan admin', 'admin@biasa.com', '5f4dcc3b5aa765d61d8327deb882cf99', '2013-04-17 17:15:02', 'user', '0'),
-(8, 'heri gunawan', 'daftarjadiadmin@gmail.com', 'ac43724f16e9241d990427ab7c8f4228', '2013-05-14 09:58:03', 'user', '1');
+(9, 'Heri Gunawan B', 'user@biasa.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-05-22 15:39:25', 'user', '1');
 
 -- --------------------------------------------------------
 
@@ -79,6 +78,7 @@ INSERT INTO `t_akun` (`id`, `nama_akun`, `email`, `password`, `created_at`, `rol
 -- Table structure for table `t_banksoal`
 --
 
+DROP TABLE IF EXISTS `t_banksoal`;
 CREATE TABLE IF NOT EXISTS `t_banksoal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_prodi` int(11) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE IF NOT EXISTS `t_banksoal` (
   `no_urut` int(11) DEFAULT NULL,
   `tingkat` tinyint(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 --
 -- Dumping data for table `t_banksoal`
@@ -103,7 +103,16 @@ INSERT INTO `t_banksoal` (`id`, `id_prodi`, `id_pelajaran`, `isi_soal`, `isi_pil
 (3, 0, 4, '<p>Jika 3x<sup>2</sup> + 4y = -10 dan 4x<sup>2</sup> - 5y = -34, maka nilai dari 8x<sup>2</sup> + 3y adalah ...</p>', '-54', '-42', '42', '54', 'c', 0, 3),
 (4, 0, 4, '<p>berapakah nilai dari 12<sup>2&nbsp;</sup>= ...</p>', '123', '456', '789', '890', 'b', 1, 1),
 (6, 0, 4, '<p>&radic;144 +&nbsp;&radic;256 = ...</p>', '1', '2', '3', '4', 'b', NULL, 1),
-(7, 0, 1, '<p>Dari manakah manusia berasal...</p>', 'Tanah', 'Air', 'Udara', 'Api', 'a', NULL, 1);
+(7, 0, 1, '<p>Dari manakah manusia berasal...</p>', 'Tanah', 'Air', 'Udara', 'Api', 'a', NULL, 1),
+(8, 0, 3, '<p>How Is That&nbsp; .... ?</p>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'amazing', 'nothing', 'become', 'let it', 'b', NULL, 3),
+(9, 0, 3, '<p>get on</p>\n<div id="__tbSetup">&nbsp;</div>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'not', 'become', 'just', 'on', 'd', NULL, 2),
+(10, 0, 5, '<p>habis gelap ... aja</p>\n<div id="__tbSetup">&nbsp;</div>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'terbit', 'ketika', 'lilin', 'ya udah', 'c', NULL, 1),
+(11, 0, 7, '<p>X dan Y adalah darah ??</p>\n<div id="__tbSetup">&nbsp;</div>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'ayam', 'panda', 'golongan', 'species', 'b', NULL, 3),
+(12, 0, 5, '<p>ketenangan adalah ...</p>', 'pilihan', 'adapun', 'dan', 'demikian', 'c', NULL, 2),
+(13, 0, 3, '<p>what is no matter</p>', 'nothing', 'impossible', 'not in ', 'just', 'b', NULL, 2),
+(14, 0, 5, '<p>yang dikatakan majas ...</p>\n<div id="__tbSetup">&nbsp;</div>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'apa apa', 'selain itu', 'hanya', 'ada', 'c', NULL, 3),
+(15, 0, 6, '<p>katalis ...</p>\n<div id="__tbSetup">&nbsp;</div>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'C02', 'H2o', 'Ca', 'Zn', 'b', NULL, 1),
+(16, 0, 3, '<p>What is that..</p>', 'anjing', 'maneh', 'sia', 'tai', 'a', NULL, 3);
 
 -- --------------------------------------------------------
 
@@ -111,6 +120,7 @@ INSERT INTO `t_banksoal` (`id`, `id_prodi`, `id_pelajaran`, `isi_soal`, `isi_pil
 -- Table structure for table `t_biayakuliah`
 --
 
+DROP TABLE IF EXISTS `t_biayakuliah`;
 CREATE TABLE IF NOT EXISTS `t_biayakuliah` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_grade` int(11) NOT NULL,
@@ -128,6 +138,7 @@ CREATE TABLE IF NOT EXISTS `t_biayakuliah` (
 -- Table structure for table `t_gambar`
 --
 
+DROP TABLE IF EXISTS `t_gambar`;
 CREATE TABLE IF NOT EXISTS `t_gambar` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_registrasi` int(11) NOT NULL,
@@ -142,6 +153,7 @@ CREATE TABLE IF NOT EXISTS `t_gambar` (
 -- Table structure for table `t_grade`
 --
 
+DROP TABLE IF EXISTS `t_grade`;
 CREATE TABLE IF NOT EXISTS `t_grade` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_grade` char(5) NOT NULL,
@@ -166,6 +178,7 @@ INSERT INTO `t_grade` (`id`, `nama_grade`, `nilai_min`, `nilai_max`) VALUES
 -- Table structure for table `t_hasil`
 --
 
+DROP TABLE IF EXISTS `t_hasil`;
 CREATE TABLE IF NOT EXISTS `t_hasil` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pribadi` int(11) NOT NULL,
@@ -181,6 +194,7 @@ CREATE TABLE IF NOT EXISTS `t_hasil` (
 -- Table structure for table `t_jadwalpembayaran`
 --
 
+DROP TABLE IF EXISTS `t_jadwalpembayaran`;
 CREATE TABLE IF NOT EXISTS `t_jadwalpembayaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `jadwal` varchar(100) NOT NULL,
@@ -200,6 +214,7 @@ INSERT INTO `t_jadwalpembayaran` (`id`, `jadwal`) VALUES
 -- Table structure for table `t_jalurpendaftaran`
 --
 
+DROP TABLE IF EXISTS `t_jalurpendaftaran`;
 CREATE TABLE IF NOT EXISTS `t_jalurpendaftaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_jalur` varchar(100) NOT NULL,
@@ -223,6 +238,7 @@ INSERT INTO `t_jalurpendaftaran` (`id`, `nama_jalur`) VALUES
 -- Table structure for table `t_jeniskelamin`
 --
 
+DROP TABLE IF EXISTS `t_jeniskelamin`;
 CREATE TABLE IF NOT EXISTS `t_jeniskelamin` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kd_jenkel` char(5) NOT NULL,
@@ -244,6 +260,7 @@ INSERT INTO `t_jeniskelamin` (`id`, `kd_jenkel`, `jenkel`) VALUES
 -- Table structure for table `t_jurusansmta`
 --
 
+DROP TABLE IF EXISTS `t_jurusansmta`;
 CREATE TABLE IF NOT EXISTS `t_jurusansmta` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kd_jurusan` char(5) NOT NULL,
@@ -266,6 +283,7 @@ INSERT INTO `t_jurusansmta` (`id`, `kd_jurusan`, `nama_jurusan`) VALUES
 -- Table structure for table `t_kapasitasruang`
 --
 
+DROP TABLE IF EXISTS `t_kapasitasruang`;
 CREATE TABLE IF NOT EXISTS `t_kapasitasruang` (
   `kd_kapasitas` int(11) NOT NULL AUTO_INCREMENT,
   `kapasitas` int(11) NOT NULL,
@@ -278,6 +296,7 @@ CREATE TABLE IF NOT EXISTS `t_kapasitasruang` (
 -- Table structure for table `t_kewarganegaraan`
 --
 
+DROP TABLE IF EXISTS `t_kewarganegaraan`;
 CREATE TABLE IF NOT EXISTS `t_kewarganegaraan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kewarganegaraan` varchar(100) NOT NULL,
@@ -298,6 +317,7 @@ INSERT INTO `t_kewarganegaraan` (`id`, `kewarganegaraan`) VALUES
 -- Table structure for table `t_kriteria_kelulusan`
 --
 
+DROP TABLE IF EXISTS `t_kriteria_kelulusan`;
 CREATE TABLE IF NOT EXISTS `t_kriteria_kelulusan` (
   `kd_kriteria` int(11) NOT NULL AUTO_INCREMENT,
   `kd_pelajaran` int(11) NOT NULL,
@@ -311,6 +331,7 @@ CREATE TABLE IF NOT EXISTS `t_kriteria_kelulusan` (
 -- Table structure for table `t_ortu`
 --
 
+DROP TABLE IF EXISTS `t_ortu`;
 CREATE TABLE IF NOT EXISTS `t_ortu` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_provinsi` int(11) NOT NULL,
@@ -327,14 +348,14 @@ CREATE TABLE IF NOT EXISTS `t_ortu` (
   `telp` char(20) NOT NULL,
   `is_ortu` enum('ayah','ibu','wali') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `t_ortu`
 --
 
 INSERT INTO `t_ortu` (`id`, `id_provinsi`, `id_pendidikan`, `id_pekerjaan`, `nama`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `is_ortu`) VALUES
-(3, 2, 6, 1, 'H. Drs. Surata', '1952-11-11', 'Jl Lemah Hegar Timur No. 17', 'Sukapura', '04', '04', 'Bandung', '40285', '0227334332', 'ayah');
+(6, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -342,6 +363,7 @@ INSERT INTO `t_ortu` (`id`, `id_provinsi`, `id_pendidikan`, `id_pekerjaan`, `nam
 -- Table structure for table `t_pekerjaan`
 --
 
+DROP TABLE IF EXISTS `t_pekerjaan`;
 CREATE TABLE IF NOT EXISTS `t_pekerjaan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_pekerjaan` varchar(100) NOT NULL,
@@ -366,24 +388,26 @@ INSERT INTO `t_pekerjaan` (`id`, `nama_pekerjaan`) VALUES
 -- Table structure for table `t_pelajaran`
 --
 
+DROP TABLE IF EXISTS `t_pelajaran`;
 CREATE TABLE IF NOT EXISTS `t_pelajaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kd_pel` char(5) NOT NULL,
   `nama_pel` varchar(100) NOT NULL,
   `kriteria` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `t_pelajaran`
 --
 
 INSERT INTO `t_pelajaran` (`id`, `kd_pel`, `nama_pel`, `kriteria`) VALUES
-(1, 'IPA', 'Ilmu Pengetahuan Alam', 50),
-(2, 'IPS', 'Ilmi Pengetahuan Sosial', 55),
-(3, 'ING', 'Bahasa Inggris', 40),
-(4, 'MTK', 'Matematika', 50),
-(5, 'IND', 'Bahasa Indonesia', 60);
+(1, 'ipa', 'Fisika', 50),
+(3, 'ips', 'Bahasa Inggris', 40),
+(4, 'ips', 'Matematika', 50),
+(5, 'ips', 'Bahasa Indonesia', 60),
+(6, 'ipa', 'Kimia', 50),
+(7, 'ipa', 'Biologi', 50);
 
 -- --------------------------------------------------------
 
@@ -391,24 +415,31 @@ INSERT INTO `t_pelajaran` (`id`, `kd_pel`, `nama_pel`, `kriteria`) VALUES
 -- Table structure for table `t_pembayaran`
 --
 
+DROP TABLE IF EXISTS `t_pembayaran`;
 CREATE TABLE IF NOT EXISTS `t_pembayaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `payment_method` varchar(20) NOT NULL,
   `payment_to` varchar(50) NOT NULL,
   `payment_date` date NOT NULL,
+  `payment_amount` varchar(50) NOT NULL,
   `desc` text NOT NULL,
   `attachment` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_akun` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `t_pembayaran`
 --
 
-INSERT INTO `t_pembayaran` (`id`, `payment_method`, `payment_to`, `payment_date`, `desc`, `attachment`, `created_at`, `id_akun`) VALUES
-(2, 'direct', 'bca', '2013-05-22', 'untuk biaya atas nama Heri Gunawan', 'babal7.jpg', '2013-05-22 14:35:54', 4);
+INSERT INTO `t_pembayaran` (`id`, `payment_method`, `payment_to`, `payment_date`, `payment_amount`, `desc`, `attachment`, `created_at`, `id_akun`) VALUES
+(2, 'direct', 'bca', '2013-05-22', '', 'untuk biaya atas nama Heri Gunawan', 'babal7.jpg', '2013-05-22 14:35:54', 4),
+(3, 'direct', 'bca', '2013-05-22', '15000000', 'asdasdads', 'babal8.jpg', '2013-05-22 15:11:35', 4),
+(4, 'direct', 'bca', '2013-05-09', '15000000', 'bukti transfer', 'babal9.jpg', '2013-05-22 16:13:22', 5),
+(5, 'bank', 'bni', '2013-05-22', '15000000', 'asdasdasdasdasdasdasd', 'babal10.jpg', '2013-05-22 16:19:06', 5),
+(6, 'direct', 'bca', '2013-05-09', '15000000', '', 'babal11.jpg', '2013-05-22 16:40:35', 6),
+(7, 'direct', 'bca', '2013-05-09', '15000000', '', 'babal12.jpg', '2013-05-22 16:42:47', 7);
 
 -- --------------------------------------------------------
 
@@ -416,6 +447,7 @@ INSERT INTO `t_pembayaran` (`id`, `payment_method`, `payment_to`, `payment_date`
 -- Table structure for table `t_pendidikanterakhir`
 --
 
+DROP TABLE IF EXISTS `t_pendidikanterakhir`;
 CREATE TABLE IF NOT EXISTS `t_pendidikanterakhir` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pendidikan` varchar(100) NOT NULL,
@@ -443,6 +475,7 @@ INSERT INTO `t_pendidikanterakhir` (`id`, `pendidikan`) VALUES
 -- Table structure for table `t_periode`
 --
 
+DROP TABLE IF EXISTS `t_periode`;
 CREATE TABLE IF NOT EXISTS `t_periode` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nama_per` varchar(10) NOT NULL,
@@ -464,6 +497,7 @@ INSERT INTO `t_periode` (`id`, `nama_per`, `id_jalur`) VALUES
 -- Table structure for table `t_pribadi`
 --
 
+DROP TABLE IF EXISTS `t_pribadi`;
 CREATE TABLE IF NOT EXISTS `t_pribadi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(11) NOT NULL,
@@ -496,14 +530,14 @@ CREATE TABLE IF NOT EXISTS `t_pribadi` (
   `pil_2` int(11) NOT NULL,
   `id_jalur` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='tabel data pribadi' AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='tabel data pribadi' AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `t_pribadi`
 --
 
 INSERT INTO `t_pribadi` (`id`, `id_user`, `id_provinsi`, `id_jenkel`, `id_agama`, `id_nikah`, `id_sumber`, `id_kwn`, `id_ortu`, `id_sekolah`, `nama`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `hp`, `email`, `foto`, `ttd_1`, `ttd_2`, `nomor_ujian`, `is_verified`, `pil_1`, `pil_2`, `id_jalur`) VALUES
-(4, 4, 1, 1, 3, 1, 3, 1, 3, 3, 'Heri Gunawan Budiyanto', 'Bandung', '1985-12-30', 'Gg H. Abdulrahiim no.7', 'Sukapura', '04', '04', 'Bandung', '40285', '0227334332', '08562070196', 'ngadmin@untar.ac.id', 'Heri_Gunawan_B.jpg', '', '', '', '1', 2, 4, 2);
+(7, 9, 1, 1, 1, 1, 1, 1, 6, 6, 'Heri Gunawan Budiyanto', '', '0000-00-00', '', '', '', '', '', '', '', '', 'ngadmin@untar.ac.id', '', '', '', '1110007', '1', 5, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -511,22 +545,27 @@ INSERT INTO `t_pribadi` (`id`, `id_user`, `id_provinsi`, `id_jenkel`, `id_agama`
 -- Table structure for table `t_prodi`
 --
 
+DROP TABLE IF EXISTS `t_prodi`;
 CREATE TABLE IF NOT EXISTS `t_prodi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kd_prodi` char(5) NOT NULL,
   `nama_prodi` varchar(100) NOT NULL,
+  `kd_jurusan` int(11) NOT NULL,
+  `ujian_gambar` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `t_prodi`
 --
 
-INSERT INTO `t_prodi` (`id`, `kd_prodi`, `nama_prodi`) VALUES
-(1, '111', 'S1 Manajen Bisnis'),
-(2, '121', 'S1 Akuntansi Bisnis'),
-(3, '201', 'S1 Ilmu Hukum'),
-(4, '301', 'S1 Arsitektur');
+INSERT INTO `t_prodi` (`id`, `kd_prodi`, `nama_prodi`, `kd_jurusan`, `ujian_gambar`) VALUES
+(1, '111', 'S1 Manajemen Bisnis', 2, 0),
+(2, '121', 'S1 Akuntansi Bisnis', 2, 0),
+(3, '201', 'S1 Ilmu Hukum', 2, 0),
+(4, '301', 'S1 Arsitektur', 2, 1),
+(5, '222', 'S1 Kedokteran', 1, 0),
+(6, '141', 'S1 Design Komunikasi Visual', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -534,6 +573,7 @@ INSERT INTO `t_prodi` (`id`, `kd_prodi`, `nama_prodi`) VALUES
 -- Table structure for table `t_provinsi`
 --
 
+DROP TABLE IF EXISTS `t_provinsi`;
 CREATE TABLE IF NOT EXISTS `t_provinsi` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kd_provinsi` char(5) NOT NULL,
@@ -555,6 +595,7 @@ INSERT INTO `t_provinsi` (`id`, `kd_provinsi`, `nama_provinsi`) VALUES
 -- Table structure for table `t_ruangujian`
 --
 
+DROP TABLE IF EXISTS `t_ruangujian`;
 CREATE TABLE IF NOT EXISTS `t_ruangujian` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pelajaran` int(11) NOT NULL,
@@ -580,6 +621,7 @@ INSERT INTO `t_ruangujian` (`id`, `id_pelajaran`, `nama_ruang`, `lokasi`, `kapas
 -- Table structure for table `t_sekolah`
 --
 
+DROP TABLE IF EXISTS `t_sekolah`;
 CREATE TABLE IF NOT EXISTS `t_sekolah` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `kode_sekolah` varchar(10) NOT NULL,
@@ -606,20 +648,21 @@ INSERT INTO `t_sekolah` (`id`, `kode_sekolah`, `id_provinsi`, `nama_sekolah`, `a
 -- Table structure for table `t_sekolahasal`
 --
 
+DROP TABLE IF EXISTS `t_sekolahasal`;
 CREATE TABLE IF NOT EXISTS `t_sekolahasal` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_sekolah` int(11) NOT NULL,
   `id_jurusan` char(5) NOT NULL,
   `tahun_lulus` char(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `t_sekolahasal`
 --
 
 INSERT INTO `t_sekolahasal` (`id`, `id_sekolah`, `id_jurusan`, `tahun_lulus`) VALUES
-(3, 1, '2', '2004');
+(6, 1, '1', '');
 
 -- --------------------------------------------------------
 
@@ -627,6 +670,7 @@ INSERT INTO `t_sekolahasal` (`id`, `id_sekolah`, `id_jurusan`, `tahun_lulus`) VA
 -- Table structure for table `t_statuskelulusan`
 --
 
+DROP TABLE IF EXISTS `t_statuskelulusan`;
 CREATE TABLE IF NOT EXISTS `t_statuskelulusan` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_registrasi` char(5) NOT NULL,
@@ -640,6 +684,7 @@ CREATE TABLE IF NOT EXISTS `t_statuskelulusan` (
 -- Table structure for table `t_statusnikah`
 --
 
+DROP TABLE IF EXISTS `t_statusnikah`;
 CREATE TABLE IF NOT EXISTS `t_statusnikah` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `status` varchar(50) NOT NULL,
@@ -661,6 +706,7 @@ INSERT INTO `t_statusnikah` (`id`, `status`) VALUES
 -- Table structure for table `t_sumberbiaya`
 --
 
+DROP TABLE IF EXISTS `t_sumberbiaya`;
 CREATE TABLE IF NOT EXISTS `t_sumberbiaya` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `sumber_biaya` varchar(100) NOT NULL,
@@ -683,6 +729,7 @@ INSERT INTO `t_sumberbiaya` (`id`, `sumber_biaya`) VALUES
 -- Table structure for table `t_syaratpendaftaran`
 --
 
+DROP TABLE IF EXISTS `t_syaratpendaftaran`;
 CREATE TABLE IF NOT EXISTS `t_syaratpendaftaran` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `syarat` text NOT NULL,
