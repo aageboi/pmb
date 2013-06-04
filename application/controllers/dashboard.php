@@ -106,7 +106,7 @@ class dashboard extends CI_Controller
         // $this->data['data'] = $this->hasil->with('soal')
         //      ->get_many_by('id_pribadi', $this->pmb->registrasi_id());
         $this->data['data'] = $this->hasil->find_all(
-            array('id_pribadi' => $this->pmb->registrasi_id())
+            array('id_pribadi' => session('uid'))
         );
         $this->data['yield'] = $this->view.'lihathasil';
         $this->load->view($this->view.'layout', $this->data);
@@ -319,12 +319,18 @@ class dashboard extends CI_Controller
 
     public function ujian ()
     {
+        $this->load->model('pribadi_model', 'pribadi');
+
         if ($this->pmb->already_test()) {
             set_message('Anda sudah melakukan test sebelumnya.', 'error');
             redirect('dashboard/lihathasil');
         } else {
             if (! is_get()) {
-                set_session('ujian_mulai', time());
+                $this->load->helper('cookie');
+                $time = time();
+                set_cookie('ujian_mulai', $time, 3600, '127.0.0.1', '/');
+
+                set_session('ujian_mulai', $time);
                 set_session('ujian_uid', session('uid'));
                 set_session('ujian_mapel', session('prodi'));
 
@@ -374,12 +380,16 @@ class dashboard extends CI_Controller
 
     public function mulaiujian ()
     {
+        $this->load->helper('cookie');
+
         if ($this->pmb->already_test()) {
             set_message('Anda sudah melaksanakan ujian.', 'error');
             redirect('dashboard/lihathasil');
         }
 
         if (! session('ujian_mapel') OR ! session('ujian_uid') OR ! session('ujian_mulai')) {
+            delete_cookie('ujian_mulai');
+
             $this->session->unset_userdata('ujian_mulai');
             $this->session->unset_userdata('ujian_uid');
             $this->session->unset_userdata('ujian_mapel');
@@ -395,11 +405,12 @@ class dashboard extends CI_Controller
 
         if (! is_get()) {
 
-            if (count($this->input->post('jawaban')) != 4) {
-                set_message('Anda belum menjawab seluruh pertanyaan.', 'error');
-            } else {
+            // if (count($this->input->post('jawaban')) != 4) {
+                // set_message('Anda belum menjawab seluruh pertanyaan.', 'error');
+            // } else {
                 $this->load->model('hasil_model', 'hasil');
                 $jawaban = $this->input->post('jawaban');
+
                 foreach ($jawaban as $idsoal => $jawab) {
                     $ujian['id_pribadi'] = session('uid');
                     $ujian['id_soal'] = $idsoal;
@@ -411,11 +422,15 @@ class dashboard extends CI_Controller
                 }
 
                 if ($simpan) {
+                    delete_cookie('ujian_mulai');
+
                     $this->session->unset_userdata('ujian_mulai');
                     $this->session->unset_userdata('ujian_uid');
                     $this->session->unset_userdata('ujian_mapel');
 
-                    set_session('ujian_selesai', time());
+                    $time = time();
+                    set_session('ujian_selesai', $time);
+                    set_cookie('ujian_selesai', $time, 3600, '127.0.0.1', '/');
 
                     set_session('ujian'.session('uid'), NULL);
                     $this->session->unset_userdata('ujian'.session('uid'));
@@ -425,12 +440,12 @@ class dashboard extends CI_Controller
                 } else {
                     set_message("Gagal menyimpan hasil jawaban.", 'error');
                 }
-            }
+            // }
         }
         $this->load->view($this->view.'ujian', $this->data);
     }
 
-    public function cetak ()
+    public function cetak ($print = NULL)
     {
         $this->load->model('pribadi_model','pribadi');
         $this->load->model('jadwal_model','jadwal');
@@ -447,9 +462,14 @@ class dashboard extends CI_Controller
         if (! $this->pmb->is_verified())
             redirect('dashboard');
 
+        $this->data['print'] = $print;
         $this->data['data'] = $pribadi;
         $this->data['yield'] = $this->view.'cetakkartu';
-        $this->load->view($this->view.'layout', $this->data);
+
+        if ($print)
+            $this->load->view($this->view.'layout_print', $this->data);
+        else
+            $this->load->view($this->view.'layout', $this->data);
     }
 
     public function password_check ($pass)

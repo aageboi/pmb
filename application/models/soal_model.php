@@ -47,6 +47,8 @@ class Soal_model extends MY_Model
             $i = 0;
             foreach ($result as $key => $row) {
                 $soal['nama_pel'][$i] = $row->nama_pel;
+                $this->db->order_by('t_banksoal.id', 'random');
+                $this->db->limit(20);
                 $soal['soal'][$i] = $this->get_many_by('id_pelajaran', $row->id);
                 $i++;
             }

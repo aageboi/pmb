@@ -57,12 +57,42 @@
     <![endif]-->
 
     <script>
+    function getCookie( name ) {
+        var start = document.cookie.indexOf( name + "=" );
+        var len = start + name.length + 1;
+        if ( ( !start ) && ( name != document.cookie.substring( 0, name.length ) ) ) {
+            return null;
+        }
+        if ( start == -1 ) return null;
+        var end = document.cookie.indexOf( ';', len );
+        if ( end == -1 ) end = document.cookie.length;
+        return unescape( document.cookie.substring( len, end ) );
+    }
+
+    function setCookie( name, value, expires, path, domain, secure ) {
+        var today = new Date();
+        today.setTime( today.getTime() );
+        if ( expires ) {
+            expires = expires * 1000 * 60 * 60 * 24;
+        }
+        var expires_date = new Date( today.getTime() + (expires) );
+        document.cookie = name+'='+escape( value ) +
+            ( ( expires ) ? ';expires='+expires_date.toGMTString() : '' ) + //expires.toGMTString()
+            ( ( path ) ? ';path=' + path : '' ) +
+            ( ( domain ) ? ';domain=' + domain : '' ) +
+            ( ( secure ) ? ';secure' : '' );
+    }
+
+    function deleteCookie( name, path, domain ) {
+        if ( getCookie( name ) ) document.cookie = name + '=' +
+            ( ( path ) ? ';path=' + path : '') +
+            ( ( domain ) ? ';domain=' + domain : '' ) +
+            ';expires=Thu, 01-Jan-1970 00:00:01 GMT';
+    }
     function countdown(element, hours, minutes, seconds)
-    // function countdown(element, minutes, seconds)
     {
         // set time for the particular countdown
         var time = hours*3600 + minutes*60 + seconds;
-        // var time = minutes*60 + seconds;
         var interval = setInterval(function() {
             var el = document.getElementById(element);
             // if the time is 0 then end the counter
@@ -82,13 +112,11 @@
 
             if (seconds < 10) seconds = "0" + seconds;
             var text = hours + ':' + minutes + ':' + seconds;
-            // var text = hours + ':' + minutes + ':' + seconds;
             el.innerHTML = text;
             time--;
         }, 1000);
     }
     countdown("cdwn", 2, 0, 0);
-    // countdown("cdwn", 59, 0);
     </script>
 
     <!-- Fav and touch icons -->
@@ -101,6 +129,12 @@
   </head>
 
   <body>
+
+    <noscript>
+        <div class="alert alert-error">
+            Halaman ini memerlukan pengaturan javascript aktif. Harap aktifkan dahulu javascript pada browser ini.
+        </div>
+    </noscript>
 
     <div class="container-narrow">
       <div class="masthead">
@@ -142,28 +176,36 @@
         <?php foreach ($data['soal'][$m] as $key => $row) { ?>
 
         <br>
-        <p>
+        <p style="text-indent: 1em;">
             <span class="pull-left"><?=$i?>. &nbsp;</span>
             <?= trim(str_replace(array('<p>','</p>','<div id="__tbSetup">&nbsp;</div>'),'',$row->isi_soal), "\n") ?>
         </p>
 
-          <p>
-                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-a-<?=$row->id?>" value="a">
-                  a. <?=$row->isi_pilihan_a?>
-          </p>
-          <p>
-              <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-b-<?=$row->id?>" value="b">
-              b. <?=$row->isi_pilihan_b?>
-          </p>
-          <p>
-              <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-c-<?=$row->id?>" value="c">
-              c. <?=$row->isi_pilihan_c?>
-          </p>
-          <p>
-              <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-d-<?=$row->id?>" value="d">
-              d. <?=$row->isi_pilihan_d?>
-          </p>
-          <hr>
+        <div class="row-fluid">
+            <div class="span1"></div>
+            <div class="span6">
+              <p>
+                    <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-a-<?=$row->id?>" value="a">
+                    a. <?=$row->isi_pilihan_a?>
+              </p>
+              <p>
+                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-b-<?=$row->id?>" value="b">
+                  b. <?=$row->isi_pilihan_b?>
+              </p>
+            </div>
+
+            <div class="span5">
+              <p>
+                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-c-<?=$row->id?>" value="c">
+                  c. <?=$row->isi_pilihan_c?>
+              </p>
+              <p>
+                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-d-<?=$row->id?>" value="d">
+                  d. <?=$row->isi_pilihan_d?>
+              </p>
+            </div>
+        </div>
+        <hr>
 
         <?php
             $i++;
@@ -177,13 +219,26 @@
       ?>
 
   </div>
+
+    <div class="row-fluid">
+        <div class="span12">
         <p align="center">
-            <button type="submit" class="btn btn-primary btn-large">kirim</button>
+            <button type="submit" class="btn btn-primary btn-large">
+                <i class="icon-ok"></i> kirim</button>
         </p>
+        </div>
+    </div>
   </form>
 
 <script>
-  $('#soal a:first').tab('show');
+  window.onbeforeunload = function() {
+    // var cdwn=document.getElementById('cdwn'),crnttime=cdwn.innerHTML;
+    jawaban = "Pastikan seluruh pertanyaan sudah dijawab!\nKirim jawaban anda?";
+    // cdwn.innerHTML = '01:00:00';
+    // window.location = 'http://aageboi.com';
+    return jawaban;
+  };
+
   $('#soal a').click(function (e) {
     e.preventDefault();
     $(this).tab('show');

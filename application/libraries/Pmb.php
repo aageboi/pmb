@@ -28,8 +28,7 @@ Class Pmb
         $this->to->load->model('pribadi_model','pribadi');
         if ($user = $this->to->pribadi->get($id)) {
             $this->to->load->model('prodi_model','prodi');
-            $prodi = $this->to->prodi->get($user['pil_1']);
-            // $jalur = $user['id_jalur'];
+            $jalur = $user['id_jalur'];
 
             $before_char = '';
             $len = strlen($id);
@@ -37,9 +36,25 @@ Class Pmb
                 $before_char .= '0';
             }
 
-            // return date('y').$jalur.$before_char.$id;
-            return $prodi->kd_prodi.$before_char.$id;
+            return date('y').$jalur.$before_char.$id;
         }
+        return false;
+    }
+
+    public function get_nomor_registrasi_prodi ($prodi_id, $id)
+    {
+        $this->to->load->model('pribadi_model','pribadi');
+        if ($user = $this->to->pribadi->get_by('id_user', $id)) {
+
+            $before_char = '';
+            $len = strlen($id);
+            for ($i=4; $i>$len; $i--) {
+                $before_char .= '0';
+            }
+
+            return $prodi_id.$before_char.$id;
+        }
+        return false;
     }
 
     public function is_registered ($id = NULL)
@@ -95,7 +110,8 @@ Class Pmb
     public function already_test ($id = NULL)
     {
         $this->to->load->model('hasil_model', 'hasil');
-        if ($already = $this->to->hasil->get_by('id_pribadi', $this->registrasi_id($id)))
+        // if ($already = $this->to->hasil->get_by('id_pribadi', $this->registrasi_id($id)))
+        if ($already = $this->to->hasil->get_by('id_pribadi', $this->to->session->userdata('uid')))
             return TRUE;
         return FALSE;
     }
