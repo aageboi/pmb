@@ -36,7 +36,7 @@ class Soal_model extends MY_Model
         return $this->get_all();
     }
 
-    public function find_question ($prodi = 'ips')
+    public function _find_question ($prodi = 'ips')
     {
         $soal = array();
 
@@ -50,6 +50,46 @@ class Soal_model extends MY_Model
                 $this->db->order_by('t_banksoal.id', 'random');
                 $this->db->limit(20);
                 $soal['soal'][$i] = $this->get_many_by('id_pelajaran', $row->id);
+                $i++;
+            }
+        }
+
+        return $soal;
+    }
+
+    public function find_question ($prodi = 'ips')
+    {
+        $soal = array();
+
+        if ($prodi == 'ips')
+            $this->db->where('kd_pel', $prodi);
+
+        if ($result = $this->db->get('t_pelajaran')->result()) {
+            $i = 0;
+            foreach ($result as $key => $row) {
+                $soal['nama_pel'][$i] = $row->nama_pel;
+                $this->db->limit(20);
+                $rs = $this->db->query("
+                    (SELECT * FROM {$this->_table}
+                    WHERE id_pelajaran = {$row->id} and tingkat = 1
+                    limit 5)
+
+                    union all
+
+                    (SELECT * FROM {$this->_table}
+                    WHERE id_pelajaran = {$row->id} and tingkat = 2
+                    limit 6)
+
+                    union all
+
+                    (SELECT * FROM {$this->_table}
+                    WHERE id_pelajaran = {$row->id} and tingkat = 3
+                    limit 9)
+
+                    ORDER BY RAND()
+                ");
+                $soal['soal'][$i] = $rs->result();
+                $rs->free_result();
                 $i++;
             }
         }

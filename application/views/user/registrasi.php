@@ -34,6 +34,7 @@ if (is_array($data) && isset($data['ortu']))
         </div>
     </div>
     <hr>
+    <?php if (! $this->pmb->is_verified()) { ?>
     <label class="control-label" style="text-align:left" for="jalur">Jalur yang anda pilih</label>
     <?php foreach ($jalur as $jal) { ?>
     <label class="checkbox inline">
@@ -63,6 +64,30 @@ if (is_array($data) && isset($data['ortu']))
             </div>
         </div>
     </div>
+    <?php } else { ?>
+    <label class="control-label" style="text-align:left" for="jalur">Jalur yang anda pilih</label>
+    <label class="controls">
+        <strong><?= $this->pmb->get_nama_jalur($data['id_jalur']) ?></strong>
+        <input type="hidden" name="jalur" value="<?=$data['id_jalur']?>">
+    </label>
+    <hr>
+    <div class="form-horizontal">
+        <div class="control-group">
+            <label class="control-label" style="text-align:left" for="pil_1">Pilihan Utama</label>
+            <div class="controls">
+                <strong><?= $this->pmb->get_prodi($data['pil_1']) ?></strong>
+                <input type="hidden" name="pil1" value="<?=$data['pil_1']?>">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" style="text-align:left" for="pil_2">Pilihan Kedua</label>
+            <div class="controls">
+                <strong><?= $this->pmb->get_prodi($data['pil_2']) ?></strong>
+                <input type="hidden" name="pil2" value="<?=$data['pil_2']?>">
+            </div>
+        </div>
+    </div>
+    <?php } ?>
     <hr>
     <h6>I. DATA PRIBADI CALON MAHASISWA</h6>
     <div class="form-horizontal">
@@ -306,6 +331,14 @@ if (is_array($data) && isset($data['ortu']))
             <label class="control-label span4" style="text-align:left" for="ttd_1">Tanda tangan orang tua</label>
             <div class="controls">
                 <input type="file" name="ttd_2">
+                <span class="help-block offset1">Ukuran file maksimal 100Kb. Format file: jpg, jpeg, png</span>
+            </div>
+        </div>
+        <div class="control-group" id="upload3">
+            <label class="control-label span4" style="text-align:left" for="sktbw">Surat Keterangan Tidak Buta Warna</label>
+            <div class="controls">
+                <input type="file" name="sktbw">
+                <span class="help-block offset1">*) Hanya untuk jurusan Kedokteran dan Desain Komunikasi Visual</span>
                 <span class="help-block offset1">Ukuran file maksimal 100Kb. Format file: jpg, jpeg, png</span>
             </div>
         </div>

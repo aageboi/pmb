@@ -20,6 +20,7 @@ class Ruang_model extends MY_Model
 
     public function find_all ()
     {
+        $this->db->select('t_pelajaran.nama_pel,t_ruangujian.*');
         $this->db->join('t_pelajaran', 't_pelajaran.id = t_ruangujian.id_pelajaran');
 
         return $this->get_all();

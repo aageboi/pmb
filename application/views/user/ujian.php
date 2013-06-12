@@ -211,6 +211,18 @@
             $i++;
         } ?>
 
+      <?php
+      if (strtolower(end($data['nama_pel'])) === strtolower($mapel)) { ?>
+      <div class="row-fluid">
+        <div class="span12">
+        <p align="center">
+            <button type="submit" class="btn btn-primary btn-large">
+                <i class="icon-exclamation-sign"></i> selesai dan kirim</button>
+        </p>
+        </div>
+      </div>
+      <?php } ?>
+
       </div>
 
       <?php
@@ -220,14 +232,6 @@
 
   </div>
 
-    <div class="row-fluid">
-        <div class="span12">
-        <p align="center">
-            <button type="submit" class="btn btn-primary btn-large">
-                <i class="icon-ok"></i> kirim</button>
-        </p>
-        </div>
-    </div>
   </form>
 
 <script>

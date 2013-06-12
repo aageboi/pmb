@@ -31,6 +31,10 @@ class Pribadi_model extends MY_Model
             'primary_key' => 'id_sekolah',
             'model' => 'sekolahasal_model'
         ),
+        'ruang' => array(
+            'primary_key' => 'id_ruang',
+            'model' => 'ruang_model'
+        ),
     );
 
     // public $has_many => array(

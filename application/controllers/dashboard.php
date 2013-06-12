@@ -161,6 +161,11 @@ class dashboard extends CI_Controller
 
         if (! is_get()) {
 
+            if ($this->input->post('pil1')==$this->input->post('pil2')) {
+                set_message('Pilihan 1 dan 2 harus berbeda','error');
+                redirect('dashboard/registrasi');
+            }
+
             if (isset($_FILES['foto']) && !empty($_FILES['foto']['name'])) {
                 if ($foto = $this->do_upload('foto'))
                     $_pribadi['foto'] = $foto['upload_data']['file_name'];
@@ -176,9 +181,9 @@ class dashboard extends CI_Controller
                     $_pribadi['ttd_2'] = $ttd_2['upload_data']['file_name'];
             }
 
-            if ($this->input->post('pil1')==$this->input->post('pil2')) {
-                set_message('Pilihan 1 dan 2 harus berbeda','error');
-                redirect('dashboard/registrasi');
+            if (isset($_FILES['sktbw']) && !empty($_FILES['sktbw']['name'])) {
+                if ($ttd_2 = $this->do_upload('sktbw'))
+                    $_pribadi['sktbw'] = $ttd_2['upload_data']['file_name'];
             }
 
             $_pribadi['nama'] = $this->input->post('nama');
@@ -204,6 +209,7 @@ class dashboard extends CI_Controller
             $_pribadi['telp'] = $this->input->post('telp');
             $_pribadi['hp'] = $this->input->post('hp');
             $_pribadi['email'] = session('em');
+            $_pribadi['id_ruang'] = 1;
 
             if ($this->input->post('id'))
                 $_id = $this->input->post('id');
@@ -454,6 +460,7 @@ class dashboard extends CI_Controller
             ->with('sekolahasal')
             ->with('pil1')
             ->with('pil2')
+            ->with('ruang')
             ->get_by('id_user', session('uid'));
 
         if (! isset($pribadi['nama']))

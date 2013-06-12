@@ -30,6 +30,12 @@
                     </div>
                   </div>
                   <div class="control-group">
+                    <label class="control-label" for="jumlah">Jumlah Soal</label>
+                    <div class="controls">
+                      <input type="text" id="jumlah" placeholder="jumlah soal" name="jumlah" value="<?=isset($data->jumlah_soal) ? $data->jumlah_soal : ''?>">
+                    </div>
+                  </div>
+                  <div class="control-group">
                     <label class="control-label" for="ipa">IPA</label>
                     <div class="controls">
                       <input type="checkbox" id="ipa" name="ipa" value="ipa" <?=isset($data->kd_pel)&&(strtolower($data->kd_pel)=='ipa') ? "checked='checked'" : ''?>>

@@ -4,31 +4,32 @@
 <!--
           <h2>Registrasi</h2>
 -->
-          <strong>Pendaftaran Mahasiswa Baru S-1 Tahun Akademik 2013/2014</strong> (2012-08-28)
-          <p>Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran..</p>
-          <p><a class="btn" href="#">selengkapnya &raquo;</a></p>
+          <?php
+          $news = $this->pmb->get_statik_news();
+          ?>
+          <strong><?= $news->title ?></strong> (<?= $news->created_at ?>)
+          <p><?= substr($news->content,0,100) ?>..</p>
+          <p><a class="btn" href="<?= site_url($news->permalink) ?>">selengkapnya &raquo;</a></p>
         </div>
 
         <?php if (session('username')) { ?>
         <div class="span3">
             <p>
-                <strong>Hai, <?= session('username')?></strong>&nbsp;
-                (<a href="<?= site_url('logout')?>">logout</a>)
+                <strong>Hai, <?= session('username')?></strong>
             </p>
             <ul>
                 <li><a href="<?=site_url('dashboard')?>">Dashboard</a></li>
                 <li><a href="<?=site_url('dashboard/registrasi')?>">Registrasi</a></li>
-                <li><a href="">Syarat Pendaftaran</a></li>
-                <li><a href="">Kriteria kelulusan</a></li>
+                <li><a href="<?=site_url('petunjuk#syarat')?>">Syarat Pendaftaran</a></li>
+                <li><a href="<?=site_url('dashboard/lihathasil')?>">Lihat hasil ujian</a></li>
             </ul>
         </div>
         <div class="span4">
             <p>&nbsp;</p>
             <ul>
-                <li><a href="">Laporan</a></li>
-                <li><a href="">Lihat hasil ujian</a></li>
-                <li><a href="">Update data pribadi</a></li>
+                <li><a href="<?=site_url('dashboard/profile')?>">Update data pribadi</a></li>
                 <li><a href="<?=site_url('dashboard/gantipassword')?>">Ganti password</a></li>
+                <li><a href="<?=site_url('logout')?>">Logout</a></li>
             </ul>
         </div>
         <?php } else { ?>

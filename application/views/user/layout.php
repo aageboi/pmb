@@ -9,12 +9,14 @@
             <ul class="nav nav-tabs">
               <li><a href="<?=site_url('dashboard')?>"><i class="icon-home"></i> Dashboard</a></li>
               <li><a href="<?=site_url('dashboard/registrasi')?>"><i class="icon-list"></i> Formulir Pendaftaran</a></li>
-              <?php if ($this->pmb->is_registered()) { ?>
+              <?php if ($this->pmb->is_registered() && ! $this->pmb->is_verified()) { ?>
               <li><a href="<?=site_url('dashboard/konfirmasibayar')?>"><i class="icon-tags"></i> Konfirmasi Pembayaran</a></li>
               <?php } ?>
               <?php if ($this->pmb->is_verified()) { ?>
+              <?php if (! $this->pmb->already_test()) { ?>
               <li><a href="<?=site_url('dashboard/cetak')?>"><i class="icon-print"></i> Cetak Kartu Ujian</a></li>
               <li><a href="<?=site_url('dashboard/ujian')?>"><i class="icon-pencil"></i> Ujian Online</a></li>
+              <?php } ?>
               <li><a href="<?=site_url('dashboard/lihathasil')?>"><i class="icon-book"></i> Lihat hasil ujian</a></li>
               <?php } ?>
               <li><a href="<?=site_url('dashboard/profile')?>"><i class="icon-user"></i> Profile</a></li>

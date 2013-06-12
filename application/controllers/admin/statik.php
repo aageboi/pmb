@@ -1,8 +1,8 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class pelajaran extends CI_Controller
+class statik extends CI_Controller
 {
-    private $view = "admin/master/pelajaran";
+    private $view = "admin/data/statik";
 
     public function __construct ()
     {
@@ -10,20 +10,20 @@ class pelajaran extends CI_Controller
         if (! session('un'))
             redirect('admin/sessions/login');
 
-        $this->load->model('pelajaran_model','pelajaran');
+        $this->load->model('static_model','statik');
 
-        $this->data['page'] = 'pelajaran';
+        $this->data['page'] = 'statik';
         $this->data['breadcrumb'] = array(
             'Home' => 'admin',
-            'Master' => 'admin/master',
-            'Pelajaran' => 'admin/pelajaran',
+            'Master' => 'admin/data',
+            'Statik' => 'admin/statik',
         );
     }
 
     public function index()
     {
         $this->data['breadcrumb']['Daftar'] = null;
-        $this->data['data'] = $this->pelajaran->get_all();
+        $this->data['data'] = $this->statik->get_all();
         $this->data['yield'] = $this->view.'/list';
         $this->load->view('admin/layout', $this->data);
     }
@@ -35,15 +35,11 @@ class pelajaran extends CI_Controller
 
         // post new
         if (! is_get()) {
-            $this->data['kriteria'] = $_data['kriteria'] = $this->input->post('kriteria');
-            $this->data['nama'] = $_data['nama_pel'] = $this->input->post('nama');
-
-            $_data['jumlah_soal'] = 10;
-            $kd_pel = ($this->input->post('ipa'))
-                ? strtolower($this->input->post('ipa')) : 'ips';
-            $this->data['ipa'] = $_data['kd_pel'] = $kd_pel;
-            if ($result = $this->pelajaran->insert($_data))
-                redirect('admin/pelajaran');
+            $this->data['permalink'] = $_data['permalink'] = $this->input->post('permalink');
+            $this->data['title'] = $_data['title'] = $this->input->post('title');
+            $this->data['content'] = $_data['content'] = $this->input->post('content');
+            if ($result = $this->statik->insert($_data))
+                redirect('admin/statik');
             else
                 set_message(validation_errors(),'error');
         }
@@ -58,24 +54,21 @@ class pelajaran extends CI_Controller
         // post update
         if (! is_get()) {
             $_id = $this->input->post('id');
-            $kd_pel = ($this->input->post('ipa'))
-                ? strtolower($this->input->post('ipa')) : 'ips';
             $new_data = array(
-                'kriteria' => $this->input->post('kriteria'),
-                'nama_pel' => $this->input->post('nama'),
-                'jumlah_soal' => $this->input->post('jumlah'),
-                'kd_pel' => $kd_pel,
+                'permalink' => $this->input->post('permalink'),
+                'title' => $this->input->post('title'),
+                'content' => $this->input->post('content'),
             );
-            if ($result = $this->pelajaran->update($_id,$new_data))
-                redirect('admin/pelajaran');
+            if ($result = $this->statik->update($_id,$new_data))
+                redirect('admin/statik');
             else
                 set_message(validation_errors(),'error');
         } else {
             if (! $id) {
                 set_message('ID tidak boleh kosong','error');
-                redirect('admin/pelajaran');
+                redirect('admin/statik');
             }
-            $this->data['data'] = $this->pelajaran->get_by('id',$id);
+            $this->data['data'] = $this->statik->get_by('id',$id);
         }
         $this->load->view('admin/layout', $this->data);
     }
@@ -84,13 +77,13 @@ class pelajaran extends CI_Controller
     {
         if (! $id) {
             set_message('ID tidak boleh kosong','error');
-            redirect('admin/pelajaran');
+            redirect('admin/statik');
         }
-        if ($this->pelajaran->delete($id)) {
+        if ($this->statik->delete($id)) {
             set_message('Hapus data berhasil','info');
         } else {
             set_message('Hapus data gagal','error');
         }
-        redirect('admin/pelajaran');
+        redirect('admin/statik');
     }
 }

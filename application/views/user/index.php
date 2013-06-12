@@ -153,6 +153,19 @@
             <li><span class="badge badge-inverse">3</span> <a href="<?=site_url('dashboard')?>">Konfirmasi Pembayaran</a></li>
             <li><span class="badge badge-inverse">4</span> <a href="<?=site_url('dashboard')?>">Cetak Kartu Ujian</a></li>
         </ul>
+
+        <br><br>
+        <i>
+            <p>
+                Sebelum melakukan registrasi Calon Mahasiswa Universitas Tarumanagara, harap dipersiapkan dahulu semua persyaratan yang diperlukan untuk pendaftaran online.
+            </p>
+            <ul>
+                <li><strong>Pas Foto</strong><br>(Ukuran file maksimal 100Kb. Format file: jpg, jpeg, png)</li>
+                <li><strong>Scan tanda tangan Calon Mahasiswa</strong> <br> (Ukuran file maksimal 100Kb. Format file: jpg, jpeg, png)</li>
+                <li><strong>Scan tanda tangan Orangtua Calon Mahasiswa</strong><br> (Ukuran file maksimal 100Kb. Format file: jpg, jpeg, png)</li>
+                <li><strong>Scan surat keterangan tidak buta warna</strong><br>(khusus yg memilih jurusan Kedokteran dan Desain).</li>
+            </ul>
+        </i>
     </div>
 </div>
 <?php }

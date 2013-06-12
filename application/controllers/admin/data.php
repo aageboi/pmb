@@ -13,8 +13,9 @@ class data extends CI_Controller
 
     public function index()
     {
-        $data['yield'] = 'admin/data/index';
-        $this->load->view('admin/layout', $data);
+        redirect('admin');
+        // $data['yield'] = 'admin/data/index';
+        // $this->load->view('admin/layout', $data);
     }
 
     public function admin ()

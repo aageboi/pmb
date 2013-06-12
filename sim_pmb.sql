@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 30, 2013 at 01:59 AM
+-- Generation Time: Jun 12, 2013 at 04:14 PM
 -- Server version: 5.5.31-0ubuntu0.13.04.1
 -- PHP Version: 5.4.9-4ubuntu2
 
@@ -62,7 +62,7 @@ CREATE TABLE IF NOT EXISTS `t_akun` (
   `role` enum('superadmin','admin','user') NOT NULL DEFAULT 'user',
   `status` char(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `t_akun`
@@ -70,7 +70,9 @@ CREATE TABLE IF NOT EXISTS `t_akun` (
 
 INSERT INTO `t_akun` (`id`, `nama_akun`, `email`, `password`, `created_at`, `role`, `status`) VALUES
 (1, 'ngadmin', 'ngadmin@untar.ac.id', 'ac43724f16e9241d990427ab7c8f4228', '2013-04-16 17:44:32', 'admin', '1'),
-(9, 'Heri Gunawan B', 'user@biasa.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-05-22 15:39:25', 'user', '1');
+(9, 'Heri Gunawan B', 'user@biasa.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-05-22 15:39:25', 'user', '1'),
+(10, 'ian prasidha', 'yankuro.4th@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-04 15:22:36', 'user', '1'),
+(11, 'heri gunawan budiyanto', 'aageboi@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-11 12:50:26', 'user', '1');
 
 -- --------------------------------------------------------
 
@@ -160,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `t_grade` (
   `nilai_min` int(11) NOT NULL,
   `nilai_max` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `t_grade`
@@ -168,9 +170,8 @@ CREATE TABLE IF NOT EXISTS `t_grade` (
 
 INSERT INTO `t_grade` (`id`, `nama_grade`, `nilai_min`, `nilai_max`) VALUES
 (1, 'I', 85, 100),
-(2, 'II', 65, 84),
-(3, 'III', 40, 64),
-(4, 'IV', 0, 39);
+(2, 'II', 71, 84),
+(3, 'III', 60, 70);
 
 -- --------------------------------------------------------
 
@@ -185,8 +186,54 @@ CREATE TABLE IF NOT EXISTS `t_hasil` (
   `id_soal` int(11) NOT NULL,
   `jawaban` varchar(50) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `unik_user_soal` (`id_pribadi`,`id_soal`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+
+--
+-- Dumping data for table `t_hasil`
+--
+
+INSERT INTO `t_hasil` (`id`, `id_pribadi`, `id_soal`, `jawaban`, `created_at`) VALUES
+(1, 9, 7, 'a', '2013-06-04 14:25:33'),
+(2, 9, 16, 'a', '2013-06-04 14:25:33'),
+(3, 9, 9, 'd', '2013-06-04 14:25:33'),
+(4, 9, 8, 'b', '2013-06-04 14:25:33'),
+(5, 9, 13, 'b', '2013-06-04 14:25:33'),
+(6, 9, 6, 'b', '2013-06-04 14:25:33'),
+(7, 9, 2, 'b', '2013-06-04 14:25:34'),
+(8, 9, 4, 'b', '2013-06-04 14:25:34'),
+(9, 9, 3, 'c', '2013-06-04 14:25:34'),
+(10, 9, 10, 'c', '2013-06-04 14:25:34'),
+(11, 9, 14, 'b', '2013-06-04 14:25:34'),
+(12, 9, 12, 'c', '2013-06-04 14:25:34'),
+(13, 9, 15, 'b', '2013-06-04 14:25:34'),
+(14, 9, 11, 'b', '2013-06-04 14:25:34'),
+(15, 10, 9, 'a', '2013-06-04 15:55:15'),
+(16, 10, 16, 'd', '2013-06-04 15:55:15'),
+(17, 10, 13, 'b', '2013-06-04 15:55:16'),
+(18, 10, 8, 'c', '2013-06-04 15:55:16'),
+(19, 10, 6, 'c', '2013-06-04 15:55:16'),
+(20, 10, 3, 'b', '2013-06-04 15:55:16'),
+(21, 10, 4, 'c', '2013-06-04 15:55:16'),
+(22, 10, 2, 'a', '2013-06-04 15:55:16'),
+(23, 10, 10, 'c', '2013-06-04 15:55:16'),
+(24, 10, 12, 'b', '2013-06-04 15:55:16'),
+(25, 10, 14, 'a', '2013-06-04 15:55:16'),
+(26, 11, 7, 'b', '2013-06-11 18:14:13'),
+(27, 11, 8, 'b', '2013-06-11 18:14:13'),
+(28, 11, 16, 'a', '2013-06-11 18:14:13'),
+(29, 11, 9, 'd', '2013-06-11 18:14:13'),
+(30, 11, 13, 'a', '2013-06-11 18:14:13'),
+(31, 11, 4, 'a', '2013-06-11 18:14:13'),
+(32, 11, 2, 'b', '2013-06-11 18:14:13'),
+(33, 11, 6, 'a', '2013-06-11 18:14:13'),
+(34, 11, 3, 'c', '2013-06-11 18:14:13'),
+(35, 11, 10, 'a', '2013-06-11 18:14:13'),
+(36, 11, 14, 'a', '2013-06-11 18:14:13'),
+(37, 11, 12, 'c', '2013-06-11 18:14:13'),
+(38, 11, 15, 'a', '2013-06-11 18:14:13'),
+(39, 11, 11, 'a', '2013-06-11 18:14:13');
 
 -- --------------------------------------------------------
 
@@ -348,14 +395,18 @@ CREATE TABLE IF NOT EXISTS `t_ortu` (
   `telp` char(20) NOT NULL,
   `is_ortu` enum('ayah','ibu','wali') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `t_ortu`
 --
 
 INSERT INTO `t_ortu` (`id`, `id_provinsi`, `id_pendidikan`, `id_pekerjaan`, `nama`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `is_ortu`) VALUES
-(6, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', '');
+(6, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', ''),
+(7, 2, 7, 1, 'Andreas Jatimin', '1953-08-16', '', '', '', '', '', '', '', 'ayah'),
+(8, 1, 6, 1, 'H. Drs. Surata', '1952-11-11', 'Jl Lemah Hegar Timur No. 17', 'Sukapura', '04', '04', 'Bandung', '40285', '0227334332', 'ayah'),
+(9, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', ''),
+(10, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -394,6 +445,7 @@ CREATE TABLE IF NOT EXISTS `t_pelajaran` (
   `kd_pel` char(5) NOT NULL,
   `nama_pel` varchar(100) NOT NULL,
   `kriteria` int(11) NOT NULL,
+  `jumlah_soal` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
@@ -401,13 +453,13 @@ CREATE TABLE IF NOT EXISTS `t_pelajaran` (
 -- Dumping data for table `t_pelajaran`
 --
 
-INSERT INTO `t_pelajaran` (`id`, `kd_pel`, `nama_pel`, `kriteria`) VALUES
-(1, 'ipa', 'Fisika', 50),
-(3, 'ips', 'Bahasa Inggris', 40),
-(4, 'ips', 'Matematika', 50),
-(5, 'ips', 'Bahasa Indonesia', 60),
-(6, 'ipa', 'Kimia', 50),
-(7, 'ipa', 'Biologi', 50);
+INSERT INTO `t_pelajaran` (`id`, `kd_pel`, `nama_pel`, `kriteria`, `jumlah_soal`) VALUES
+(1, 'ipa', 'Fisika', 50, 5),
+(3, 'ips', 'Bahasa Inggris', 40, 25),
+(4, 'ips', 'Matematika', 50, 35),
+(5, 'ips', 'Bahasa Indonesia', 60, 20),
+(6, 'ipa', 'Kimia', 50, 5),
+(7, 'ipa', 'Biologi', 50, 5);
 
 -- --------------------------------------------------------
 
@@ -524,20 +576,25 @@ CREATE TABLE IF NOT EXISTS `t_pribadi` (
   `foto` varchar(100) NOT NULL,
   `ttd_1` varchar(100) NOT NULL,
   `ttd_2` varchar(100) NOT NULL,
+  `sktbw` varchar(100) NOT NULL COMMENT 'surat keterangan tidak buta warna',
   `nomor_ujian` varchar(50) NOT NULL,
   `is_verified` char(1) NOT NULL DEFAULT '0',
   `pil_1` int(11) NOT NULL,
   `pil_2` int(11) NOT NULL,
   `id_jalur` int(11) NOT NULL,
+  `id_ruang` int(11) NOT NULL,
+  `nilai_gambar` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='tabel data pribadi' AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='tabel data pribadi' AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `t_pribadi`
 --
 
-INSERT INTO `t_pribadi` (`id`, `id_user`, `id_provinsi`, `id_jenkel`, `id_agama`, `id_nikah`, `id_sumber`, `id_kwn`, `id_ortu`, `id_sekolah`, `nama`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `hp`, `email`, `foto`, `ttd_1`, `ttd_2`, `nomor_ujian`, `is_verified`, `pil_1`, `pil_2`, `id_jalur`) VALUES
-(7, 9, 1, 1, 1, 1, 1, 1, 6, 6, 'Heri Gunawan Budiyanto', '', '0000-00-00', '', '', '', '', '', '', '', '', 'ngadmin@untar.ac.id', '', '', '', '1110007', '1', 5, 2, 4);
+INSERT INTO `t_pribadi` (`id`, `id_user`, `id_provinsi`, `id_jenkel`, `id_agama`, `id_nikah`, `id_sumber`, `id_kwn`, `id_ortu`, `id_sekolah`, `nama`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `hp`, `email`, `foto`, `ttd_1`, `ttd_2`, `sktbw`, `nomor_ujian`, `is_verified`, `pil_1`, `pil_2`, `id_jalur`, `id_ruang`, `nilai_gambar`) VALUES
+(7, 9, 1, 1, 3, 1, 1, 1, 6, 6, 'Heri Gunawan Budiyanto', 'jakarta', '1985-12-30', '', '', '', '', '', '', '', '', 'user@biasa.com', 'metal.jpg', '', '', '', '1110007', '1', 5, 2, 4, 1, 0),
+(8, 10, 2, 1, 1, 2, 1, 1, 7, 7, 'Antonius yan prasidha', 'Jakarta', '1985-06-14', 'Jakarta Timur Regency Blok G2/22', 'Cakung', '014', '007', 'Jakarta Timur', '13910', '021454887', '087781868', 'yankuro.4th@gmail.com', '', '', '', '', '1210008', '1', 2, 3, 5, 3, 0),
+(9, 11, 2, 1, 3, 1, 1, 1, 8, 8, 'Heri Gunawan Budiyanto', 'Bandung', '1985-12-30', 'GG.ABDULRAHIM NO.7 RT 004 RW 004', 'Sukapura', '04', '04', 'Bandung', '40285', '0227334332', '08562070196', 'aageboi@gmail.com', 'metal1.jpg', '', '', '', '1330009', '1', 5, 6, 3, 4, 12);
 
 -- --------------------------------------------------------
 
@@ -603,17 +660,17 @@ CREATE TABLE IF NOT EXISTS `t_ruangujian` (
   `lokasi` varchar(100) NOT NULL,
   `kapasitas` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `t_ruangujian`
 --
 
 INSERT INTO `t_ruangujian` (`id`, `id_pelajaran`, `nama_ruang`, `lokasi`, `kapasitas`) VALUES
-(1, 3, 'R.101', '-', 40),
-(2, 1, '100', '-', 40),
-(3, 1, '101', '-', 40),
-(4, 2, '100', '-', 40);
+(1, 3, 'R.102', '-', 40),
+(3, 1, 'R.101', '-', 40),
+(4, 4, 'R. 104', '-', 40),
+(5, 1, 'R.100', '-', 40);
 
 -- --------------------------------------------------------
 
@@ -655,14 +712,43 @@ CREATE TABLE IF NOT EXISTS `t_sekolahasal` (
   `id_jurusan` char(5) NOT NULL,
   `tahun_lulus` char(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
 
 --
 -- Dumping data for table `t_sekolahasal`
 --
 
 INSERT INTO `t_sekolahasal` (`id`, `id_sekolah`, `id_jurusan`, `tahun_lulus`) VALUES
-(6, 1, '1', '');
+(6, 1, '1', ''),
+(7, 2, '2', '2013'),
+(8, 1, '2', '2003'),
+(9, 1, '1', ''),
+(10, 1, '1', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `t_static`
+--
+
+DROP TABLE IF EXISTS `t_static`;
+CREATE TABLE IF NOT EXISTS `t_static` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `permalink` varchar(100) NOT NULL,
+  `title` varchar(200) NOT NULL,
+  `content` text NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `t_static`
+--
+
+INSERT INTO `t_static` (`id`, `permalink`, `title`, `content`, `created_at`) VALUES
+(1, 'petunjuk', 'Petunjuk', '<p>isi halaman petunjuk edited</p>', '2013-06-12 00:55:00'),
+(2, 'pengumuman', 'Pengumuman', '<p>Isi halaman pengumuman edited</p>\n<p>&nbsp;</p>', '2013-06-12 00:55:10'),
+(3, 'news', 'Pendaftaran Mahasiswa Baru S-1 Tahun Akademik 2013/2014', '<p><span>Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</span></p>\n<p>Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;</p>', '2013-06-12 01:09:20');
 
 -- --------------------------------------------------------
 

@@ -13,7 +13,7 @@
             <?php foreach ($data as $pel) { ?>
             <tr>
                 <td><?= $pel->nama_pel ?></td>
-                <td>20 soal</td>
+                <td><?= $pel->jumlah_soal ?> soal</td>
             </tr>
             <?php } ?>
             <tr>

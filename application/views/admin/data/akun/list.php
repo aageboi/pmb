@@ -35,8 +35,12 @@
                         <?php } ?>
                         </td>
                         <td width="85px">
+                            <?php if ($row->nama_akun == session('un')) { ?>
+                            <a href="<?=site_url('admin/akun/edit/'.$row->id)?>" class="btn btn-success" title="edit"><i class="icon-edit"></i> update</a>
+                            <?php } else { ?>
                             <a href="<?=site_url('admin/akun/edit/'.$row->id)?>" class="btn" title="edit"><i class="icon-edit"></i></a>
                             <a href="<?=site_url('admin/akun/delete/'.$row->id)?>" class="btn btn-danger" title="delete" onclick="return confirm('Hapus data?');"><i class="icon-remove"></i></a>
+                            <?php } ?>
                         </td>
                     </tr>
                     <?php } ?>

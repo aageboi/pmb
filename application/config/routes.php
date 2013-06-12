@@ -69,8 +69,8 @@ $route['login'] = 'homepage/login';
 $route['logout'] = 'homepage/logout';
 $route['forgot'] = 'homepage/forgot';
 $route['signup'] = 'homepage/signup';
-$route['petunjuk'] = 'homepage/petunjuk';
-$route['pengumuman'] = 'homepage/pengumuman';
+$route['dashboard'] = 'dashboard';
+$route['(:any)'] = 'homepage/statik/$1';
 $route['admin'] = 'admin/dashboard';
 $route['404_override'] = '';
 

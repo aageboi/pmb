@@ -62,6 +62,12 @@ class akun extends CI_Controller
             set_message('ID tidak boleh kosong','error');
             redirect('admin/akun');
         }
+
+        if ($id == session('aid')) {
+            set_message('Anda harus login menggunakan user lain untuk menghapus data anda sendiri.','error');
+            redirect('admin/akun');
+        }
+
         if ($this->akun->delete($id)) {
             $this->load->model('pribadi_model', 'pribadi');
             $this->load->model('sekolahasal_model', 'sekolahasal');

@@ -101,17 +101,13 @@ class homepage extends CI_Controller
         $this->load->view('homepage', $this->data);
     }
 
-    public function petunjuk ()
+    public function statik ($permalink = NULL)
     {
-        $this->data['page'] = 'petunjuk';
-        $this->data['yield'] = 'petunjuk';
-        $this->load->view('homepage', $this->data);
-    }
-
-    public function pengumuman ()
-    {
-        $this->data['page'] = 'pengumuman';
-        $this->data['yield'] = 'pengumuman';
+        $this->load->model('static_model', 'statik');
+        $statik = $this->statik->get_by('permalink', $permalink);
+        $this->data['data'] = $statik;
+        $this->data['page'] = $statik->permalink;
+        $this->data['yield'] = 'statik';
         $this->load->view('homepage', $this->data);
     }
 

@@ -11,8 +11,8 @@
                     <tr>
                         <th>Foto</th>
                         <th>TTD</th>
-                        <th>TTD<br>Ortu</th><!--
-                        <th>Bukti<br>Transfer</th>-->
+                        <th>TTD<br>Ortu</th>
+                        <th>Pilihan</th>
                         <th>Biodata</th>
                         <th>Status</th>
                         <th>Option</th>
@@ -29,12 +29,15 @@
                         <?php } ?></td>
                         <td><?php if ($row['ttd_2']) { ?>
                             <img src='<?=base_url()?>assets/img/upload/<?=$row['ttd_2']?>' class="img-polaroid" width='60px'>
-                        <?php } ?></td><!--
-                        <td>-</td>-->
+                        <?php } ?></td>
+                        <td>
+                            1. <strong><?= $this->pmb->get_prodi($row['pil_1']) ?></strong><br>
+                            2. <strong><?= $this->pmb->get_prodi($row['pil_2']) ?></strong>
+                        </td>
                         <td>
                             <strong><?=$row['nama']?></strong><br>
-                            <?=$row['tempat_lahir']?>, <?=$row['tanggal_lahir']?><br>
-                            <?=$row['kota']?>
+                            <?=$row['tempat_lahir']?:'-'?>, <?=$row['tanggal_lahir']?:'-'?><br>
+                            <?=$row['kota']?:'-'?>
                         </td>
                         <td>
                         <?php if ($row['is_verified'] == '1') { ?>

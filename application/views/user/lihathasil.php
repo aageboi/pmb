@@ -57,15 +57,21 @@
     }
     ?>
 </table>
-<div class="alert alert-info" style="text-align:center;">
-    <strong>
+
 <?php if ($anda_lulus) { ?>
+<div class="alert alert-success" style="text-align:center;">
+    <h1>
         L U L U S
-<?php } else { ?>
-    T I D A K &nbsp; &nbsp; L U L U S
-<?php } ?>
-    </strong>
+    </h1>
 </div>
+<?php } else { ?>
+<div class="alert alert-success" style="text-align:center;">
+    <h1>
+        T I D A K &nbsp; &nbsp; L U L U S
+    </h1>
+</div>
+<?php } ?>
+
 <?php } else { ?>
     <h3>Anda belum melakukan Ujian Online</h3>
 <?php } ?>

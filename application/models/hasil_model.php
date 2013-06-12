@@ -25,4 +25,16 @@ class Hasil_model extends MY_Model
 
         return $soal;
     }
+
+    public function find_user ()
+    {
+        $this->db->distinct('p.id');
+        $this->db->select('p.*');
+        $this->db->join('t_hasil h', 'h.id_pribadi = p.id_user');
+        $this->db->order_by('p.nomor_ujian', 'asc');
+        $rs = $this->db->get('t_pribadi p');
+        $data = $rs->result();
+        $rs->free_result();
+        return $data;
+    }
 }

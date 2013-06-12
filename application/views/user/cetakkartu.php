@@ -13,7 +13,7 @@
             <tr>
                 <th>Nomor Ujian</th>
                 <td><?=$data['nomor_ujian']?></td>
-                <td rowspan="4" align="center">
+                <td rowspan="5" align="center">
                     <img src="<?=$this->pmb->get_avatar()?>" class="img-polaroid" width="120px">
                 </td>
             </tr>
@@ -23,7 +23,17 @@
             </tr>
             <tr>
                 <th>Ruang Ujian</th>
-                <td><?=$data['ruang']?></td>
+                <td><?=$data['ruang']->nama_ruang?></td>
+            </tr>
+            <tr>
+                <th>Waktu</th>
+                <td><?php
+                    if ($data['pil1'] && (strpos(strtolower($data['pil1']->nama_prodi), 'design') !== FALSE || strpos(strtolower($data['pil2']->nama_prodi), 'design') !== FALSE)) {
+                        echo '07.00 WIB';
+                    } else {
+                        echo '08.00 WIB';
+                    }
+                ?></td>
             </tr>
             <tr>
                 <th>Pilihan Program Studi</th>

@@ -16,6 +16,8 @@
             <ul class="dropdown-menu">
               <li><a href="<?=site_url('admin/akun')?>"><i class="icon-user"></i> Akun</a></li>
               <li><a href="<?=site_url('admin/registrasi')?>"><i class="icon-user"></i> Registrasi</a></li>
+              <li><a href="<?=site_url('admin/nilai')?>"><i class="icon-th-list"></i> Nilai</a></li>
+              <li><a href="<?=site_url('admin/statik')?>"><i class="icon-pencil"></i> Halaman Statik</a></li>
               <li class="divider"></li>
               <li class="dropdown-submenu">
                 <a href="#" onclick="javascript:void(0)"><i class="icon-file"></i> Data Master</a>
