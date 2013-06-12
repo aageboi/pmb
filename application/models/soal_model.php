@@ -68,23 +68,27 @@ class Soal_model extends MY_Model
             $i = 0;
             foreach ($result as $key => $row) {
                 $soal['nama_pel'][$i] = $row->nama_pel;
-                $this->db->limit(20);
+                $this->db->limit($row->jumlah_soal);
+                $limit_mudah = floor((20*$row->jumlah_soal)/100);
+                $limit_sedang = floor((60*$row->jumlah_soal)/100);
+                $limit_sukar = floor((20*$row->jumlah_soal)/100);
+                
                 $rs = $this->db->query("
                     (SELECT * FROM {$this->_table}
                     WHERE id_pelajaran = {$row->id} and tingkat = 1
-                    limit 5)
+                    limit {$limit_mudah})
 
                     union all
 
                     (SELECT * FROM {$this->_table}
                     WHERE id_pelajaran = {$row->id} and tingkat = 2
-                    limit 6)
+                    limit {$limit_sedang})
 
                     union all
 
                     (SELECT * FROM {$this->_table}
                     WHERE id_pelajaran = {$row->id} and tingkat = 3
-                    limit 9)
+                    limit {$limit_sukar})
 
                     ORDER BY RAND()
                 ");

@@ -37,8 +37,9 @@ if (is_array($data) && isset($data['ortu']))
     <?php if (! $this->pmb->is_verified()) { ?>
     <label class="control-label" style="text-align:left" for="jalur">Jalur yang anda pilih</label>
     <?php foreach ($jalur as $jal) { ?>
+    <?php $disable = (strtolower($jal->nama_jalur)=='usm jakarta') ? '' : 'disabled' ?>
     <label class="checkbox inline">
-        <input type="radio" name="jalur" value="<?=$jal->id?>" <?=(isset($data['id_jalur'])&&$data['id_jalur']==$jal->id)?'checked':''?>> <?=$jal->nama_jalur?>
+        <input type="radio" name="jalur" value="<?=$jal->id?>" <?=(isset($data['id_jalur'])&&$data['id_jalur']==$jal->id)?'checked':''?> <?=$disable?>> <?=$jal->nama_jalur?>
     </label>
     <?php } ?>
     <hr>

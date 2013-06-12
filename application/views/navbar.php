@@ -82,8 +82,8 @@
             <div class="container">
               <ul class="nav">
                 <li <?=(!isset($page))?'class="active"':''?>><a href="<?=site_url()?>"><i class="icon-home"></i> Home</a></li>
-                <li <?=(isset($page)&&$page=='petunjuk')?'class="active"':''?>><a href="<?=site_url('petunjuk')?>"><i class="icon-question-sign"></i> Petunjuk</a></li>
-                <li <?=(isset($page)&&$page=='pengumuman')?'class="active"':''?>><a href="<?=site_url('pengumuman')?>"><i class="icon-info-sign"></i> Pengumuman</a></li>
+                <li <?=(isset($page)&&$page=='petunjuk')?'class="active"':''?>><a href="<?=site_url('petunjuk')?>"><i class="icon-question-sign"></i> Help</a></li>
+                <li <?=(isset($page)&&$page=='pengumuman')?'class="active"':''?>><a href="<?=site_url('pengumuman')?>"><i class="icon-info-sign"></i> Informasi</a></li>
               </ul>
             </div>
           </div>

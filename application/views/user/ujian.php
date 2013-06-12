@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Universitas Tarumanegara :: Penerimaan Mahasiswa Baru <?=date('Y')?></title>
+    <title>Universitas Tarumanagara :: Penerimaan Mahasiswa Baru <?=date('Y')?></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -141,7 +141,7 @@
         <ul class="nav nav-pills pull-right">
           <li class="active"><h1 id="cdwn">00:00:00</h1></li>
         </ul>
-        <h4 class="muted">Soal Ujian Saringan Masuk Univ. Tarumanegara <?=date('Y')?></h4>
+        <h4 class="muted">Soal Ujian Saringan Masuk Univ. Tarumanagara <?=date('Y')?></h4>
         <ul class="nav nav-tabs" id="soal">
             <?php
             $j = 0;

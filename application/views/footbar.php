@@ -1,6 +1,6 @@
       <!-- Example row of columns -->
       <div class="row-fluid">
-        <div class="span5">
+        <div class="span8">
 <!--
           <h2>Registrasi</h2>
 -->
@@ -34,21 +34,6 @@
         </div>
         <?php } else { ?>
 
-        <div class="span3">
-<!--
-          <h2>Pengumuman</h2>
--->
-          <strong>Lihat Hasil Ujian</strong>
-          <br><br>
-          <form class="form-search">
-            <input type="text" class="input-medium search-query" name="idreg" placeholder="Nomor Ujian">
-            <button type="submit" class="btn"><i class="icon-search"></i></button>
-          </form>
-          <p>
-            Nomor registrasi sepuluh digit contoh : 011161XXXX<br>
-            <a href="<?=site_url('login')?>">lupa nomor registrasi</a>
-          </p>
-        </div>
         <div class="span4">
             <form class="well form-horizontal" method="post" action="<?=site_url('login')?>">
               <div class="control-group">

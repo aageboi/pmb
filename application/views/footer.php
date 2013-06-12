@@ -1,5 +1,5 @@
         <footer>
-            <p>&copy; Universitas Tarumanegara <?=date('Y')?></p>
+            <p>&copy; Universitas Tarumanagara <?=date('Y')?></p>
         </footer>
 
     </div> <!-- /container -->
