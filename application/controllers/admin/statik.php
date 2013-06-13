@@ -59,8 +59,10 @@ class statik extends CI_Controller
                 'title' => $this->input->post('title'),
                 'content' => $this->input->post('content'),
             );
-            if ($result = $this->statik->update($_id,$new_data))
-                redirect('admin/statik');
+            if ($result = $this->statik->update($_id,$new_data)) {
+                set_message('Update data berhasil');
+                redirect('admin/statik/edit/'.$_id);
+            }
             else
                 set_message(validation_errors(),'error');
         } else {

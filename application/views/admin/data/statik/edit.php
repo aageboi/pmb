@@ -8,7 +8,6 @@
             <div class="span12">
                 <?=$this->load->view('breadcrumb')?>
 
-                <h3>Data Soal</h3>
                 <form class="form-horizontal" method="post" action="<?=site_url('admin/statik/edit')?>">
                   <?=$this->load->view('admin/error_message')?>
                   <div class="control-group">
@@ -19,7 +18,7 @@
                     <input type="text" class="input-xxlarge" id="title" placeholder="Judul" name="title" value="<?=isset($data->title) ? $data->title : ''?>">
                   </div>
                   <div class="control-group">
-                      <textarea id="content" placeholder="content" name="content" rows="5" class="span9"><?=isset($data->content) ? $data->content : ''?></textarea>
+                      <textarea id="content" placeholder="content" name="content" class="span12"><?=isset($data->content) ? $data->content : ''?></textarea>
                   </div>
                   <div class="control-group">
                     <div class="controls">

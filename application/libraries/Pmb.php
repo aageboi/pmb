@@ -146,10 +146,10 @@ Class Pmb
         return false;
     }
 
-    public function get_statik_news ()
+    public function get_statik ($permalink = 'news')
     {
         $this->to->load->model('static_model', 'statik');
-        if ($news = $this->to->statik->get_by('permalink', 'news'))
+        if ($news = $this->to->statik->get_by('permalink', $permalink))
             return $news;
         return false;
     }
@@ -219,6 +219,15 @@ Class Pmb
             $_data['lulus'] = TRUE;
         }
         return $_data;
+    }
+
+    function get_bukti_pembayaran ($id)
+    {
+        $this->to->load->model('pembayaran_model', 'bayar');
+        if ($bukti = $this->to->bayar->get_by('id_akun', $id)) {
+            return $bukti;
+        }
+        return false;
     }
 
     public function already_test ($id = NULL)

@@ -1,5 +1,5 @@
         <footer>
-            <p>&copy; Universitas Tarumanagara <?=date('Y')?></p>
+            <p>&copy; <?=date('Y')?> Universitas Tarumanagara. All rights reserved.</p>
         </footer>
 
     </div> <!-- /container -->

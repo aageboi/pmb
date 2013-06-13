@@ -73,17 +73,31 @@
         border-right: 0;
         border-radius: 0 3px 3px 0;
       }
+      .title {font-size:24.5px;color:#841923}
+      .title_univ {font-size:18px;}
+      .title_alamat {font-size:12px;}
+      .cb{clear:both;}
     </style>
 
       <div class="masthead">
-        <h3 class="muted">Penerimaan Mahasiswa Baru <?=date("Y")?></h3>
+        <span class="title">
+            <span class="span2">
+                <img src="<?=base_url()?>assets/img/logo_cp.png" width="100px">
+            </span>
+            <span class="judul">
+            <br>Penerimaan Mahasiswa Baru Online<br>
+            <span class="title_univ"><strong>Universitas Tarumanagara</strong> Tahun Akademik <?= date("Y").'/'.(date("Y")+1) ?></span><br>
+            <span class="title_alamat">Jl. Letjen S. Parman No. 1 Jakarta Barat - 11440</span>
+            </span>
+        </span>
+        <div class="cb"><br></div>
         <div class="navbar">
           <div class="navbar-inner">
             <div class="container">
               <ul class="nav">
-                <li <?=(!isset($page))?'class="active"':''?>><a href="<?=site_url()?>"><i class="icon-home"></i> Home</a></li>
-                <li <?=(isset($page)&&$page=='petunjuk')?'class="active"':''?>><a href="<?=site_url('petunjuk')?>"><i class="icon-question-sign"></i> Help</a></li>
+                <li <?=(!isset($page))?'class="active"':''?>><a href="<?=site_url()?>"><i class="icon-home"></i> Beranda</a></li>
                 <li <?=(isset($page)&&$page=='pengumuman')?'class="active"':''?>><a href="<?=site_url('pengumuman')?>"><i class="icon-info-sign"></i> Informasi</a></li>
+                <li <?=(isset($page)&&$page=='petunjuk')?'class="active"':''?>><a href="<?=site_url('petunjuk')?>"><i class="icon-question-sign"></i> Bantuan</a></li>
               </ul>
             </div>
           </div>
