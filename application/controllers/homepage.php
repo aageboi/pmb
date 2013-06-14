@@ -101,6 +101,16 @@ class homepage extends CI_Controller
         $this->load->view('homepage', $this->data);
     }
 
+    public function download ()
+    {
+        $this->load->model('dokumen_model', 'dokumen');
+
+        $this->data['page'] = 'download';
+        $this->data['data'] = $this->dokumen->get_many_by('active', '1');
+        $this->data['yield'] = 'dokumen';
+        $this->load->view('homepage', $this->data);
+    }
+
     public function statik ($permalink = NULL)
     {
         $this->load->model('static_model', 'statik');

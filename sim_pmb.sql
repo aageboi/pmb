@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 12, 2013 at 04:14 PM
+-- Generation Time: Jun 14, 2013 at 08:19 AM
 -- Server version: 5.5.31-0ubuntu0.13.04.1
 -- PHP Version: 5.4.9-4ubuntu2
 
@@ -137,6 +137,29 @@ CREATE TABLE IF NOT EXISTS `t_biayakuliah` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `t_dokumen`
+--
+
+DROP TABLE IF EXISTS `t_dokumen`;
+CREATE TABLE IF NOT EXISTS `t_dokumen` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `title` varchar(200) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `active` tinyint(1) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `t_dokumen`
+--
+
+INSERT INTO `t_dokumen` (`id`, `title`, `name`, `created_at`, `active`) VALUES
+(1, 'Biaya Kuliah Tahun Akademik 2013/2014', 'Resume_CID200003009528704.pdf', '2013-06-13 19:01:59', 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `t_gambar`
 --
 
@@ -188,52 +211,24 @@ CREATE TABLE IF NOT EXISTS `t_hasil` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unik_user_soal` (`id_pribadi`,`id_soal`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `t_hasil`
 --
 
 INSERT INTO `t_hasil` (`id`, `id_pribadi`, `id_soal`, `jawaban`, `created_at`) VALUES
-(1, 9, 7, 'a', '2013-06-04 14:25:33'),
-(2, 9, 16, 'a', '2013-06-04 14:25:33'),
-(3, 9, 9, 'd', '2013-06-04 14:25:33'),
-(4, 9, 8, 'b', '2013-06-04 14:25:33'),
-(5, 9, 13, 'b', '2013-06-04 14:25:33'),
-(6, 9, 6, 'b', '2013-06-04 14:25:33'),
-(7, 9, 2, 'b', '2013-06-04 14:25:34'),
-(8, 9, 4, 'b', '2013-06-04 14:25:34'),
-(9, 9, 3, 'c', '2013-06-04 14:25:34'),
-(10, 9, 10, 'c', '2013-06-04 14:25:34'),
-(11, 9, 14, 'b', '2013-06-04 14:25:34'),
-(12, 9, 12, 'c', '2013-06-04 14:25:34'),
-(13, 9, 15, 'b', '2013-06-04 14:25:34'),
-(14, 9, 11, 'b', '2013-06-04 14:25:34'),
-(15, 10, 9, 'a', '2013-06-04 15:55:15'),
-(16, 10, 16, 'd', '2013-06-04 15:55:15'),
-(17, 10, 13, 'b', '2013-06-04 15:55:16'),
-(18, 10, 8, 'c', '2013-06-04 15:55:16'),
-(19, 10, 6, 'c', '2013-06-04 15:55:16'),
-(20, 10, 3, 'b', '2013-06-04 15:55:16'),
-(21, 10, 4, 'c', '2013-06-04 15:55:16'),
-(22, 10, 2, 'a', '2013-06-04 15:55:16'),
-(23, 10, 10, 'c', '2013-06-04 15:55:16'),
-(24, 10, 12, 'b', '2013-06-04 15:55:16'),
-(25, 10, 14, 'a', '2013-06-04 15:55:16'),
-(26, 11, 7, 'b', '2013-06-11 18:14:13'),
-(27, 11, 8, 'b', '2013-06-11 18:14:13'),
-(28, 11, 16, 'a', '2013-06-11 18:14:13'),
-(29, 11, 9, 'd', '2013-06-11 18:14:13'),
-(30, 11, 13, 'a', '2013-06-11 18:14:13'),
-(31, 11, 4, 'a', '2013-06-11 18:14:13'),
-(32, 11, 2, 'b', '2013-06-11 18:14:13'),
-(33, 11, 6, 'a', '2013-06-11 18:14:13'),
-(34, 11, 3, 'c', '2013-06-11 18:14:13'),
-(35, 11, 10, 'a', '2013-06-11 18:14:13'),
-(36, 11, 14, 'a', '2013-06-11 18:14:13'),
-(37, 11, 12, 'c', '2013-06-11 18:14:13'),
-(38, 11, 15, 'a', '2013-06-11 18:14:13'),
-(39, 11, 11, 'a', '2013-06-11 18:14:13');
+(1, 9, 16, 'b', '2013-06-13 23:47:33'),
+(2, 9, 8, 'a', '2013-06-13 23:47:33'),
+(3, 9, 9, 'c', '2013-06-13 23:47:33'),
+(4, 9, 13, 'a', '2013-06-13 23:47:33'),
+(5, 9, 3, 'a', '2013-06-13 23:47:33'),
+(6, 9, 6, 'd', '2013-06-13 23:47:33'),
+(7, 9, 2, 'c', '2013-06-13 23:47:33'),
+(8, 9, 4, 'a', '2013-06-13 23:47:33'),
+(9, 9, 12, 'c', '2013-06-13 23:47:33'),
+(10, 9, 14, 'a', '2013-06-13 23:47:33'),
+(11, 9, 10, 'a', '2013-06-13 23:47:33');
 
 -- --------------------------------------------------------
 
@@ -395,7 +390,7 @@ CREATE TABLE IF NOT EXISTS `t_ortu` (
   `telp` char(20) NOT NULL,
   `is_ortu` enum('ayah','ibu','wali') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `t_ortu`
@@ -406,7 +401,8 @@ INSERT INTO `t_ortu` (`id`, `id_provinsi`, `id_pendidikan`, `id_pekerjaan`, `nam
 (7, 2, 7, 1, 'Andreas Jatimin', '1953-08-16', '', '', '', '', '', '', '', 'ayah'),
 (8, 1, 6, 1, 'H. Drs. Surata', '1952-11-11', 'Jl Lemah Hegar Timur No. 17', 'Sukapura', '04', '04', 'Bandung', '40285', '0227334332', 'ayah'),
 (9, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', ''),
-(10, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', '');
+(10, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', ''),
+(11, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -479,19 +475,15 @@ CREATE TABLE IF NOT EXISTS `t_pembayaran` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_akun` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data for table `t_pembayaran`
 --
 
 INSERT INTO `t_pembayaran` (`id`, `payment_method`, `payment_to`, `payment_date`, `payment_amount`, `desc`, `attachment`, `created_at`, `id_akun`) VALUES
-(2, 'direct', 'bca', '2013-05-22', '', 'untuk biaya atas nama Heri Gunawan', 'babal7.jpg', '2013-05-22 14:35:54', 4),
-(3, 'direct', 'bca', '2013-05-22', '15000000', 'asdasdads', 'babal8.jpg', '2013-05-22 15:11:35', 4),
-(4, 'direct', 'bca', '2013-05-09', '15000000', 'bukti transfer', 'babal9.jpg', '2013-05-22 16:13:22', 5),
-(5, 'bank', 'bni', '2013-05-22', '15000000', 'asdasdasdasdasdasdasd', 'babal10.jpg', '2013-05-22 16:19:06', 5),
-(6, 'direct', 'bca', '2013-05-09', '15000000', '', 'babal11.jpg', '2013-05-22 16:40:35', 6),
-(7, 'direct', 'bca', '2013-05-09', '15000000', '', 'babal12.jpg', '2013-05-22 16:42:47', 7);
+(8, 'direct', 'bca', '2013-05-22', '15000000', 'pembayaran biaya pendaftaran atas nama Heri Gunawan B', 'kokoronotomo.png', '2013-06-13 03:01:11', 7),
+(9, 'direct', 'bca', '2013-05-09', '15000000', '', 'php-logo-virus.jpg', '2013-06-13 18:16:09', 1);
 
 -- --------------------------------------------------------
 
@@ -585,16 +577,14 @@ CREATE TABLE IF NOT EXISTS `t_pribadi` (
   `id_ruang` int(11) NOT NULL,
   `nilai_gambar` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='tabel data pribadi' AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='tabel data pribadi' AUTO_INCREMENT=2 ;
 
 --
 -- Dumping data for table `t_pribadi`
 --
 
 INSERT INTO `t_pribadi` (`id`, `id_user`, `id_provinsi`, `id_jenkel`, `id_agama`, `id_nikah`, `id_sumber`, `id_kwn`, `id_ortu`, `id_sekolah`, `nama`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `hp`, `email`, `foto`, `ttd_1`, `ttd_2`, `sktbw`, `nomor_ujian`, `is_verified`, `pil_1`, `pil_2`, `id_jalur`, `id_ruang`, `nilai_gambar`) VALUES
-(7, 9, 1, 1, 3, 1, 1, 1, 6, 6, 'Heri Gunawan Budiyanto', 'jakarta', '1985-12-30', '', '', '', '', '', '', '', '', 'user@biasa.com', 'metal.jpg', '', '', '', '1110007', '1', 5, 2, 4, 1, 0),
-(8, 10, 2, 1, 1, 2, 1, 1, 7, 7, 'Antonius yan prasidha', 'Jakarta', '1985-06-14', 'Jakarta Timur Regency Blok G2/22', 'Cakung', '014', '007', 'Jakarta Timur', '13910', '021454887', '087781868', 'yankuro.4th@gmail.com', '', '', '', '', '1210008', '1', 2, 3, 5, 3, 0),
-(9, 11, 2, 1, 3, 1, 1, 1, 8, 8, 'Heri Gunawan Budiyanto', 'Bandung', '1985-12-30', 'GG.ABDULRAHIM NO.7 RT 004 RW 004', 'Sukapura', '04', '04', 'Bandung', '40285', '0227334332', '08562070196', 'aageboi@gmail.com', 'metal1.jpg', '', '', '', '1330009', '1', 5, 6, 3, 4, 12);
+(1, 9, 1, 1, 1, 1, 1, 1, 11, 11, 'Heri Gunawan Budiyanto', 'Bandung', '1985-12-30', '', '', '', '', '', '', '', '', 'ngadmin@untar.ac.id', 'ijazah-100x1501.jpg', '', '', '', '0001', '1', 1, 3, 5, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -712,7 +702,7 @@ CREATE TABLE IF NOT EXISTS `t_sekolahasal` (
   `id_jurusan` char(5) NOT NULL,
   `tahun_lulus` char(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
 -- Dumping data for table `t_sekolahasal`
@@ -723,7 +713,8 @@ INSERT INTO `t_sekolahasal` (`id`, `id_sekolah`, `id_jurusan`, `tahun_lulus`) VA
 (7, 2, '2', '2013'),
 (8, 1, '2', '2003'),
 (9, 1, '1', ''),
-(10, 1, '1', '');
+(10, 1, '1', ''),
+(11, 1, '1', '');
 
 -- --------------------------------------------------------
 
@@ -739,16 +730,19 @@ CREATE TABLE IF NOT EXISTS `t_static` (
   `content` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `t_static`
 --
 
 INSERT INTO `t_static` (`id`, `permalink`, `title`, `content`, `created_at`) VALUES
-(1, 'petunjuk', 'Petunjuk', '<p>isi halaman petunjuk edited</p>', '2013-06-12 00:55:00'),
-(2, 'pengumuman', 'Pengumuman', '<p>Isi halaman pengumuman edited</p>\n<p>&nbsp;</p>', '2013-06-12 00:55:10'),
-(3, 'news', 'Pendaftaran Mahasiswa Baru S-1 Tahun Akademik 2013/2014', '<p><span>Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</span></p>\n<p>Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;</p>', '2013-06-12 01:09:20');
+(1, 'petunjuk', 'Petunjuk Pendaftaran', '<p style="text-align: center;">&nbsp;</p>\n<p style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="../pmb/assets/img/help1.jpg" alt="" width="734" height="783" /></p>\n<p style="text-align: center;"><img src="../pmb/assets/img/help2.jpg" alt="" width="734" height="783" /></p>\n<p style="text-align: center;"><img src="../pmb/assets/img/help3.jpg" alt="" width="734" height="783" /></p>\n<p><img style="display: block; margin-left: auto; margin-right: auto;" src="../pmb/assets/img/help4.jpg" alt="" width="734" height="783" /></p>', '2013-06-12 00:55:00'),
+(2, 'jalur-usm-jakarta', 'Ujian Saringan Masuk (USM) Jakarta', '<p><strong>TAHUN AKADEMIK 2013/2014<br /></strong><br /><span style="text-decoration: underline;"><em><strong>Periode Mei</strong></em></span><br /><strong>Pendaftaran:&nbsp; s.d. 17 Mei 2013&nbsp;<br />Ujian Masuk:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19 Mei 2013<br />Pengumuman:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22 Mei 2013</strong><br /><br /><span style="text-decoration: underline;"><em><strong>Periode Juni</strong></em></span><br /><strong>Pendaftaran:&nbsp; s.d. 14 Juni 2013<br />Ujian Masuk: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;16 Juni 2013<br />Pengumuman: &nbsp; &nbsp; &nbsp; 19 Juni 2013<br /><br /></strong><br /><span style="text-decoration: underline;"><em><strong>Periode Juli</strong></em></span><br /><strong>Pendaftaran:&nbsp; s.d. 19 Juli 2013<br />Ujian Masuk: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;21 Juli 2013<br />Pengumuman: &nbsp; &nbsp; &nbsp; 24 Juli 2013</strong><br /><br /><span style="text-decoration: underline;"><em><strong>Periode Agustus<br /></strong></em></span><br /><strong>Pendaftaran,&nbsp;Ujian Masuk, dan&nbsp;Pengumuman: &nbsp; &nbsp; &nbsp;Langsung di tempat, Ujian &nbsp;melalui komputer ( Computer Based Test )<br />Pada Hari kerja : Senin - Jumat<br />Pukul : 08.00 - 16.30 WIB<br /></strong><strong><br /><br />*Untuk Periode berikutnya akan diupdate kemudian</strong></p>\n<p><em><strong>TUJUAN</strong></em><strong><br /><br />Program USM di Universitas Tarumanagara adalah salah satu mekanisme penerimaan mahasiswa baru yang bertujuan menjaring calon mahasiswa&nbsp; dari berbagai latar belakang kedaerahan, termasuk calon dari lulusan luar negeri, yang memiliki kemampuan akademik yang memadai dalam mengikuti program pendidikan tinggi di Universitas Tarumanagara.</strong></p>\n<p><em><strong>PILIHAN PROGRAM STUDI*</strong></em><strong><br /><br />Program studi yang ditawarkan di Jalur Ujian Saringan Masuk (USM) adalah:<br /></strong></p>\n<ol>\n<li><strong>Manajemen Bisnis</strong></li>\n<li><strong>Akuntansi Bisnis</strong></li>\n<li><strong>Ilmu Hukum</strong></li>\n<li><strong>Arsitektur</strong></li>\n<li><strong>Perencanaan Kota &amp; Real Estat</strong></li>\n<li><strong>Teknik Sipil</strong></li>\n<li><strong>Teknik Mesin</strong></li>\n<li><strong>Teknik Elektro</strong></li>\n<li><strong>Teknik Industri</strong></li>\n<li><strong>Kedokteran (Pendidikan Dokter)</strong></li>\n<li><strong>Ilmu Psikologi</strong></li>\n<li><strong>Teknik Informatika</strong></li>\n<li><strong>Sistem Informasi Bisnis</strong></li>\n<li><strong>Desain Interior</strong></li>\n<li><strong>Desain Komunikasi Visual</strong></li>\n<li><strong>Ilmu Komunikasi</strong></li>\n</ol>\n<p><strong>*sewaktu-waktu bisa berubah tergantung kapasitas dan permintaan dari masing-masing program studi<br /><br /><em>PERSYARATAN UMUM</em><br /></strong></p>\n<ol>\n<li><strong>Saat ini duduk di kelas XII SMTA (SMA/SMK/MA) atau sudah lulus SMTA (tidak ada batas tahun kelulusan).</strong></li>\n<li><strong>Sehat jasmani dan rohani, sehingga tidak mengganggu proses belajar calon selama menempuh pendidikan di program studi pilihannya di Untar.</strong></li>\n<li><strong>Tidak terlibat dalam penyalahgunaan NAPZA (Narkotika, Psikotropika, dan Zat Adiktif lainnya).</strong></li>\n</ol>\n<p><em><strong>PERSYARATAN KHUSUS</strong></em><strong><br /></strong></p>\n<ol>\n<li><strong>Khusus calon yang memilih program studi&nbsp;<span>Arsitektur, Kedokteran, Desain Interior, dan Desain Komunikasi Visual</span><span>&nbsp;</span>dipersyaratkan<span>TIDAK BUTA WARNA&nbsp;</span>(dengan melampirkan FOTOKOPI surat keterangan Dokter).</strong></li>\n<li><strong>Khusus calon yang memilih program studi&nbsp;<span>Kedokteran</span>&nbsp;dipersyaratkan berasal dari SMA&nbsp;jurusan IPA.</strong></li>\n</ol>\n<p><em><strong>PROSEDUR PENDAFTARAN</strong></em><strong><br /><br /><em>SECARA&nbsp;MANUAL</em><br /></strong></p>\n<ol>\n<li><strong>Mengambil formulir pendaftaran di Kantor Admisi Untar,&nbsp;<em>download</em><em>&nbsp;&amp; print</em>&nbsp;dari&nbsp;</strong><a href="http://pmb.tarumanagara.ac.id/"><strong>pmb.tarumanagara.ac.id</strong></a><strong>, atau melalui Guru BP/BK sekolah masing-masing.</strong></li>\n<li><strong>Mengisi dengan lengkap formulir pendaftaran yang ditandatangani oleh calon dan orang tua/wali.</strong></li>\n<li><strong>Melampirkan 2 lembar pasfoto berwarna terbaru ukuran 3 x 4 cm.</strong></li>\n<li><strong>Membayar biaya seleksi sebesar Rp 300.000,- (Tiga Ratus Ribu Rupiah) untuk 1 atau 2 pilihan program studi.&nbsp; Pembayaran dilakukan dengan menggunakan&nbsp;slip setoran tunai&nbsp;atau slip pemindahan dana antar rekening&nbsp;(<span>tidak boleh</span>&nbsp;transfer via ATM, e-banking ataupun m-banking) dengan mencantumkan&nbsp;<span>Nama Lengkap</span>&nbsp;calon di kolom Berita/Keterangan, melalui bank:</strong></li>\n</ol>\n<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * BCA nomor rekening&nbsp;<span>4820198480</span>&nbsp;atas nama Universitas Tarumanagara<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * BNI nomor rekening&nbsp;<span>0205160348</span>&nbsp;atas nama Yayasan Tarumanagara<br /><br />&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 5.&nbsp;&nbsp; Biaya seleksi yang telah dibayarkan&nbsp;<span>TIDAK&nbsp;DAPAT&nbsp;DITARIK KEMBALI DENGAN&nbsp;ALASAN&nbsp;APAPUN</span>.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.&nbsp;&nbsp; Mengembalikan/mengirimkan formulir pendaftaran, slip asli pembayaran bank, dan seluruh lampiran yang diminta secara&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lengkap ke:</strong></p>\n<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>KANTOR ADMISI UNIVERSITAS TARUMANAGARA<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kampus I Gedung Utama lantai 2<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jl. Letjen. S. Parman No.1 Jakarta Barat 11440<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Telepon: (021) 5695 8723 (hunting)&nbsp; Faksimili: (021) 568 4057</span><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.&nbsp;&nbsp; Calon akan memperoleh Kartu Ujian yang berisi Nama &amp; Alamat calon, Nomor Registrasi prodi yang dipilih, serta&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jadwal/Ruang ujian.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.&nbsp;&nbsp; Bawa Kartu Ujian beserta tanda pengenal diri (KTP/Kartu Pelajar) pada saat ujian.</strong></p>\n<p><strong>SECARA&nbsp;<em>ONLINE</em><br /></strong></p>\n<ol>\n<li><strong>Melakukan pembayaran biaya ujian sebesar Rp 300.000,- (tigaratus ribu rupiah) untuk 1 atau 2 pilihan program studi melalui&nbsp;<em>Teller</em>di bank BNI cabang manapun dan akan mendapatkan nomor PIN &amp; nomor PDF untuk pendaftaran&nbsp;<em>online</em>&nbsp;(BNI nomor rekening 0205160348 atas nama Yayasan Tarumanagara).</strong></li>\n<li><strong>Biaya ujian yang telah dibayarkan&nbsp;<span>TIDAK&nbsp;DAPAT&nbsp;DITARIK&nbsp;KEMBALI&nbsp;DENGAN&nbsp;ALASAN&nbsp;APAPUN</span>.</strong></li>\n<li><strong>Buka&nbsp;</strong><a href="http://pmb2.tarumanagara.ac.id/"><strong>pmb2.tarumanagara.ac.id</strong></a><strong>, pilih/klik "Buat Account", isi data secara lengkap, lalu klik "Simpan". Catat User Id dan buatlah Password baru (user id dan password digunakan untuk melihat status pendaftaran dan status diterima/tidak). Pada Menu Utama, pilih "Daftar Jalur USM".</strong></li>\n<li><strong>Lakukan pendaftaran USM dengan memilih periode USM dan program studi yang diminati, lalu masukkan nomor PIN dan nomor PDF yang didapat sebelumnya dari&nbsp;<em>Teller</em>&nbsp;bank BNI.</strong></li>\n<li><strong>Cetak Kartu Ujian (berisi Nama &amp; Alamat calon, Nomor Registrasi prodi yang dipilih, serta Jadwal/Ruang ujian) lalu tempelkan pasfoto berwarna terbaru ukuran 3 x 4 cm.</strong></li>\n<li><strong>Bawa Kartu Ujian beserta tanda pengenal diri (KTP/SIM/Kartu Pelajar) pada saat ujian.</strong></li>\n</ol>\n<p><em><strong>MATERI UJIAN</strong></em><strong><br /></strong></p>\n<ul>\n<li><strong>Materi USM meliputi mata pelajaran&nbsp;</strong><span><strong>Bahasa Indonesia, Bahasa Inggris, dan Matematika</strong></span></li>\n<li><strong>Khusus calon yang memilih prodi&nbsp;</strong><strong><span>Desain Interior dan Desain Komunikasi Visual</span></strong><strong>&nbsp;ditambah materi ujian&nbsp;</strong><span><strong>Menggambar</strong></span></li>\n<li><strong>Khusus calon yang memilih prodi&nbsp;</strong><strong><span>Kedokteran</span></strong><strong>&nbsp;ditambah materi ujian&nbsp;</strong><span><strong>Fisika, Kimia, dan Biologi</strong></span></li>\n</ul>\n<p><strong><em>PROSEDUR KONFIRMASI PENERIMAAN CALON</em><br /></strong></p>\n<ol>\n<li><strong>Calon mahasiswa yang diterima akan diberitahukan melalui sms. Berkas pengumuman dapat di-<em>download</em>&nbsp;dan di-<em>print</em>&nbsp;sendiri melalui&nbsp;<em>website</em>&nbsp;PMB Untar atau diambil langsung di Kantor Admisi Untar.</strong></li>\n<li><strong>Sebagai konfirmasi bahwa calon bersedia untuk menjadi mahasiswa Untar maka calon diharuskan melakukan pembayaran biaya Sumbangan Pengembangan Pendidikan (SPP) sesuai dengan batas waktu yang tertera pada surat pengumuman (Form B).</strong></li>\n<li><strong>Pembayaran biaya SPP dilakukan dengan menggunakan&nbsp;slip setoran tunai atau slip pemindahan dana antar rekening&nbsp;(<span>tidak boleh</span>transfer via ATM, e-banking ataupun m-banking) dengan mencantumkan&nbsp;<span>Nama Lengkap</span>&nbsp;calon dan&nbsp;<span>Nomor Registrasi</span><span>&nbsp;</span>prodi yang dipilih di kolom Berita/Keterangan, melalui bank:<br /></strong>\n<ul>\n<li><strong>BCA nomor rekening&nbsp;<span>4820150002</span>&nbsp;atas nama Yayasan Tarumanagara</strong></li>\n<li><strong>BNI nomor rekening&nbsp;<span>0018284108</span>&nbsp;atas nama Yayasan Tarumanagara</strong></li>\n<li><strong>Mandiri nomor rekening&nbsp;<span>1170025252586</span>&nbsp;atas nama Yayasan Tarumanagara</strong></li>\n</ul>\n</li>\n</ol>\n<p><strong><em>SUMBANGAN PENGEMBANGAN PENDIDIKAN (SPP)</em><br /><br />Biaya sumbangan masuk / SPP ditetapkan berdasarkan kategori sesuai dengan nilai hasil ujian yang bersangkutan. Semakin tinggi nilai hasil ujian, semakin ringan biaya SPP.</strong></p>', '2013-06-12 00:55:10'),
+(3, 'pengumuman', 'Pendaftaran Mahasiswa Baru S-1 Tahun Akademik 2013/2014', '<p><span>Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</span></p>\n<p>Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;</p>', '2013-06-12 01:09:20'),
+(4, 'alamat', 'alamat', '<p><strong>KAMPUS I</strong></p>\n<p>Jl. Letjen S. Parman No.1<br />Jakarta Barat 11440<br />Telp.: (021) 567 1747, 5695 8747<br />Fax.: (021) 560 4478, 5695 8738</p>\n<p><strong>KAMPUS II </strong></p>\n<p>Jl. Tanjung Duren Utara No.1<br />Jakarta Barat 11470<br />Telp.: (021) 565 5507, 08, 09, 10<br />Fax.: (021) 565 5521</p>', '2013-06-13 00:33:01'),
+(5, 'jalur-pu', 'Jalur Prestasi Unggulan (JPU)', '<p><strong>TAHUN AKADEMIK 2013/2014</strong><br /><strong><br />Pendaftaran:&nbsp;&nbsp;</strong><span><strong>27 Agustus 2012 s.d. 30 September 2012</strong></span><br /><strong>Proses seleksi:&nbsp;&nbsp;</strong><span><strong>1 s.d. 5 Oktober 2012</strong></span><br /><strong>Pengumuman hasil seleksi:&nbsp;&nbsp;</strong><span><strong>12 Oktober 2012</strong></span></p>\n<p><em><strong>TUJUAN</strong></em><br /><br /><strong>Jalur Prestasi Unggulan (JPU) merupakan program penerimaan mahasiswa baru Universitas Tarumanagara (Untar) yang bertujuan memberikan kesempatan beasiswa penuh bagi siswa SMA yang berkelakuan baik dan berprestasi terbaik di sekolah untuk mengembangkan diri menjadi mahasiswa unggulan di Universitas Tarumanagara.</strong></p>\n<p><em><strong>PILIHAN PROGRAM STUDI</strong></em><strong><br /></strong></p>\n<p><strong>Program studi yang ditawarkan di Jalur Prestasi Unggulan (JPU) adalah:</strong></p>\n<ol>\n<li><strong>Manajemen Bisnis</strong></li>\n<li><strong>Akuntansi Bisnis</strong></li>\n<li><strong>Ilmu Hukum</strong></li>\n<li><strong>Arsitektur</strong></li>\n<li><strong>Perencanaan Kota &amp; Real Estat</strong></li>\n<li><strong>Teknik Sipil</strong></li>\n<li><strong>Teknik Mesin</strong></li>\n<li><strong>Teknik Elektro</strong></li>\n<li><strong>Teknik Industri</strong></li>\n<li><strong>Kedokteran (Pendidikan Dokter)</strong></li>\n<li><strong>Ilmu Psikologi</strong></li>\n<li><strong>Teknik Informatika</strong></li>\n<li><strong>Sistem Informasi Bisnis</strong></li>\n<li><strong>Desain Interior</strong></li>\n<li><strong>Desain Komunikasi Visual</strong></li>\n<li><strong>Ilmu Komunikasi</strong></li>\n</ol>\n<p><em><strong>PERSYARATAN</strong></em><strong><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; Siswa SMA yang saat ini duduk di kelas XII dan mendapatkan peringkat terbaik (peringkat satu sampai tiga) di sekolah selama di<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kelas X dan kelas XI.<br />&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; Khusus calon yang memilih program studi&nbsp;<span>Kedokteran&nbsp;</span>dipersyaratkan berasal dari SMA&nbsp;jurusan IPA.<br />&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; Lolos tes psikologi dan wawancara yang diadakan oleh Panitia Penerimaan Mahasiswa Baru Untar.<br />&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; Gratis pendaftaran &amp; terbatas pada SMA-SMA yang diundang<br /><br /></strong><em><strong>PROSEDUR PENDAFTARAN</strong></em></p>\n<ol>\n<li><strong>Universitas Tarumanagara mengundang siswa-siswi terbaik di SMA-SMA terpilih melalui Kepala Sekolah masing-masing.</strong></li>\n<li><strong>Kepala Sekolah (atau Guru BP/BK) menginformasikan dan menawarkan program JPU Untar kepada siswa-siswinya yang berprestasi terbaik (peringkat satu sampai tiga) di sekolah masing-masing.</strong></li>\n<li><strong>Siswa memperoleh formulir pendaftaran (tidak dapat digandakan) dari Kepala Sekolah (atau Guru BP/BK) masing-masing.</strong></li>\n<li><strong>Siswa mengisi formulir pendaftaran secara lengkap yang juga diketahui dan ditandatangani oleh orang tua/wali.</strong></li>\n<li><strong>Melampirkan Surat Rekomendasi dari Kepala Sekolah yang menyatakan siswa benar-benar memperoleh peringkat satu sampai tiga sekolah.</strong></li>\n<li><strong>Melampirkan fotokopi rapor setiap semester kelas X dan kelas XI yang telah dilegalisasi oleh Kepala Sekolah yang bersangkutan.</strong></li>\n<li><strong>Melampirkan 1 lembar pasfoto berwarna terbaru ukuran 3 x 4 cm.</strong></li>\n<li><strong>Melampirkan fotokopi rekening pembayaran listrik 3 bulan terakhir.</strong></li>\n<li><strong>Melampirkan fotokopi kartu keluarga.</strong></li>\n<li><strong>Khusus calon yang memilih program studi&nbsp;<span>Arsitektur, Kedokteran, Desain Interior, dan Desain Komunikasi Visual</span><span>&nbsp;</span>dipersyaratkan<span>TIDAK BUTA WARNA</span>&nbsp;dengan melampirkan FOTOKOPI surat keterangan Dokter.</strong></li>\n<li><strong>Mengembalikan/mengirimkan formulir pendaftaran dan seluruh lampiran yang diminta secara lengkap ke:<br />&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KANTOR ADMISI UNIVERSITAS TARUMANAGARA<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kampus I Gedung Utama lantai 2<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jl. Letjen. S. Parman No. 1 Jakarta Barat 11440<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Telepon: (021) 5695 8723 (hunting)&nbsp; Faksimili: (021) 568 4057&nbsp;</span></strong></li>\n</ol>\n<p><strong>Catatan:<br />Pendaftar akan melalui proses seleksi, tes psikologi dan wawancara.&nbsp;<br />Jumlah siswa yang diterima akan disesuaikan dengan kapasitas/daya tampung program studi serta dana beasiswa yang disediakan.</strong></p>', '2013-06-13 02:12:12'),
+(6, 'fak-ekonomi', 'Fakultas Ekonomi', '<p>halaman informasi fakultas ekonomi.</p>', '2013-06-13 02:18:55');
 
 -- --------------------------------------------------------
 

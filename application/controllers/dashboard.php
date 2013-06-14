@@ -100,16 +100,33 @@ class dashboard extends CI_Controller
         $this->load->view($this->view.'layout', $this->data);
     }
 
-    public function lihathasil ()
+    public function lihathasil ($print = NULL)
     {
+        $this->load->model('pribadi_model', 'pribadi');
         $this->load->model('hasil_model', 'hasil');
         // $this->data['data'] = $this->hasil->with('soal')
         //      ->get_many_by('id_pribadi', $this->pmb->registrasi_id());
+
         $this->data['data'] = $this->hasil->find_all(
             array('id_pribadi' => session('uid'))
         );
+
+        $this->data['data']['pribadi'] = $this->pribadi
+            ->with('sekolahasal')
+            ->with('ortu')
+            ->with('pil1')
+            ->with('pil2')
+            ->with('provinsi')
+            ->with('jalur')
+            ->get_by('id_user', session('uid'));
+
+        $this->data['print'] = $print;
         $this->data['yield'] = $this->view.'lihathasil';
-        $this->load->view($this->view.'layout', $this->data);
+
+        if ($print)
+            $this->load->view($this->view.'layout_print', $this->data);
+        else
+            $this->load->view($this->view.'layout', $this->data);
     }
 
     public function registrasi ()
@@ -275,7 +292,10 @@ class dashboard extends CI_Controller
             }
 
             if (! $result_pribadi) {
-                set_message('Terjadi error ketika menyimpan data pribadi', 'error');
+                $err = (validation_errors())
+                    ? validation_errors()
+                    : 'Terjadi error ketika menyimpan data pribadi';
+                set_message($err, 'error');
             } else {
                 set_message('Input data registrasi berhasil');
             }

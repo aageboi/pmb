@@ -37,6 +37,14 @@ class Pribadi_model extends MY_Model
         ),
     );
 
+    protected $validate = array(
+        array(
+            'field'   => 'tempat',
+            'label'   => 'Tempat Lahir',
+            'rules'   => 'trim|alpha'
+        ),
+    );
+
     // public $has_many => array(
         // 'pembayaran' => array(
             // 'model' => 'pembayaran_model'

@@ -98,6 +98,7 @@
                 <li <?=(!isset($page))?'class="active"':''?>><a href="<?=site_url()?>"><i class="icon-home"></i> Beranda</a></li>
                 <li <?=(isset($page)&&$page=='pengumuman')?'class="active"':''?>><a href="<?=site_url('pengumuman')?>"><i class="icon-info-sign"></i> Informasi</a></li>
                 <li <?=(isset($page)&&$page=='petunjuk')?'class="active"':''?>><a href="<?=site_url('petunjuk')?>"><i class="icon-question-sign"></i> Bantuan</a></li>
+                <li <?=(isset($page)&&$page=='download')?'class="active"':''?>><a href="<?=site_url('download')?>"><i class="icon-download"></i> Download</a></li>
               </ul>
             </div>
           </div>

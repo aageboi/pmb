@@ -19,7 +19,7 @@
                     <tbody>
                     <?php foreach ($data as $key => $row) { ?>
                     <tr>
-                        <td><?=$row->nama_dokumen?></td>
+                        <td><a href="<?=site_url('assets/doc/'.$row->name)?>"><?=$row->title?></a></td>
                         <td width="85px">
                             <a href="<?=site_url('admin/dokumen/edit/'.$row->id)?>" class="btn" title="edit"><i class="icon-edit"></i></a>
                             <a href="<?=site_url('admin/dokumen/delete/'.$row->id)?>" class="btn btn-danger" title="delete" onclick="return confirm('Hapus data?');"><i class="icon-remove"></i></a>

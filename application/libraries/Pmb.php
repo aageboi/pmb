@@ -41,7 +41,8 @@ Class Pmb
                 $before_char .= '0';
             }
 
-            return date('y').$jalur.$before_char.$id;
+            // return date('y').$jalur.$before_char.$id;
+            return $before_char.$id;
         }
         return false;
     }

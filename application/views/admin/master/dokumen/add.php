@@ -7,12 +7,25 @@
                 <?=$this->load->view('breadcrumb')?>
 
                 <h3>Data Dokumen</h3>
-                <form class="form-horizontal" method="post">
+                <form class="form-horizontal" method="post" enctype="multipart/form-data">
                   <?=$this->load->view('admin/error_message')?>
                   <div class="control-group">
-                    <label class="control-label" for="nama">Dokumen</label>
+                    <label class="control-label" for="title">Judul Dokumen</label>
                     <div class="controls">
-                      <input type="text" id="nama" placeholder="nama" name="nama" value="<?=isset($data['nama']) ? $data['nama'] : ''?>">
+                      <input type="text" id="title" placeholder="judul dokumen" name="title" value="<?=isset($data['title']) ? $data['title'] : ''?>">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="name">Dokumen</label>
+                    <div class="controls">
+                      <input type="file" name="name">
+                      <span class="help-block">Format dokumen: pdf</span>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="name">Bisa di lihat publik ?</label>
+                    <div class="controls">
+                        <input type="checkbox" name="active" value="1"> Ya
                     </div>
                   </div>
                   <div class="control-group">

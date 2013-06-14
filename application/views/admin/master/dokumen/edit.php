@@ -7,12 +7,25 @@
                 <?=$this->load->view('breadcrumb')?>
 
                 <h3>Data Dokumen</h3>
-                <form class="form-horizontal" method="post" action="<?=site_url('admin/dokumen/edit')?>">
+                <form class="form-horizontal" method="post" action="<?=site_url('admin/dokumen/edit')?>" enctype="multipart/form-data">
                   <?=$this->load->view('admin/error_message')?>
                   <div class="control-group">
-                    <label class="control-label" for="nama">Dokumen</label>
+                    <label class="control-label" for="title">Judul Dokumen</label>
                     <div class="controls">
-                      <input type="text" id="nama" placeholder="nama" name="nama" value="<?=isset($data->nama_dokumen) ? $data->nama_dokumen : ''?>">
+                      <input type="text" id="title" placeholder="title" name="title" value="<?=isset($data->title) ? $data->title : ''?>" class="input-xxlarge">
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="name">Dokumen</label>
+                    <div class="controls">
+                      <input type="file" name="name">
+                      <span class="help-block">Format dokumen: pdf</span>
+                    </div>
+                  </div>
+                  <div class="control-group">
+                    <label class="control-label" for="name">Bisa di lihat publik ?</label>
+                    <div class="controls">
+                        <input type="checkbox" name="active" value="1" <?=($data->active)?'checked="checked"':''?>> Ya
                     </div>
                   </div>
                   <div class="control-group">

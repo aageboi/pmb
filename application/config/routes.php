@@ -70,6 +70,7 @@ $route['logout'] = 'homepage/logout';
 $route['forgot'] = 'homepage/forgot';
 $route['signup'] = 'homepage/signup';
 $route['dashboard'] = 'dashboard';
+$route['download'] = 'homepage/download';
 $route['(:any)'] = 'homepage/statik/$1';
 $route['admin'] = 'admin/dashboard';
 $route['404_override'] = '';

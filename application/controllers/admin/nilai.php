@@ -40,6 +40,7 @@ class nilai extends CI_Controller
 
         if (! is_get()) {
             $nilai['nilai_gambar'] = $this->input->post('nilai_gambar');
+            $this->pribadi->skip_validation();
             if (! $result_nomor = $this->pribadi->update($id,$nilai)) {
                 set_message('Terjadi error ketika menyimpan nilai gambar', 'error');
             } else {

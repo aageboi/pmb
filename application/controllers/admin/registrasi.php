@@ -41,6 +41,7 @@ class registrasi extends CI_Controller
         else
             $new_data['is_verified'] = '0';
 
+        $this->pribadi->skip_validation();
         if ($this->pribadi->update($id, $new_data))
             set_message('Verifikasi berhasil!');
         else

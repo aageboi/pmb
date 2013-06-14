@@ -749,6 +749,7 @@ class MY_Model extends CI_Model
                 $this->form_validation->set_message('min_length', 'Minimal karakter untuk %s adalah %s');
                 $this->form_validation->set_message('valid_email', 'Alamat email tidak valid');
                 $this->form_validation->set_message('is_unique', '%s tidak tersedia. Silakan gunakan yg lainnya.');
+                $this->form_validation->set_message('alpha', '%s hanya diijinkan huruf.');
                 $this->form_validation->set_message('alpha_numeric', '%s hanya diijinkan huruf dan angka.');
 
                 $this->form_validation->set_rules($this->validate);

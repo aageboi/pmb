@@ -11,6 +11,7 @@
       <li<?=(isset($page)&&$page=='prodi')?' class="active"':''?>><a href="<?=site_url('admin/prodi')?>"><i class="icon-screenshot"></i> Program Studi</a></li>
       <li<?=(isset($page)&&$page=='ruang')?' class="active"':''?>><a href="<?=site_url('admin/ruang')?>"><i class="icon-screenshot"></i> Ruang Ujian</a></li>
       <li<?=(isset($page)&&$page=='syarat')?' class="active"':''?>><a href="<?=site_url('admin/syarat')?>"><i class="icon-screenshot"></i> Syarat Pendaftaran</a></li>
+      <li<?=(isset($page)&&$page=='dokumen')?' class="active"':''?>><a href="<?=site_url('admin/dokumen')?>"><i class="icon-book"></i> Dokumen</a></li>
     </ul>
   </div><!--/.well -->
 </div><!--/span-->

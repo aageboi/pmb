@@ -7,8 +7,8 @@ class Dokumen_model extends MY_Model
 
     protected $validate = array(
         array(
-            'field'   => 'nama',
-            'label'   => 'Dokumen',
+            'field'   => 'title',
+            'label'   => 'Nama Dokumen',
             'rules'   => 'trim|required'
         )
     );
