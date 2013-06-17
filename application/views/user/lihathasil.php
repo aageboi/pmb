@@ -49,27 +49,24 @@ foreach ($data['pelajaran'] as $key => $mapel) {
     </tr>
     <tr>
         <th>Nama</th>
-        <td><?= $data['pribadi']['nama'] ?></td>
+        <td><strong><?= $data['pribadi']['nama'] ?></strong></td>
     </tr>
     <tr>
         <td colspan="2">
+        <?php if (! $print) { ?>
+            <h4 align="center" class="alert alert-<?= ($anda_lulus) ? 'success' : 'error' ?>">
+        <?php } else { ?>
             <h4 align="center">
+        <?php } ?>
             Anda dinyatakan <u><?= ($anda_lulus) ? 'LULUS' : 'TIDAK LULUS' ?></u>
             </h4>
         </td>
     </tr>
     <tr>
-        <th>Nomor Registrasi</th>
+        <th>No. Registrasi - Jurusan</th>
         <td>
-        1. <strong><?= $this->pmb->get_nomor_registrasi_prodi($data['pribadi']['pil1']->kd_prodi,session('uid')) ?></strong><br>
-        2. <strong><?= $this->pmb->get_nomor_registrasi_prodi($data['pribadi']['pil2']->kd_prodi,session('uid')) ?></strong>
-        </td>
-    </tr>
-    <tr>
-        <th>Jurusan</th>
-        <td>
-        1. <strong><?= $data['pribadi']['pil1']->nama_prodi ?></strong><br>
-        2. <strong><?= $data['pribadi']['pil2']->nama_prodi ?></strong>
+        1. <strong><?= $this->pmb->get_nomor_registrasi_prodi($data['pribadi']['pil1']->kd_prodi,session('uid')) ?> - <?= $data['pribadi']['pil1']->nama_prodi ?></strong><br>
+        2. <strong><?= $this->pmb->get_nomor_registrasi_prodi($data['pribadi']['pil2']->kd_prodi,session('uid')) ?> - <?= $data['pribadi']['pil2']->nama_prodi ?></strong>
         </td>
     </tr>
     <tr>
@@ -77,6 +74,12 @@ foreach ($data['pelajaran'] as $key => $mapel) {
         <td>
         1. <strong>Rp. <?= ($anda_lulus) ? '' : '-' ?></strong><br>
         2. <strong>Rp. <?= ($anda_lulus) ? '' : '-' ?></strong>
+        </td>
+    </tr>
+    <tr>
+        <th>Jadwal Pembayaran</th>
+        <td>
+        <strong><?= $jadwal_pembayaran->jadwal ?></strong>
         </td>
     </tr>
     <tr>

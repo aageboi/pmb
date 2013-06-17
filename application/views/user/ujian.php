@@ -154,6 +154,11 @@
             <?php
                 $j++;
             } ?>
+            <li id="li-preview" style="display:none;">
+                <a href="#preview" data-toggle="tab">
+                    Jawaban
+                </a>
+            </li>
         </ul>
       </div>
 
@@ -216,8 +221,8 @@
       <div class="row-fluid">
         <div class="span12">
         <p align="center">
-            <button type="submit" class="btn btn-primary btn-large">
-                <i class="icon-exclamation-sign"></i> selesai dan kirim</button>
+            <button type="submit" class="btn btn-primary btn-large" id="selesai">
+                <i class="icon-exclamation-sign"></i> selesai</button>
         </p>
         </div>
       </div>
@@ -230,6 +235,19 @@
       }
       ?>
 
+      <div class="tab-pane fade" id="preview">
+        <?php
+        $m = 0;
+        foreach ($data['nama_pel'] as $q => $mapel) {
+            echo '<h5>'.$mapel.'</h5>';
+            $i = 1;
+            foreach ($data['soal'][$m] as $key => $row) {
+                echo $
+                $i++;
+            }
+        }
+        ?>
+      </div>
   </div>
 
   </form>
@@ -246,6 +264,11 @@
   $('#soal a').click(function (e) {
     e.preventDefault();
     $(this).tab('show');
+  });
+  
+  $("#selesai").click(function(){
+    $('#li-preview').show();
+    $("#preview").tab('show');
   });
 </script>
 <?=$this->load->view('footer')?>

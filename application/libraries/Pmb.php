@@ -186,6 +186,8 @@ Class Pmb
 
             if ($pelajaran[$c]) {
                 $lulus[$c] = ($persen >= $mapel['kriteria']) ? TRUE : FALSE;
+            
+                $data['mapel'][$pelajaran[$c]] = $persen;
             }
 
             if (! $lulus[$c])
@@ -197,7 +199,9 @@ Class Pmb
             $c++;
         }
 
-        return floor($nilai / count($pelajaran));
+        $data['total'] = floor($nilai / count($pelajaran));
+        
+        return $data;
     }
 
     function get_status ($id)
@@ -207,13 +211,14 @@ Class Pmb
         $nilai = $this->get_nilai($id);
 
         $condition = array(
-            'nilai_min <=' => $nilai,
-            'nilai_max >=' => $nilai,
+            'nilai_min <=' => $nilai['total'],
+            'nilai_max >=' => $nilai['total'],
         );
         $data = $this->to->grade->get_by($condition);
 
         $_data['grade'] = '-';
         $_data['lulus'] = FALSE;
+        $_data['mapel'] = $nilai['mapel'];
 
         if ($data) {
             $_data['grade'] = $data->nama_grade;

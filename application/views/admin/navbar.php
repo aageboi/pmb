@@ -16,9 +16,14 @@
             <ul class="dropdown-menu">
               <li><a href="<?=site_url('admin/akun')?>"><i class="icon-user"></i> Akun</a></li>
               <li><a href="<?=site_url('admin/registrasi')?>"><i class="icon-user"></i> Registrasi</a></li>
-              <li><a href="<?=site_url('admin/nilai')?>"><i class="icon-th-list"></i> Nilai</a></li>
-              <li><a href="<?=site_url('admin/statik')?>"><i class="icon-pencil"></i> Halaman Statik</a></li>
               <li class="divider"></li>
+              <li class="dropdown-submenu">
+                <a href="#" onclick="javascript:void(0)"><i class="icon-th-list"></i> Laporan</a>
+                <ul class="dropdown-menu">
+                  <li<?=(isset($page)&&$page=='absensi')?' class="active"':''?>><a href="<?=site_url('admin/absensi')?>"><i class="icon-chevron-right"></i> Absensi</a></li>
+                  <li<?=(isset($page)&&$page=='nilai')?' class="active"':''?>><a href="<?=site_url('admin/nilai')?>"><i class="icon-chevron-right"></i> Nilai</a></li>
+                </ul>
+              </li>
               <li class="dropdown-submenu">
                 <a href="#" onclick="javascript:void(0)"><i class="icon-file"></i> Data Master</a>
                 <ul class="dropdown-menu">
@@ -38,6 +43,7 @@
               </li>
             </ul>
           </li>
+          <li <?=(isset($page)&&$page=='statik')?'class="active"':''?>><a href="<?=site_url('admin/statik')?>"><i class="icon-pencil"></i> Sites</a></li>
         </ul>
 
         <ul class="nav pull-right">

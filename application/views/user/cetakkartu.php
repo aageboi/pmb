@@ -11,19 +11,19 @@
                 <td>&nbsp;</td>
             </tr>
             <tr>
-                <th>Nomor Ujian</th>
-                <td><?=$data['nomor_ujian']?></td>
+                <th>Nama</th>
+                <td><?=$data['nama']?></td>
                 <td rowspan="5" align="center">
                     <img src="<?=$this->pmb->get_avatar()?>" class="img-polaroid" width="120px">
                 </td>
             </tr>
             <tr>
-                <th>Nama</th>
-                <td><?=$data['nama']?></td>
-            </tr>
-            <tr>
                 <th>Ruang Ujian</th>
                 <td><?=$data['ruang']->nama_ruang?></td>
+            </tr>
+            <tr>
+                <th>No. Ujian / No. Bangku</th>
+                <td><?=$data['nomor_ujian']?></td>
             </tr>
             <tr>
                 <th>Waktu</th>
@@ -50,6 +50,11 @@
                         </li>
                     </ol>
                 </td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
             </tr>
         </table>
 

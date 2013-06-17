@@ -13,7 +13,7 @@ class nilai extends CI_Controller
 
         $this->load->model('hasil_model','hasil');
 
-        $this->data['page'] = 'manage';
+        $this->data['page'] = 'nilai';
         $this->data['breadcrumb'] = array(
             'Home' => 'admin',
             'Data' => 'admin/nilai',
