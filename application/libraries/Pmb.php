@@ -186,7 +186,7 @@ Class Pmb
 
             if ($pelajaran[$c]) {
                 $lulus[$c] = ($persen >= $mapel['kriteria']) ? TRUE : FALSE;
-            
+
                 $data['mapel'][$pelajaran[$c]] = $persen;
             }
 
@@ -200,7 +200,7 @@ Class Pmb
         }
 
         $data['total'] = floor($nilai / count($pelajaran));
-        
+
         return $data;
     }
 
@@ -243,5 +243,13 @@ Class Pmb
         if ($already = $this->to->hasil->get_by('id_pribadi', $this->to->session->userdata('uid')))
             return TRUE;
         return FALSE;
+    }
+
+    public function get_biaya ($prodi)
+    {
+        $this->to->load->model('prodi_model', 'prodi');
+        if ($prodi = $this->to->prodi->get($prodi))
+            return $prodi->biaya_bangunan;
+        return false;
     }
 }

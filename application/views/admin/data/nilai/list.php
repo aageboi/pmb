@@ -6,6 +6,9 @@
             <div class="span12">
                 <?=$this->load->view('breadcrumb')?>
                 <?=$this->load->view('admin/error_message')?>
+                <p class="pull-right">
+                    Jumlah Total : &nbsp;&nbsp;&nbsp;&nbsp;<strong>10</strong> peserta
+                </p>
                 <table class="table table-bordered">
                     <thead>
                     <tr>

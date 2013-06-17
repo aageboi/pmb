@@ -154,9 +154,9 @@
             <?php
                 $j++;
             } ?>
-            <li id="li-preview" style="display:none;">
+            <li id="li-preview">
                 <a href="#preview" data-toggle="tab">
-                    Jawaban
+                    Jawaban anda
                 </a>
             </li>
         </ul>
@@ -190,22 +190,22 @@
             <div class="span1"></div>
             <div class="span6">
               <p>
-                    <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-a-<?=$row->id?>" value="a">
+                    <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-a-<?=$row->id?>" value="a" class="jawaban" rel="<?=$q.'_'.$key?>">
                     a. <?=$row->isi_pilihan_a?>
               </p>
               <p>
-                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-b-<?=$row->id?>" value="b">
+                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-b-<?=$row->id?>" value="b" class="jawaban" rel="<?=$q.'_'.$key?>">
                   b. <?=$row->isi_pilihan_b?>
               </p>
             </div>
 
             <div class="span5">
               <p>
-                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-c-<?=$row->id?>" value="c">
+                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-c-<?=$row->id?>" value="c" class="jawaban" rel="<?=$q.'_'.$key?>">
                   c. <?=$row->isi_pilihan_c?>
               </p>
               <p>
-                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-d-<?=$row->id?>" value="d">
+                  <input type="radio" name="jawaban[<?=$row->id?>]" id="jawaban-d-<?=$row->id?>" value="d" class="jawaban" rel="<?=$q.'_'.$key?>">
                   d. <?=$row->isi_pilihan_d?>
               </p>
             </div>
@@ -216,18 +216,6 @@
             $i++;
         } ?>
 
-      <?php
-      if (strtolower(end($data['nama_pel'])) === strtolower($mapel)) { ?>
-      <div class="row-fluid">
-        <div class="span12">
-        <p align="center">
-            <button type="submit" class="btn btn-primary btn-large" id="selesai">
-                <i class="icon-exclamation-sign"></i> selesai</button>
-        </p>
-        </div>
-      </div>
-      <?php } ?>
-
       </div>
 
       <?php
@@ -235,18 +223,40 @@
       }
       ?>
 
-      <div class="tab-pane fade" id="preview">
+      <div class="tab-pane fade in" id="preview">
         <?php
-        $m = 0;
-        foreach ($data['nama_pel'] as $q => $mapel) {
-            echo '<h5>'.$mapel.'</h5>';
-            $i = 1;
-            foreach ($data['soal'][$m] as $key => $row) {
-                echo $
-                $i++;
+        $n = 0;
+        foreach ($data['nama_pel'] as $q => $mp) {
+            echo '<span class="span6"><h5>'.$mp.'</h5></span>';
+            $j = 1;
+            foreach ($data['soal'][$n] as $k => $r) {
+                if ($j % 5 == 1)
+                echo '<span class="span2">';
+
+                echo "{$j}. &nbsp;<span class='label' id='{$q}_{$k}'>Belum dijawab</span><br>";
+
+                if ($j % 5 == 0)
+                echo '</span>';
+
+                $j++;
             }
+            // echo '<br>';
+            $n++;
         }
         ?>
+
+
+          <?php # if (strtolower(end($data['nama_pel'])) === strtolower($mapel)) { ?>
+          <div class="row-fluid">
+            <div class="span12">
+            <p align="center">
+                <br>
+                <button type="submit" class="btn btn-primary btn-large" id="selesai">
+                    <i class="icon-exclamation-sign"></i> selesai</button>
+            </p>
+            </div>
+          </div>
+          <?php # } ?>
       </div>
   </div>
 
@@ -265,10 +275,12 @@
     e.preventDefault();
     $(this).tab('show');
   });
-  
-  $("#selesai").click(function(){
-    $('#li-preview').show();
-    $("#preview").tab('show');
+
+  $(".jawaban").click(function(){
+    idsoal = $(this).attr('rel');
+    jawaban = $(this).val();
+    $("#"+idsoal).addClass('label-success').html(jawaban);
   });
+
 </script>
 <?=$this->load->view('footer')?>

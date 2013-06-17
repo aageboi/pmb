@@ -42,6 +42,7 @@ class prodi extends CI_Controller
             $_data['nama_prodi'] = $this->input->post('nama');
             $_data['kd_jurusan'] = $this->input->post('jurusan');
             $_data['ujian_gambar'] = $this->input->post('gambar');
+            $_data['biaya_bangunan'] = $this->input->post('biaya');
             if ($result = $this->prodi->insert($_data))
                 redirect('admin/prodi');
             else
@@ -66,6 +67,7 @@ class prodi extends CI_Controller
                 'kd_jurusan' => $this->input->post('jurusan'),
                 'nama_prodi' => $this->input->post('nama'),
                 'ujian_gambar' => $this->input->post('gambar'),
+                'biaya_bangunan' => $this->input->post('biaya'),
             );
             if ($result = $this->prodi->update($_id,$new_data))
                 redirect('admin/prodi');

@@ -119,7 +119,7 @@ class dashboard extends CI_Controller
             ->with('provinsi')
             ->with('jalur')
             ->get_by('id_user', session('uid'));
-            
+
         $this->load->model('jadwal_model', 'jadwal');
         $this->data['jadwal_pembayaran'] = $this->jadwal->get(1);
 

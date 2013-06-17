@@ -72,8 +72,8 @@ foreach ($data['pelajaran'] as $key => $mapel) {
     <tr>
         <th>Biaya</th>
         <td>
-        1. <strong>Rp. <?= ($anda_lulus) ? '' : '-' ?></strong><br>
-        2. <strong>Rp. <?= ($anda_lulus) ? '' : '-' ?></strong>
+        1. <strong>Rp. <?= ($anda_lulus) ? number_format($this->pmb->get_biaya($data['pribadi']['pil1']->id),0) : '-' ?></strong><br>
+        2. <strong>Rp. <?= ($anda_lulus) ? number_format($this->pmb->get_biaya($data['pribadi']['pil2']->id),0) : '-' ?></strong>
         </td>
     </tr>
     <tr>

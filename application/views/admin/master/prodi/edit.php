@@ -38,6 +38,12 @@
                     </div>
                   </div>
                   <div class="control-group">
+                    <label class="control-label" for="biaya">Biaya</label>
+                    <div class="controls">
+                      <input type="text" id="biaya" placeholder="biaya" name="biaya" value="<?=isset($data->biaya_bangunan) ? $data->biaya_bangunan : ''?>">
+                    </div>
+                  </div>
+                  <div class="control-group">
                     <div class="controls">
                         <input type="hidden" name="id" value="<?=$data->id?>">
                         <button type="submit" class="btn btn-primary"><i class="icon-ok"></i> Simpan</button>
