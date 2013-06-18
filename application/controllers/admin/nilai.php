@@ -25,6 +25,7 @@ class nilai extends CI_Controller
     {
         $this->data['breadcrumb']['Daftar'] = null;
         $this->data['data'] = $this->hasil->find_user();
+        $this->data['total_peserta'] = count ($this->data['data']);
         $this->data['yield'] = $this->view.'/list';
         $this->load->view('admin/layout', $this->data);
     }
