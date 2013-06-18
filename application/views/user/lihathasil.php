@@ -4,37 +4,7 @@
 <h3>Hasil Ujian</h3>
 <?php } ?>
 
-<?php
-$anda_lulus = true;
-$c = 0;
-foreach ($data['pelajaran'] as $key => $mapel) {
-    $benar[$c] = 0;
-    $jml[$mapel['id']] = 0;
-    $q = 1;
-    foreach ($data['soal'][$c] as $key => $question) {
-        if ($mapel['id'] == $question->mapel) {
-            $pelajaran[$c] = $mapel['nama'];
-            if ($question->jawaban == $question->kuncijawaban)
-                $benar[$c]++;
-            $jml[$mapel['id']]++;
-            $q++;
-        }
-    }
-
-    $persen = ($benar[$c]/$jml[$mapel['id']]) * 100;
-    $persen = number_format($persen, 0);
-
-    if ($pelajaran[$c]) {
-        $lulus[$c] = ($persen >= $mapel['kriteria']) ? TRUE : FALSE;
-        if ($lulus[$c]) {
-        } else {
-            $anda_lulus = false;
-        }
-    }
-    unset($benar[$c]);
-    $c++;
-}
-?>
+<?php $status = $this->pmb->get_status(session('uid')); ?>
 
 <br>
 
@@ -52,17 +22,6 @@ foreach ($data['pelajaran'] as $key => $mapel) {
         <td><strong><?= $data['pribadi']['nama'] ?></strong></td>
     </tr>
     <tr>
-        <td colspan="2">
-        <?php if (! $print) { ?>
-            <h4 align="center" class="alert alert-<?= ($anda_lulus) ? 'success' : 'error' ?>">
-        <?php } else { ?>
-            <h4 align="center">
-        <?php } ?>
-            Anda dinyatakan <u><?= ($anda_lulus) ? 'LULUS' : 'TIDAK LULUS' ?></u>
-            </h4>
-        </td>
-    </tr>
-    <tr>
         <th>No. Registrasi - Jurusan</th>
         <td>
         1. <strong><?= $this->pmb->get_nomor_registrasi_prodi($data['pribadi']['pil1']->kd_prodi,session('uid')) ?> - <?= $data['pribadi']['pil1']->nama_prodi ?></strong><br>
@@ -70,10 +29,22 @@ foreach ($data['pelajaran'] as $key => $mapel) {
         </td>
     </tr>
     <tr>
+        <td colspan="2">
+        <?php if (! $print) { ?>
+            <h4 align="center" class="alert alert-<?= ($status['lulus']) ? 'success' : 'error' ?>">
+        <?php } else { ?>
+            <h4 align="center">
+        <?php } ?>
+            Anda dinyatakan <u><?= ($status['lulus']) ? 'LULUS' : 'TIDAK LULUS' ?></u>
+            </h4>
+        </td>
+    </tr>
+    <?php if ($status['lulus']) { ?>
+    <tr>
         <th>Biaya</th>
         <td>
-        1. <strong>Rp. <?= ($anda_lulus) ? number_format($this->pmb->get_biaya($data['pribadi']['pil1']->id),0) : '-' ?></strong><br>
-        2. <strong>Rp. <?= ($anda_lulus) ? number_format($this->pmb->get_biaya($data['pribadi']['pil2']->id),0) : '-' ?></strong>
+        1. <strong>Rp. <?= ($status['lulus']) ? number_format($this->pmb->get_biaya($data['pribadi']['pil1']->id),0) : '-' ?></strong><br>
+        2. <strong>Rp. <?= ($status['lulus']) ? number_format($this->pmb->get_biaya($data['pribadi']['pil2']->id),0) : '-' ?></strong>
         </td>
     </tr>
     <tr>
@@ -82,6 +53,7 @@ foreach ($data['pelajaran'] as $key => $mapel) {
         <strong><?= $jadwal_pembayaran->jadwal ?></strong>
         </td>
     </tr>
+    <?php } ?>
     <tr>
         <td colspan="2">&nbsp;</td>
     </tr>

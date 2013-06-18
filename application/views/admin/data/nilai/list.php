@@ -35,7 +35,7 @@
                     ?>
                     <tr>
                         <td><?=$row->nomor_ujian?></td>
-                        <td><?=$row->nama?></td>
+                        <td><?=$row->id_user . ' - ' . $row->nama?></td>
                         <td>
                         <?php echo (isset($status['mapel']['Bahasa Indonesia'])) ?
                             $status['mapel']['Bahasa Indonesia'] : '-' ?>
