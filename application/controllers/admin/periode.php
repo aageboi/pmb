@@ -37,8 +37,10 @@ class periode extends CI_Controller
 
         // post new
         if (! is_get()) {
-            $_data['nama_per'] = $this->input->post('periode');
-            $_data['tanggal'] = $this->input->post('tgl');
+            $_data['nama_per'] = $this->input->post('nama');
+            $_data['tgl_mulai'] = $this->input->post('tgl1');
+            $_data['tgl_selesai'] = $this->input->post('tgl2');
+            $_data['thn_ajaran'] = $this->input->post('thn');
             if ($result = $this->periode->insert($_data))
                 redirect('admin/periode');
             else
@@ -56,8 +58,10 @@ class periode extends CI_Controller
         if (! is_get()) {
             $_id = $this->input->post('id');
             $new_data = array(
-                'nama_per' => $this->input->post('periode'),
-                'tanggal' => $this->input->post('tgl'),
+                'nama_per' => $this->input->post('nama'),
+                'tgl_mulai' => $this->input->post('tgl1'),
+                'tgl_selesai' => $this->input->post('tgl2'),
+                'thn_ajaran' => $this->input->post('thn'),
             );
             if ($result = $this->periode->update($_id,$new_data))
                 redirect('admin/periode');

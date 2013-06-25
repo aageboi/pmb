@@ -40,7 +40,7 @@ class ruang extends CI_Controller
         if (! is_get()) {
             $this->data['pelajaran'] = $_data['id_pelajaran'] = $this->input->post('pelajaran');
             $this->data['nama'] = $_data['nama_ruang'] = $this->input->post('nama');
-            $this->data['lokasi'] = $_data['lokasi'] = $this->input->post('lokasi');
+            // $this->data['lokasi'] = $_data['lokasi'] = $this->input->post('lokasi');
             $this->data['kapasitas'] = $_data['kapasitas'] = $this->input->post('kapasitas');
             if ($result = $this->ruang->insert($_data))
                 redirect('admin/ruang');
@@ -61,7 +61,7 @@ class ruang extends CI_Controller
             $new_data = array(
                 'id_pelajaran' => $this->input->post('pelajaran'),
                 'nama_ruang' => $this->input->post('nama'),
-                'lokasi' => $this->input->post('lokasi'),
+                // 'lokasi' => $this->input->post('lokasi'),
                 'kapasitas' => $this->input->post('kapasitas'),
             );
             if ($result = $this->ruang->update($_id,$new_data))

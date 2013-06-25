@@ -3,9 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Universitas Tarumanagara :: Penerimaan Mahasiswa Baru <?=date('Y')?></title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
     <!-- Le styles -->
     <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -18,7 +15,7 @@
       /* Custom container */
       .container-narrow {
         margin: 0 auto;
-        max-width: 700px;
+        max-width: 900px;
       }
       .container-narrow > hr {
         margin: 30px 0;
@@ -46,10 +43,9 @@
         margin-top: 28px;
       }
       .jawaban {resize:none;}
-      .masthead{top:0;position:fixed;width:55%;background-color:#fff;z-index:100;}
+      .masthead{top:0;position:fixed;width:900px;background-color:#fff;z-index:100;}
       .muted{color:rgb(162, 14, 14) !important;}
     </style>
-    <link href="<?=base_url()?>assets/css/bootstrap-responsive.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -99,6 +95,7 @@
             if (time == 0) {
                 el.innerHTML = "waktu habis";
                 clearInterval(interval);
+                document.getElementById("ujian").submit();
                 return;
             }
             var hours = Math.floor( time / 3600 );
@@ -119,12 +116,6 @@
     countdown("cdwn", 2, 0, 0);
     </script>
 
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?=base_url()?>assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?=base_url()?>assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?=base_url()?>assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="<?=base_url()?>assets/ico/apple-touch-icon-57-precomposed.png">
-    <link rel="shortcut icon" href="<?=base_url()?>assets/ico/favicon.png">
     <script src="<?=base_url()?>assets/js/jquery.js"></script>
   </head>
 
@@ -164,7 +155,7 @@
 
       <hr>
 
-  <form method="post">
+  <form method="post" id="ujian">
   <div class="tab-content" id="soalContent">
 
         <br>
@@ -227,20 +218,21 @@
         <?php
         $n = 0;
         foreach ($data['nama_pel'] as $q => $mp) {
-            echo '<span class="span6"><h5>'.$mp.'</h5></span>';
+            // echo '<span class="span6"><h5>'.$mp.'</h5></span>';
+            echo '<h5>'.$mp.'</h5>';
             $j = 1;
             foreach ($data['soal'][$n] as $k => $r) {
-                if ($j % 5 == 1)
-                echo '<span class="span2">';
+                // if ($j % 5 == 1)
+                // echo '<span class="span2">';
 
                 echo "{$j}. &nbsp;<span class='label' id='{$q}_{$k}'>Belum dijawab</span><br>";
 
-                if ($j % 5 == 0)
-                echo '</span>';
+                // if ($j % 5 == 0)
+                // echo '</span>';
 
                 $j++;
             }
-            // echo '<br>';
+            echo '<br>';
             $n++;
         }
         ?>
@@ -264,10 +256,7 @@
 
 <script>
   window.onbeforeunload = function() {
-    // var cdwn=document.getElementById('cdwn'),crnttime=cdwn.innerHTML;
     jawaban = "Pastikan seluruh pertanyaan sudah dijawab!\nKirim jawaban anda?";
-    // cdwn.innerHTML = '01:00:00';
-    // window.location = 'http://aageboi.com';
     return jawaban;
   };
 

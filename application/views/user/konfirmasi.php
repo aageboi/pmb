@@ -36,9 +36,9 @@
         <div class="control-group <?=(form_error('date'))?'error':''?>">
             <label class="control-label" for="date">Tanggal Pembayaran</label>
             <div class="controls">
-                <input type="text" name="date" id="date" placeholder="<?=date('d-m-Y')?>" class="span3" value="<?=set_value('date')?>">
+                <input type="text" name="date" id="date" placeholder="<?=date('d-m-Y')?>" class="span3" value="<?=set_value('date') ? set_value('date') : date('d-m-Y')?>">
                 <span class="help-inline"><?php echo form_error('date'); ?></span>
-				<span class="help-block">DD-MM-YYYY</span>
+                <span class="help-block">DD-MM-YYYY</span>
             </div>
         </div>
 
@@ -56,7 +56,7 @@
             <div class="controls">
                 <textarea name="desc" id="desc" class="span8" rows="5"><?=set_value('desc')?></textarea>
                 <span class="help-inline"><?php echo form_error('desc'); ?></span>
-				<span class="help-block">isikan keterangan yang diperlukan</span>
+                <span class="help-block">isikan keterangan yang diperlukan</span>
             </div>
         </div>
 

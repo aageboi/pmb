@@ -6,10 +6,13 @@
             <div class="span12">
                 <?=$this->load->view('breadcrumb')?>
                 <?=$this->load->view('admin/error_message')?>
+                <p class="pull-left">
+                    <a href="<?= site_url('admin/nilai/cetak') ?>" target="_blank"><i class="icon-print"></i> cetak</a>
+                </p>
                 <p class="pull-right">
                     Jumlah Total : &nbsp;&nbsp;&nbsp;&nbsp;<strong><?= $total_peserta ?></strong> peserta
                 </p>
-                <table class="table table-bordered">
+                <table class="table table-bordered table-condensed">
                     <thead>
                     <tr>
                         <th rowspan="2">No Ujian</th>
@@ -61,22 +64,8 @@
                             $status['mapel']['Biologi'] : '-' ?>
                         </td>
                         <td>
-                        <?php if ($this->pmb->get_prodi_bergambar($row->pil_1)) { ?>
-                            <?php if ($row->nilai_gambar) { ?>
-                            <?= $row->nilai_gambar ?>
-                            <?php } else { ?>
-                            <a href="<?=site_url('admin/nilai/gambar/'.$row->id)?>"><span class="badge badge-warning">
-                            <i class="icon-plus-sign"></i> [ tambah ]
-                            </span></a>
-                            <?php } ?>
-                        <?php } elseif ($this->pmb->get_prodi_bergambar($row->pil_2)) { ?>
-                            <?php if ($row->nilai_gambar) { ?>
-                            <?= $row->nilai_gambar ?>
-                            <?php } else { ?>
-                            <a href="<?=site_url('admin/nilai/gambar/'.$row->id)?>"><span class="badge badge-warning">
-                                <i class="icon-plus-sign"></i> [ tambah ]
-                            </span></a>
-                            <?php } ?>
+                        <?php if ($this->pmb->get_prodi_bergambar($row->pil_1) || $this->pmb->get_prodi_bergambar($row->pil_2)) { ?>
+                            <?= intval($row->nilai_gambar) ?>
                         <?php } else { ?>
                         -
                         <?php } ?>

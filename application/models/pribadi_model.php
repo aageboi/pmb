@@ -39,9 +39,69 @@ class Pribadi_model extends MY_Model
 
     protected $validate = array(
         array(
+            'field'   => 'nama',
+            'label'   => 'Nama Calon Mahasiswa',
+            'rules'   => 'trim|required'
+        ),
+        array(
             'field'   => 'tempat',
             'label'   => 'Tempat Lahir',
-            'rules'   => 'trim|alpha'
+            'rules'   => 'trim|alpha|required'
+        ),
+        array(
+            'field'   => 'tgl',
+            'label'   => 'Tanggal Lahir',
+            'rules'   => 'trim|required'
+        ),
+        array(
+            'field'   => 'bln',
+            'label'   => 'Bulan Lahir',
+            'rules'   => 'trim|required'
+        ),
+        array(
+            'field'   => 'thn',
+            'label'   => 'Tahun Lahir',
+            'rules'   => 'trim|required'
+        ),
+        array(
+            'field'   => 'alamat',
+            'label'   => 'Alamat',
+            'rules'   => 'trim|required'
+        ),
+        array(
+            'field'   => 'kelurahan',
+            'label'   => 'Kelurahan',
+            'rules'   => 'trim|required'
+        ),
+        array(
+            'field'   => 'rt',
+            'label'   => 'RT',
+            'rules'   => 'trim|required'
+        ),
+        array(
+            'field'   => 'rw',
+            'label'   => 'RW',
+            'rules'   => 'trim|required'
+        ),
+        array(
+            'field'   => 'kota',
+            'label'   => 'Kota',
+            'rules'   => 'trim|required'
+        ),
+        array(
+            'field'   => 'kodepos',
+            'label'   => 'Kodepos',
+            'rules'   => 'trim|required'
+        ),
+        array(
+            'field'   => 'telp',
+            'label'   => 'Telpon',
+            'rules'   => 'trim|required'
+        ),
+        array(
+            'field'   => 'hp',
+            'label'   => 'Nomor HP',
+            'rules'   => 'trim|required'
         ),
     );
 

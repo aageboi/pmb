@@ -19,7 +19,7 @@
     </tr>
     <tr>
         <th>Nama</th>
-        <td><strong><?= $data['pribadi']['nama'] ?></strong></td>
+        <td><strong><?= ucwords($data['pribadi']['nama']) ?></strong></td>
     </tr>
     <tr>
         <th>No. Registrasi - Jurusan</th>
@@ -72,7 +72,7 @@ window.onload = function () {
 </script>
 <?php } else { ?>
 <p align="center">
-    <a href="<?= site_url('dashboard/lihathasil/print') ?>" target="_blank">[ cetak hasil ]</a>
+    <a href="<?= site_url('dashboard/lihathasil/print') ?>" target="_blank"><i class="icon-print"></i> cetak hasil</a>
 </p>
 <?php } ?>
 

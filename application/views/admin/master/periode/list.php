@@ -12,8 +12,9 @@
                 <table class="table table-bordered">
                     <thead>
                     <tr>
-                        <th>Periode</th>
-                        <th>Jalur</th>
+                        <th>Nama Periode</th>
+                        <th>Tanggal</th>
+                        <th>Tahun Ajaran</th>
                         <th>Option</th>
                     </tr>
                     </thead>
@@ -21,7 +22,8 @@
                     <?php foreach ($data as $key => $row) { ?>
                     <tr>
                         <td><?=$row->nama_per?></td>
-                        <td><?=$row->nama_jalur?></td>
+                        <td><?=$row->tgl_mulai?> s.d <?=$row->tgl_selesai?></td>
+                        <td><?=$row->thn_ajaran?></td>
                         <td width="85px">
                             <a href="<?=site_url('admin/periode/edit/'.$row->id)?>" class="btn" title="edit"><i class="icon-edit"></i></a>
                             <a href="<?=site_url('admin/periode/delete/'.$row->id)?>" class="btn btn-danger" title="delete" onclick="return confirm('Hapus data?');"><i class="icon-remove"></i></a>

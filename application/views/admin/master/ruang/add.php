@@ -25,13 +25,13 @@
                         <?php } ?>
                       </select>
                     </div>
-                  </div>
+                  </div><!--
                   <div class="control-group">
                     <label class="control-label" for="lokasi">Lokasi</label>
                     <div class="controls">
                       <input type="text" id="lokasi" placeholder="lokasi" name="lokasi" value="<?=isset($data['lokasi']) ? $data['lokasi'] : ''?>">
                     </div>
-                  </div>
+                  </div>-->
                   <div class="control-group">
                     <label class="control-label" for="kapasitas">Kapasitas</label>
                     <div class="controls">

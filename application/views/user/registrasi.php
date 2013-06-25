@@ -6,7 +6,7 @@ if (is_array($data) && isset($data['ortu']))
     list($data['ortu']['thn'],$data['ortu']['bln'],$data['ortu']['tgl']) = explode('-',$data['ortu']['tanggal_lahir']);
 // debug($data);
 ?>
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" id="daftar">
     <fieldset>
         <legend>Formulir Pendaftaran</legend>
     </fieldset>
@@ -39,7 +39,7 @@ if (is_array($data) && isset($data['ortu']))
     <?php foreach ($jalur as $jal) { ?>
     <?php $disable = (strtolower($jal->nama_jalur)=='usm jakarta') ? '' : 'disabled' ?>
     <label class="checkbox inline">
-        <input type="radio" name="jalur" value="<?=$jal->id?>" <?=(isset($data['id_jalur'])&&$data['id_jalur']==$jal->id)?'checked':''?> <?=$disable?>> <?=$jal->nama_jalur?>
+        <input type="radio" name="jalur" value="<?=$jal->id?>" <?=((isset($data['id_jalur'])&&$data['id_jalur']==$jal->id)||(strtolower($jal->nama_jalur)=='usm jakarta'))?'checked':''?> <?=$disable?>> <?=$jal->nama_jalur?>
     </label>
     <?php } ?>
     <hr>
@@ -49,7 +49,7 @@ if (is_array($data) && isset($data['ortu']))
             <div class="controls">
                 <select name="pil1" id="pil_1">
                     <?php foreach ($prodi as $ps) { ?>
-                    <option value="<?=$ps->id?>" <?=(isset($data['pil_1'])&&$data['pil_1']==$ps->id)?'selected':''?>><?=$ps->nama_prodi?></option>
+                    <option value="<?=$ps->id?>" <?=((isset($data['pil_1'])&&$data['pil_1']==$ps->id||$ps->id==1))?'selected':''?>><?=$ps->nama_prodi?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -59,7 +59,7 @@ if (is_array($data) && isset($data['ortu']))
             <div class="controls">
                 <select name="pil2" id="pil_2">
                     <?php foreach ($prodi as $ps) { ?>
-                    <option value="<?=$ps->id?>" <?=(isset($data['pil_2'])&&$data['pil_2']==$ps->id)?'selected':''?>><?=$ps->nama_prodi?></option>
+                    <option value="<?=$ps->id?>" <?=((isset($data['pil_2'])&&$data['pil_2']==$ps->id)||$ps->id==2)?'selected':''?>><?=$ps->nama_prodi?></option>
                     <?php } ?>
                 </select>
             </div>
@@ -95,7 +95,7 @@ if (is_array($data) && isset($data['ortu']))
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="nama">Nama (sesuai akte lahir)</label>
             <div class="controls">
-                <input type="text" name="nama" class="span10" value="<?=isset($data['nama'])?$data['nama']:''?>">
+                <input type="text" name="nama" class="span10" value="<?=isset($data['nama'])?$data['nama']:ucwords(session('username'))?>">
             </div>
         </div>
         <div class="control-group">
@@ -165,30 +165,30 @@ if (is_array($data) && isset($data['ortu']))
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="alamat">Alamat</label>
             <div class="controls">
-                <input type="text" name="alamat" class="span10" value="<?=isset($data['alamat'])?$data['alamat']:''?>">
+                <input type="text" name="alamat" class="otom span10" value="<?=isset($data['alamat'])?$data['alamat']:''?>" id="alamat_siswa">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="kelurahan">Kelurahan</label>
             <div class="controls">
-                <input type="text" name="kelurahan" class="span5" value="<?=isset($data['kelurahan'])?$data['kelurahan']:''?>">
+                <input type="text" name="kelurahan" class="otom span5" value="<?=isset($data['kelurahan'])?$data['kelurahan']:''?>" id="kel_siswa">
                 &nbsp;RT / RW
-                <input type="text" name="rt" class="span2" value="<?=isset($data['rt'])?$data['rt']:''?>"> /
-                <input type="text" name="rw" class="span2" value="<?=isset($data['rw'])?$data['rw']:''?>">
+                <input type="text" name="rt" class="otom span2" value="<?=isset($data['rt'])?$data['rt']:''?>" id="rt_siswa"> /
+                <input type="text" name="rw" class="otom span2" value="<?=isset($data['rw'])?$data['rw']:''?>" id="rw_siswa">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="kota">Kota</label>
             <div class="controls">
-                <input type="text" name="kota" class="span5" value="<?=isset($data['kota'])?$data['kota']:''?>">
+                <input type="text" name="kota" class="otom span5" value="<?=isset($data['kota'])?$data['kota']:''?>" id="kota_siswa">
                 &nbsp;Kodepos
-                <input type="text" name="kodepos" class="span3" value="<?=isset($data['kode_pos'])?$data['kode_pos']:''?>">
+                <input type="text" name="kodepos" class="otom span3" value="<?=isset($data['kode_pos'])?$data['kode_pos']:''?>" id="kdpos_siswa">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="kota">Provinsi</label>
             <div class="controls">
-                <select name="provinsi">
+                <select name="provinsi" id="prov_siswa" class="otom">
                     <?php foreach ($provinsi as $prov) { ?>
                     <option value="<?=$prov->id?>"><?=$prov->nama_provinsi?></option>
                     <?php } ?>
@@ -198,7 +198,7 @@ if (is_array($data) && isset($data['ortu']))
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="telp">Telp</label>
             <div class="controls">
-                <input type="text" name="telp" class="span4" value="<?=isset($data['telp'])?$data['telp']:''?>">
+                <input type="text" name="telp" class="otom span4" value="<?=isset($data['telp'])?$data['telp']:''?>" id="telp_siswa">
                 &nbsp;HP
                 <input type="text" name="hp" class="span4" value="<?=isset($data['hp'])?$data['hp']:''?>">
             </div>
@@ -285,30 +285,30 @@ if (is_array($data) && isset($data['ortu']))
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="alamat_ortu">Alamat</label>
             <div class="controls">
-                <input type="text" name="alamat_ortu" class="span10" value="<?=isset($data['ortu'])?$data['ortu']['alamat']:''?>">
+                <input type="text" name="alamat_ortu" class="span10" value="<?=isset($data['ortu'])?$data['ortu']['alamat']:''?>" id="alamat_ortu">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="kelurahan_ortu">Kelurahan</label>
             <div class="controls">
-                <input type="text" name="kelurahan_ortu" class="span5" value="<?=isset($data['ortu'])?$data['ortu']['kelurahan']:''?>">
+                <input type="text" name="kelurahan_ortu" class="span5" value="<?=isset($data['ortu'])?$data['ortu']['kelurahan']:''?>" id="kel_ortu">
                 &nbsp;RT / RW
-                <input type="text" name="rt_ortu" class="span2" value="<?=isset($data['ortu'])?$data['ortu']['rt']:''?>"> /
-                <input type="text" name="rw_ortu" class="span2" value="<?=isset($data['ortu'])?$data['ortu']['rw']:''?>">
+                <input type="text" name="rt_ortu" class="span2" value="<?=isset($data['ortu'])?$data['ortu']['rt']:''?>" id="rt_ortu"> /
+                <input type="text" name="rw_ortu" class="span2" value="<?=isset($data['ortu'])?$data['ortu']['rw']:''?>" id="rw_ortu">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="kota_ortu">Kota</label>
             <div class="controls">
-                <input type="text" name="kota_ortu" class="span5" value="<?=isset($data['ortu'])?$data['ortu']['kota']:''?>">
+                <input type="text" name="kota_ortu" class="span5" value="<?=isset($data['ortu'])?$data['ortu']['kota']:''?>" id="kota_ortu">
                 &nbsp;Kodepos
-                <input type="text" name="kodepos_ortu" class="span3" value="<?=isset($data['ortu'])?$data['ortu']['kode_pos']:''?>">
+                <input type="text" name="kodepos_ortu" class="span3" value="<?=isset($data['ortu'])?$data['ortu']['kode_pos']:''?>" id="kdpos_ortu">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="provinsi_ortu">Provinsi</label>
             <div class="controls">
-                <select name="provinsi_ortu">
+                <select name="provinsi_ortu" id="prov_ortu">
                     <?php foreach ($provinsi as $prov) { ?>
                     <option value="<?=$prov->id?>" <?=(isset($data['ortu'])&&$data['ortu']['id_provinsi']==$prov->id)?'selected':''?>><?=$prov->nama_provinsi?></option>
                     <?php } ?>
@@ -318,7 +318,7 @@ if (is_array($data) && isset($data['ortu']))
         <div class="control-group">
             <label class="control-label span4" style="text-align:left" for="telp_ortu">Telp</label>
             <div class="controls">
-                <input type="text" name="telp_ortu" class="span4" value="<?=isset($data['ortu'])?$data['ortu']['telp']:''?>">
+                <input type="text" name="telp_ortu" class="span4" value="<?=isset($data['ortu'])?$data['ortu']['telp']:''?>" id="telp_ortu">
             </div>
         </div>
         <div class="control-group" id="uploadTTD1">
@@ -350,3 +350,11 @@ if (is_array($data) && isset($data['ortu']))
         <a href="<?=site_url('dashboard/konfirmasibayar')?>"><button type="button" class="btn btn-success"><i class="icon-chevron-right"></i> Next</button></a>
     </div>
 </form>
+
+<script>
+$(".otom").change(function() {
+    vals = $(this).val();
+    id = $(this).attr('id').split("_");
+    $("#"+id[0]+"_ortu").val(vals);
+});
+</script>

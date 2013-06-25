@@ -9,20 +9,25 @@ class Periode_model extends MY_Model
 
     protected $validate = array(
         array(
-            'field'   => 'kode',
-            'label'   => 'Kode Periode',
+            'field'   => 'nama',
+            'label'   => 'Nama Periode',
             'rules'   => 'trim|required'
         ),
         array(
-            'field'   => 'periode',
-            'label'   => 'Periode',
+            'field'   => 'tgl1',
+            'label'   => 'Tanggal Mulai Periode Pendaftaran',
             'rules'   => 'trim|required'
         ),
         array(
-            'field'   => 'jalur',
-            'label'   => 'Jalur Pendaftaran',
+            'field'   => 'tgl2',
+            'label'   => 'Tanggal Selesai Periode Pendaftaran',
             'rules'   => 'trim|required'
-        )
+        ),
+        array(
+            'field'   => 'thn',
+            'label'   => 'Tahun Ajaran',
+            'rules'   => 'trim|required'
+        ),
     );
 
     public function find_all ()

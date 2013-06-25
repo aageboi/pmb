@@ -14,7 +14,7 @@
                     <tr>
                         <th>Nama Ruang</th>
                         <th>Pelajaran</th>
-                        <th>Lokasi</th>
+                        <!--<th>Lokasi</th>-->
                         <th>Kapasitas</th>
                         <th>Option</th>
                     </tr>
@@ -24,7 +24,7 @@
                     <tr>
                         <td><?=$row->nama_ruang?></td>
                         <td><?=$row->nama_pel?></td>
-                        <td><?=$row->lokasi?></td>
+                        <!--<td><?=$row->lokasi?></td>-->
                         <td><?=$row->kapasitas?></td>
                         <td width="85px">
                             <a href="<?=site_url('admin/ruang/edit/'.$row->id)?>" class="btn" title="edit"><i class="icon-edit"></i></a>

@@ -17,6 +17,8 @@
               <li><a href="<?=site_url('admin/akun')?>"><i class="icon-user"></i> Akun</a></li>
               <li><a href="<?=site_url('admin/registrasi')?>"><i class="icon-user"></i> Registrasi</a></li>
               <li class="divider"></li>
+              <li><a href="<?=site_url('admin/nilai/gambar')?>"><i class="icon-book"></i> Nilai Gambar</a></li>
+              <li class="divider"></li>
               <li class="dropdown-submenu">
                 <a href="#" onclick="javascript:void(0)"><i class="icon-th-list"></i> Laporan</a>
                 <ul class="dropdown-menu">

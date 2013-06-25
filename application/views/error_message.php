@@ -4,7 +4,7 @@
     </div>
     <?php } ?>
     <?php if (get_message('info')) { ?>
-    <div class="alert alert-info">
+    <div class="alert alert-success">
         <?=get_message('info')?>
     </div>
     <?php } ?>

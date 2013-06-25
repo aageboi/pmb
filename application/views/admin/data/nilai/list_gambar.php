@@ -6,27 +6,32 @@
             <div class="span12">
                 <?=$this->load->view('breadcrumb')?>
                 <?=$this->load->view('admin/error_message')?>
-                <p>
-                    <a href="<?= site_url('admin/absensi/cetak') ?>" target="_blank"><i class="icon-print"></i> cetak</a>
-                </p>
                 <table class="table table-bordered table-condensed">
                     <thead>
                     <tr>
-                        <th width="70px">No. Ujian</th>
+                        <th width="80px">No. Ujian</th>
                         <th>Nama</th>
-                        <th>TTD</th>
+                        <th>Nilai Gambar</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <?php foreach ($data as $key => $row) { ?>
+                    <?php
+                    foreach ($data as $key => $row) {
+                        if ($this->pmb->get_prodi_bergambar($row['pil_1']) || $this->pmb->get_prodi_bergambar($row['pil_2'])) {
+                    ?>
                     <tr>
+                        <td><?=$row['nomor_ujian']?></td>
+                        <td><?=ucwords($row['nama'])?></td>
                         <td>
-                            <?=$this->pmb->get_nomor_ujian($row['id'])?>
+                            <?php if ($row['nilai_gambar']) { ?>
+                            <?= intval($row['nilai_gambar']) ?>
+                            <?php } else { ?>
+                            <a href="<?= site_url('admin/nilai/gambar/'.$row['id']) ?>">Input Nilai</a>
+                            <?php } ?>
                         </td>
-                        <td><?= $row['nama'] ?></td>
-                        <td></td>
                     </tr>
-                    <?php } ?>
+                    <?php }
+                    } ?>
                     </tbody>
                 </table>
             </div><!--/span-->
