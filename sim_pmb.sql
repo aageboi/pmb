@@ -2,10 +2,10 @@
 -- version 4.0.0
 -- http://www.phpmyadmin.net
 --
--- Inang: localhost
--- Waktu pembuatan: 18 Jun 2013 pada 00.41
--- Versi Server: 5.5.31-0ubuntu0.13.04.1
--- Versi PHP: 5.4.9-4ubuntu2
+-- Host: localhost
+-- Generation Time: Jun 25, 2013 at 09:12 AM
+-- Server version: 5.5.31-0ubuntu0.13.04.1
+-- PHP Version: 5.4.9-4ubuntu2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Basis data: `sim_pmb`
+-- Database: `sim_pmb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_agama`
+-- Table structure for table `t_agama`
 --
 
 DROP TABLE IF EXISTS `t_agama`;
@@ -33,23 +33,10 @@ CREATE TABLE IF NOT EXISTS `t_agama` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
---
--- Dumping data untuk tabel `t_agama`
---
-
-INSERT INTO `t_agama` (`id`, `agama`) VALUES
-(1, 'Katolik'),
-(3, 'Islam'),
-(4, 'Protestan'),
-(6, 'Budha'),
-(7, 'Hindu'),
-(15, 'Kepercayaan'),
-(16, 'Lain-lain');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_akun`
+-- Table structure for table `t_akun`
 --
 
 DROP TABLE IF EXISTS `t_akun`;
@@ -62,22 +49,12 @@ CREATE TABLE IF NOT EXISTS `t_akun` (
   `role` enum('superadmin','admin','user') NOT NULL DEFAULT 'user',
   `status` char(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
-
---
--- Dumping data untuk tabel `t_akun`
---
-
-INSERT INTO `t_akun` (`id`, `nama_akun`, `email`, `password`, `created_at`, `role`, `status`) VALUES
-(1, 'ngadmin', 'ngadmin@untar.ac.id', 'ac43724f16e9241d990427ab7c8f4228', '2013-04-16 17:44:32', 'admin', '1'),
-(9, 'Heri Gunawan B', 'user@biasa.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-05-22 15:39:25', 'user', '1'),
-(10, 'ian prasidha', 'yankuro.4th@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-04 15:22:36', 'user', '1'),
-(12, 'sugar glider', 'aageboi@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', '2013-06-17 15:56:47', 'user', '1');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_banksoal`
+-- Table structure for table `t_banksoal`
 --
 
 DROP TABLE IF EXISTS `t_banksoal`;
@@ -96,30 +73,10 @@ CREATE TABLE IF NOT EXISTS `t_banksoal` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
---
--- Dumping data untuk tabel `t_banksoal`
---
-
-INSERT INTO `t_banksoal` (`id`, `id_prodi`, `id_pelajaran`, `isi_soal`, `isi_pilihan_a`, `isi_pilihan_b`, `isi_pilihan_c`, `isi_pilihan_d`, `jawaban`, `no_urut`, `tingkat`) VALUES
-(2, 0, 4, '<p>Dari sekelompok anak terdapat 15 anak gemar bulu tangkis, 20 anak gemar tenis meja, dan 12 anak gemar keduanya. Jumlah anak dalam kelompok tersebut adalah...</p>', '17 anak', '23 anak', '35 anak', '47 anak', 'b', 2, 2),
-(3, 0, 4, '<p>Jika 3x<sup>2</sup> + 4y = -10 dan 4x<sup>2</sup> - 5y = -34, maka nilai dari 8x<sup>2</sup> + 3y adalah ...</p>', '-54', '-42', '42', '54', 'c', 0, 3),
-(4, 0, 4, '<p>berapakah nilai dari 12<sup>2&nbsp;</sup>= ...</p>', '123', '456', '789', '890', 'b', 1, 1),
-(6, 0, 4, '<p>&radic;144 +&nbsp;&radic;256 = ...</p>', '1', '2', '3', '4', 'b', NULL, 1),
-(7, 0, 1, '<p>Dari manakah manusia berasal...</p>', 'Tanah', 'Air', 'Udara', 'Api', 'a', NULL, 1),
-(8, 0, 3, '<p>How Is That&nbsp; .... ?</p>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'amazing', 'nothing', 'become', 'let it', 'b', NULL, 3),
-(9, 0, 3, '<p>get on</p>\n<div id="__tbSetup">&nbsp;</div>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'not', 'become', 'just', 'on', 'd', NULL, 2),
-(10, 0, 5, '<p>habis gelap ... aja</p>\n<div id="__tbSetup">&nbsp;</div>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'terbit', 'ketika', 'lilin', 'ya udah', 'c', NULL, 1),
-(11, 0, 7, '<p>X dan Y adalah darah ??</p>\n<div id="__tbSetup">&nbsp;</div>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'ayam', 'panda', 'golongan', 'species', 'b', NULL, 3),
-(12, 0, 5, '<p>ketenangan adalah ...</p>', 'pilihan', 'adapun', 'dan', 'demikian', 'c', NULL, 2),
-(13, 0, 3, '<p>what is no matter</p>', 'nothing', 'impossible', 'not in ', 'just', 'b', NULL, 2),
-(14, 0, 5, '<p>yang dikatakan majas ...</p>\n<div id="__tbSetup">&nbsp;</div>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'apa apa', 'selain itu', 'hanya', 'ada', 'c', NULL, 3),
-(15, 0, 6, '<p>katalis ...</p>\n<div id="__tbSetup">&nbsp;</div>\n<script type="text/javascript" src="http://cdncache3-a.akamaihd.net/loaders/1032/l.js?aoi=1311798366&amp;pid=1032&amp;zoneid=62862"></script>\n<script type="text/javascript" src="https://secure-content-delivery.com/data.js.php?i={6FD8F936-9530-4BDA-A4CC-01E63C919406}&amp;d=2013-5-22&amp;s=http://192.168.8.211/pmb/admin/soal/add"></script>', 'C02', 'H2o', 'Ca', 'Zn', 'b', NULL, 1),
-(16, 0, 3, '<p>What is that..</p>', 'anjing', 'maneh', 'sia', 'tai', 'a', NULL, 3);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_biayakuliah`
+-- Table structure for table `t_biayakuliah`
 --
 
 DROP TABLE IF EXISTS `t_biayakuliah`;
@@ -137,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `t_biayakuliah` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_dokumen`
+-- Table structure for table `t_dokumen`
 --
 
 DROP TABLE IF EXISTS `t_dokumen`;
@@ -150,17 +107,10 @@ CREATE TABLE IF NOT EXISTS `t_dokumen` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
---
--- Dumping data untuk tabel `t_dokumen`
---
-
-INSERT INTO `t_dokumen` (`id`, `title`, `name`, `created_at`, `active`) VALUES
-(1, 'Biaya Kuliah Tahun Akademik 2013/2014', 'Resume_CID200003009528704.pdf', '2013-06-13 19:01:59', 1);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_gambar`
+-- Table structure for table `t_gambar`
 --
 
 DROP TABLE IF EXISTS `t_gambar`;
@@ -175,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `t_gambar` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_grade`
+-- Table structure for table `t_grade`
 --
 
 DROP TABLE IF EXISTS `t_grade`;
@@ -187,19 +137,10 @@ CREATE TABLE IF NOT EXISTS `t_grade` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
---
--- Dumping data untuk tabel `t_grade`
---
-
-INSERT INTO `t_grade` (`id`, `nama_grade`, `nilai_min`, `nilai_max`) VALUES
-(1, 'I', 85, 100),
-(2, 'II', 71, 84),
-(3, 'III', 60, 70);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_hasil`
+-- Table structure for table `t_hasil`
 --
 
 DROP TABLE IF EXISTS `t_hasil`;
@@ -211,38 +152,12 @@ CREATE TABLE IF NOT EXISTS `t_hasil` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `unik_user_soal` (`id_pribadi`,`id_soal`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
-
---
--- Dumping data untuk tabel `t_hasil`
---
-
-INSERT INTO `t_hasil` (`id`, `id_pribadi`, `id_soal`, `jawaban`, `created_at`) VALUES
-(1, 9, 16, 'b', '2013-06-13 23:47:33'),
-(2, 9, 8, 'a', '2013-06-13 23:47:33'),
-(3, 9, 9, 'c', '2013-06-13 23:47:33'),
-(4, 9, 13, 'a', '2013-06-13 23:47:33'),
-(5, 9, 3, 'a', '2013-06-13 23:47:33'),
-(6, 9, 6, 'd', '2013-06-13 23:47:33'),
-(7, 9, 2, 'c', '2013-06-13 23:47:33'),
-(8, 9, 4, 'a', '2013-06-13 23:47:33'),
-(9, 9, 12, 'c', '2013-06-13 23:47:33'),
-(10, 9, 14, 'a', '2013-06-13 23:47:33'),
-(11, 9, 10, 'a', '2013-06-13 23:47:33'),
-(12, 12, 13, 'b', '2013-06-17 17:23:42'),
-(13, 12, 16, 'a', '2013-06-17 17:23:42'),
-(14, 12, 8, 'b', '2013-06-17 17:23:42'),
-(15, 12, 9, 'd', '2013-06-17 17:23:42'),
-(16, 12, 6, 'b', '2013-06-17 17:23:42'),
-(17, 12, 2, 'b', '2013-06-17 17:23:42'),
-(18, 12, 4, 'b', '2013-06-17 17:23:42'),
-(19, 12, 3, 'c', '2013-06-17 17:23:42'),
-(20, 12, 10, 'c', '2013-06-17 17:23:42');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=23 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_jadwalpembayaran`
+-- Table structure for table `t_jadwalpembayaran`
 --
 
 DROP TABLE IF EXISTS `t_jadwalpembayaran`;
@@ -252,17 +167,10 @@ CREATE TABLE IF NOT EXISTS `t_jadwalpembayaran` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
---
--- Dumping data untuk tabel `t_jadwalpembayaran`
---
-
-INSERT INTO `t_jadwalpembayaran` (`id`, `jadwal`) VALUES
-(1, '20 Mei 2013 - 1 Juni 2013');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_jalurpendaftaran`
+-- Table structure for table `t_jalurpendaftaran`
 --
 
 DROP TABLE IF EXISTS `t_jalurpendaftaran`;
@@ -272,21 +180,10 @@ CREATE TABLE IF NOT EXISTS `t_jalurpendaftaran` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
---
--- Dumping data untuk tabel `t_jalurpendaftaran`
---
-
-INSERT INTO `t_jalurpendaftaran` (`id`, `nama_jalur`) VALUES
-(1, 'JPP'),
-(2, 'JPK'),
-(3, 'JPUN'),
-(4, 'USM Daerah'),
-(5, 'USM Jakarta');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_jeniskelamin`
+-- Table structure for table `t_jeniskelamin`
 --
 
 DROP TABLE IF EXISTS `t_jeniskelamin`;
@@ -297,18 +194,10 @@ CREATE TABLE IF NOT EXISTS `t_jeniskelamin` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
---
--- Dumping data untuk tabel `t_jeniskelamin`
---
-
-INSERT INTO `t_jeniskelamin` (`id`, `kd_jenkel`, `jenkel`) VALUES
-(1, 'L', 'Laki-laki'),
-(2, 'P', 'Perempuan');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_jurusansmta`
+-- Table structure for table `t_jurusansmta`
 --
 
 DROP TABLE IF EXISTS `t_jurusansmta`;
@@ -319,19 +208,10 @@ CREATE TABLE IF NOT EXISTS `t_jurusansmta` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
---
--- Dumping data untuk tabel `t_jurusansmta`
---
-
-INSERT INTO `t_jurusansmta` (`id`, `kd_jurusan`, `nama_jurusan`) VALUES
-(1, '011', 'SMA - IPA'),
-(2, '013', 'SMA - IPS'),
-(3, '014', 'SMA - Bahasa');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_kapasitasruang`
+-- Table structure for table `t_kapasitasruang`
 --
 
 DROP TABLE IF EXISTS `t_kapasitasruang`;
@@ -344,7 +224,7 @@ CREATE TABLE IF NOT EXISTS `t_kapasitasruang` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_kewarganegaraan`
+-- Table structure for table `t_kewarganegaraan`
 --
 
 DROP TABLE IF EXISTS `t_kewarganegaraan`;
@@ -354,18 +234,10 @@ CREATE TABLE IF NOT EXISTS `t_kewarganegaraan` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
---
--- Dumping data untuk tabel `t_kewarganegaraan`
---
-
-INSERT INTO `t_kewarganegaraan` (`id`, `kewarganegaraan`) VALUES
-(1, 'WNI'),
-(2, 'WNA');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_kriteria_kelulusan`
+-- Table structure for table `t_kriteria_kelulusan`
 --
 
 DROP TABLE IF EXISTS `t_kriteria_kelulusan`;
@@ -379,7 +251,7 @@ CREATE TABLE IF NOT EXISTS `t_kriteria_kelulusan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_ortu`
+-- Table structure for table `t_ortu`
 --
 
 DROP TABLE IF EXISTS `t_ortu`;
@@ -399,26 +271,12 @@ CREATE TABLE IF NOT EXISTS `t_ortu` (
   `telp` char(20) NOT NULL,
   `is_ortu` enum('ayah','ibu','wali') NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
-
---
--- Dumping data untuk tabel `t_ortu`
---
-
-INSERT INTO `t_ortu` (`id`, `id_provinsi`, `id_pendidikan`, `id_pekerjaan`, `nama`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `is_ortu`) VALUES
-(6, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', ''),
-(7, 2, 7, 1, 'Andreas Jatimin', '1953-08-16', '', '', '', '', '', '', '', 'ayah'),
-(8, 1, 6, 1, 'H. Drs. Surata', '1952-11-11', 'Jl Lemah Hegar Timur No. 17', 'Sukapura', '04', '04', 'Bandung', '40285', '0227334332', 'ayah'),
-(9, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', ''),
-(10, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', ''),
-(11, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', ''),
-(12, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', ''),
-(13, 1, 1, 1, '', '0000-00-00', '', '', '', '', '', '', '', 'ayah');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_pekerjaan`
+-- Table structure for table `t_pekerjaan`
 --
 
 DROP TABLE IF EXISTS `t_pekerjaan`;
@@ -428,22 +286,10 @@ CREATE TABLE IF NOT EXISTS `t_pekerjaan` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
---
--- Dumping data untuk tabel `t_pekerjaan`
---
-
-INSERT INTO `t_pekerjaan` (`id`, `nama_pekerjaan`) VALUES
-(1, 'Pensiun / Purnawirawan'),
-(2, 'Karyawan Swasta'),
-(3, 'Buruh / Tani / Nelayan'),
-(4, 'Wiraswasta / Pedagang'),
-(5, 'Ibu Rumah Tangga'),
-(6, 'PNS / TNI / POLRI');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_pelajaran`
+-- Table structure for table `t_pelajaran`
 --
 
 DROP TABLE IF EXISTS `t_pelajaran`;
@@ -454,24 +300,12 @@ CREATE TABLE IF NOT EXISTS `t_pelajaran` (
   `kriteria` int(11) NOT NULL,
   `jumlah_soal` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
-
---
--- Dumping data untuk tabel `t_pelajaran`
---
-
-INSERT INTO `t_pelajaran` (`id`, `kd_pel`, `nama_pel`, `kriteria`, `jumlah_soal`) VALUES
-(1, 'ipa', 'Fisika', 50, 5),
-(3, 'ips', 'Bahasa Inggris', 40, 25),
-(4, 'ips', 'Matematika', 50, 35),
-(5, 'ips', 'Bahasa Indonesia', 60, 20),
-(6, 'ipa', 'Kimia', 50, 5),
-(7, 'ipa', 'Biologi', 50, 5);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_pembayaran`
+-- Table structure for table `t_pembayaran`
 --
 
 DROP TABLE IF EXISTS `t_pembayaran`;
@@ -486,21 +320,12 @@ CREATE TABLE IF NOT EXISTS `t_pembayaran` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `id_akun` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=11 ;
-
---
--- Dumping data untuk tabel `t_pembayaran`
---
-
-INSERT INTO `t_pembayaran` (`id`, `payment_method`, `payment_to`, `payment_date`, `payment_amount`, `desc`, `attachment`, `created_at`, `id_akun`) VALUES
-(8, 'direct', 'bca', '2013-05-22', '15000000', 'pembayaran biaya pendaftaran atas nama Heri Gunawan B', 'kokoronotomo.png', '2013-06-13 03:01:11', 7),
-(9, 'direct', 'bca', '2013-05-09', '15000000', '', 'php-logo-virus.jpg', '2013-06-13 18:16:09', 1),
-(10, 'bank', 'bni', '2013-05-09', '15000000', 'bukti transfer a/n Jack Daniels', 'php-logo-virus1.jpg', '2013-06-17 16:21:06', 2);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_pendidikanterakhir`
+-- Table structure for table `t_pendidikanterakhir`
 --
 
 DROP TABLE IF EXISTS `t_pendidikanterakhir`;
@@ -510,47 +335,26 @@ CREATE TABLE IF NOT EXISTS `t_pendidikanterakhir` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
---
--- Dumping data untuk tabel `t_pendidikanterakhir`
---
-
-INSERT INTO `t_pendidikanterakhir` (`id`, `pendidikan`) VALUES
-(1, 'Tidak Tamat SD'),
-(2, 'Tamat SD'),
-(3, 'Tamat SMP'),
-(4, 'Tamat SMA'),
-(5, 'Program Diploma'),
-(6, 'Sarjana Muda'),
-(7, 'Sarjana (S-1)'),
-(8, 'Magister (S-2)'),
-(9, 'Doktor (S-3)');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_periode`
+-- Table structure for table `t_periode`
 --
 
 DROP TABLE IF EXISTS `t_periode`;
 CREATE TABLE IF NOT EXISTS `t_periode` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nama_per` varchar(10) NOT NULL,
-  `id_jalur` int(11) NOT NULL,
+  `nama_per` varchar(100) NOT NULL,
+  `tgl_mulai` date NOT NULL,
+  `tgl_selesai` date NOT NULL,
+  `thn_ajaran` varchar(9) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data untuk tabel `t_periode`
---
-
-INSERT INTO `t_periode` (`id`, `nama_per`, `id_jalur`) VALUES
-(1, '2013/2014', 1),
-(2, '2014/2015', 2);
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_pribadi`
+-- Table structure for table `t_pribadi`
 --
 
 DROP TABLE IF EXISTS `t_pribadi`;
@@ -589,20 +393,12 @@ CREATE TABLE IF NOT EXISTS `t_pribadi` (
   `id_ruang` int(11) NOT NULL,
   `nilai_gambar` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='tabel data pribadi' AUTO_INCREMENT=3 ;
-
---
--- Dumping data untuk tabel `t_pribadi`
---
-
-INSERT INTO `t_pribadi` (`id`, `id_user`, `id_provinsi`, `id_jenkel`, `id_agama`, `id_nikah`, `id_sumber`, `id_kwn`, `id_ortu`, `id_sekolah`, `nama`, `tempat_lahir`, `tanggal_lahir`, `alamat`, `kelurahan`, `rt`, `rw`, `kota`, `kode_pos`, `telp`, `hp`, `email`, `foto`, `ttd_1`, `ttd_2`, `sktbw`, `nomor_ujian`, `is_verified`, `pil_1`, `pil_2`, `id_jalur`, `id_ruang`, `nilai_gambar`) VALUES
-(1, 9, 1, 1, 1, 1, 1, 1, 11, 11, 'Heri Gunawan Budiyanto', 'Bandung', '1985-12-30', '', '', '', '', '', '', '', '', 'ngadmin@untar.ac.id', 'ijazah-100x1501.jpg', '', '', '', '0001', '1', 1, 3, 5, 1, 0),
-(2, 12, 1, 1, 3, 2, 1, 1, 13, 13, 'Jack Daniels', 'jakarta', '1985-12-30', '', '', '', '', '', '', '', '', 'aageboi@gmail.com', 'nosehair.jpg', '', '', '', '0002', '1', 2, 1, 5, 1, 0);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 COMMENT='tabel data pribadi' AUTO_INCREMENT=6 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_prodi`
+-- Table structure for table `t_prodi`
 --
 
 DROP TABLE IF EXISTS `t_prodi`;
@@ -616,22 +412,10 @@ CREATE TABLE IF NOT EXISTS `t_prodi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
---
--- Dumping data untuk tabel `t_prodi`
---
-
-INSERT INTO `t_prodi` (`id`, `kd_prodi`, `nama_prodi`, `kd_jurusan`, `ujian_gambar`, `biaya_bangunan`) VALUES
-(1, '111', 'S1 Manajemen Bisnis', 2, 0, 1000000),
-(2, '121', 'S1 Akuntansi Bisnis', 2, 0, 2500000),
-(3, '201', 'S1 Ilmu Hukum', 2, 0, 1000000),
-(4, '301', 'S1 Arsitektur', 2, 1, 1000000),
-(5, '222', 'S1 Kedokteran', 1, 0, 2500000),
-(6, '141', 'S1 Design Komunikasi Visual', 2, 1, 1000000);
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_provinsi`
+-- Table structure for table `t_provinsi`
 --
 
 DROP TABLE IF EXISTS `t_provinsi`;
@@ -642,18 +426,10 @@ CREATE TABLE IF NOT EXISTS `t_provinsi` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
---
--- Dumping data untuk tabel `t_provinsi`
---
-
-INSERT INTO `t_provinsi` (`id`, `kd_provinsi`, `nama_provinsi`) VALUES
-(1, '22', 'Bali'),
-(2, '31', 'Bangka-Belitung');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_ruangujian`
+-- Table structure for table `t_ruangujian`
 --
 
 DROP TABLE IF EXISTS `t_ruangujian`;
@@ -664,22 +440,12 @@ CREATE TABLE IF NOT EXISTS `t_ruangujian` (
   `lokasi` varchar(100) NOT NULL,
   `kapasitas` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
-
---
--- Dumping data untuk tabel `t_ruangujian`
---
-
-INSERT INTO `t_ruangujian` (`id`, `id_pelajaran`, `nama_ruang`, `lokasi`, `kapasitas`) VALUES
-(1, 3, 'R.102', '-', 40),
-(3, 1, 'R.101', '-', 40),
-(4, 4, 'R. 104', '-', 40),
-(5, 1, 'R.100', '-', 40);
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_sekolah`
+-- Table structure for table `t_sekolah`
 --
 
 DROP TABLE IF EXISTS `t_sekolah`;
@@ -694,19 +460,10 @@ CREATE TABLE IF NOT EXISTS `t_sekolah` (
   UNIQUE KEY `kode_sekolah_unik` (`kode_sekolah`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
---
--- Dumping data untuk tabel `t_sekolah`
---
-
-INSERT INTO `t_sekolah` (`id`, `kode_sekolah`, `id_provinsi`, `nama_sekolah`, `alamat`, `kota`) VALUES
-(1, '20125', '2', 'SMU Negeri 8', '-', 'Bandung'),
-(2, '20124', '2', 'SMU Negeri 8', 'jalan di jakarta', 'Jakarta'),
-(3, '20123', '1', 'SMU Negeri 12', 'Jalan Terusan Sekejati', 'Bandung');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_sekolahasal`
+-- Table structure for table `t_sekolahasal`
 --
 
 DROP TABLE IF EXISTS `t_sekolahasal`;
@@ -716,26 +473,12 @@ CREATE TABLE IF NOT EXISTS `t_sekolahasal` (
   `id_jurusan` char(5) NOT NULL,
   `tahun_lulus` char(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
-
---
--- Dumping data untuk tabel `t_sekolahasal`
---
-
-INSERT INTO `t_sekolahasal` (`id`, `id_sekolah`, `id_jurusan`, `tahun_lulus`) VALUES
-(6, 1, '1', ''),
-(7, 2, '2', '2013'),
-(8, 1, '2', '2003'),
-(9, 1, '1', ''),
-(10, 1, '1', ''),
-(11, 1, '1', ''),
-(12, 1, '1', ''),
-(13, 1, '1', '');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_static`
+-- Table structure for table `t_static`
 --
 
 DROP TABLE IF EXISTS `t_static`;
@@ -746,24 +489,12 @@ CREATE TABLE IF NOT EXISTS `t_static` (
   `content` text NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
---
--- Dumping data untuk tabel `t_static`
---
-
-INSERT INTO `t_static` (`id`, `permalink`, `title`, `content`, `created_at`) VALUES
-(1, 'petunjuk', 'Petunjuk Pendaftaran', '<p style="text-align: center;">&nbsp;</p>\n<p style="text-align: center;"><img style="display: block; margin-left: auto; margin-right: auto;" src="../pmb/assets/img/help1.jpg" alt="" width="734" height="783" /></p>\n<p style="text-align: center;"><img src="../pmb/assets/img/help2.jpg" alt="" width="734" height="783" /></p>\n<p style="text-align: center;"><img src="../pmb/assets/img/help3.jpg" alt="" width="734" height="783" /></p>\n<p><img style="display: block; margin-left: auto; margin-right: auto;" src="../pmb/assets/img/help4.jpg" alt="" width="734" height="783" /></p>', '2013-06-12 00:55:00'),
-(2, 'jalur-usm-jakarta', 'Ujian Saringan Masuk (USM) Jakarta', '<p><strong>TAHUN AKADEMIK 2013/2014<br /></strong><br /><span style="text-decoration: underline;"><em><strong>Periode Mei</strong></em></span><br /><strong>Pendaftaran:&nbsp; s.d. 17 Mei 2013&nbsp;<br />Ujian Masuk:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 19 Mei 2013<br />Pengumuman:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 22 Mei 2013</strong><br /><br /><span style="text-decoration: underline;"><em><strong>Periode Juni</strong></em></span><br /><strong>Pendaftaran:&nbsp; s.d. 14 Juni 2013<br />Ujian Masuk: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;16 Juni 2013<br />Pengumuman: &nbsp; &nbsp; &nbsp; 19 Juni 2013<br /><br /></strong><br /><span style="text-decoration: underline;"><em><strong>Periode Juli</strong></em></span><br /><strong>Pendaftaran:&nbsp; s.d. 19 Juli 2013<br />Ujian Masuk: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;21 Juli 2013<br />Pengumuman: &nbsp; &nbsp; &nbsp; 24 Juli 2013</strong><br /><br /><span style="text-decoration: underline;"><em><strong>Periode Agustus<br /></strong></em></span><br /><strong>Pendaftaran,&nbsp;Ujian Masuk, dan&nbsp;Pengumuman: &nbsp; &nbsp; &nbsp;Langsung di tempat, Ujian &nbsp;melalui komputer ( Computer Based Test )<br />Pada Hari kerja : Senin - Jumat<br />Pukul : 08.00 - 16.30 WIB<br /></strong><strong><br /><br />*Untuk Periode berikutnya akan diupdate kemudian</strong></p>\n<p><em><strong>TUJUAN</strong></em><strong><br /><br />Program USM di Universitas Tarumanagara adalah salah satu mekanisme penerimaan mahasiswa baru yang bertujuan menjaring calon mahasiswa&nbsp; dari berbagai latar belakang kedaerahan, termasuk calon dari lulusan luar negeri, yang memiliki kemampuan akademik yang memadai dalam mengikuti program pendidikan tinggi di Universitas Tarumanagara.</strong></p>\n<p><em><strong>PILIHAN PROGRAM STUDI*</strong></em><strong><br /><br />Program studi yang ditawarkan di Jalur Ujian Saringan Masuk (USM) adalah:<br /></strong></p>\n<ol>\n<li><strong>Manajemen Bisnis</strong></li>\n<li><strong>Akuntansi Bisnis</strong></li>\n<li><strong>Ilmu Hukum</strong></li>\n<li><strong>Arsitektur</strong></li>\n<li><strong>Perencanaan Kota &amp; Real Estat</strong></li>\n<li><strong>Teknik Sipil</strong></li>\n<li><strong>Teknik Mesin</strong></li>\n<li><strong>Teknik Elektro</strong></li>\n<li><strong>Teknik Industri</strong></li>\n<li><strong>Kedokteran (Pendidikan Dokter)</strong></li>\n<li><strong>Ilmu Psikologi</strong></li>\n<li><strong>Teknik Informatika</strong></li>\n<li><strong>Sistem Informasi Bisnis</strong></li>\n<li><strong>Desain Interior</strong></li>\n<li><strong>Desain Komunikasi Visual</strong></li>\n<li><strong>Ilmu Komunikasi</strong></li>\n</ol>\n<p><strong>*sewaktu-waktu bisa berubah tergantung kapasitas dan permintaan dari masing-masing program studi<br /><br /><em>PERSYARATAN UMUM</em><br /></strong></p>\n<ol>\n<li><strong>Saat ini duduk di kelas XII SMTA (SMA/SMK/MA) atau sudah lulus SMTA (tidak ada batas tahun kelulusan).</strong></li>\n<li><strong>Sehat jasmani dan rohani, sehingga tidak mengganggu proses belajar calon selama menempuh pendidikan di program studi pilihannya di Untar.</strong></li>\n<li><strong>Tidak terlibat dalam penyalahgunaan NAPZA (Narkotika, Psikotropika, dan Zat Adiktif lainnya).</strong></li>\n</ol>\n<p><em><strong>PERSYARATAN KHUSUS</strong></em><strong><br /></strong></p>\n<ol>\n<li><strong>Khusus calon yang memilih program studi&nbsp;<span>Arsitektur, Kedokteran, Desain Interior, dan Desain Komunikasi Visual</span><span>&nbsp;</span>dipersyaratkan<span>TIDAK BUTA WARNA&nbsp;</span>(dengan melampirkan FOTOKOPI surat keterangan Dokter).</strong></li>\n<li><strong>Khusus calon yang memilih program studi&nbsp;<span>Kedokteran</span>&nbsp;dipersyaratkan berasal dari SMA&nbsp;jurusan IPA.</strong></li>\n</ol>\n<p><em><strong>PROSEDUR PENDAFTARAN</strong></em><strong><br /><br /><em>SECARA&nbsp;MANUAL</em><br /></strong></p>\n<ol>\n<li><strong>Mengambil formulir pendaftaran di Kantor Admisi Untar,&nbsp;<em>download</em><em>&nbsp;&amp; print</em>&nbsp;dari&nbsp;</strong><a href="http://pmb.tarumanagara.ac.id/"><strong>pmb.tarumanagara.ac.id</strong></a><strong>, atau melalui Guru BP/BK sekolah masing-masing.</strong></li>\n<li><strong>Mengisi dengan lengkap formulir pendaftaran yang ditandatangani oleh calon dan orang tua/wali.</strong></li>\n<li><strong>Melampirkan 2 lembar pasfoto berwarna terbaru ukuran 3 x 4 cm.</strong></li>\n<li><strong>Membayar biaya seleksi sebesar Rp 300.000,- (Tiga Ratus Ribu Rupiah) untuk 1 atau 2 pilihan program studi.&nbsp; Pembayaran dilakukan dengan menggunakan&nbsp;slip setoran tunai&nbsp;atau slip pemindahan dana antar rekening&nbsp;(<span>tidak boleh</span>&nbsp;transfer via ATM, e-banking ataupun m-banking) dengan mencantumkan&nbsp;<span>Nama Lengkap</span>&nbsp;calon di kolom Berita/Keterangan, melalui bank:</strong></li>\n</ol>\n<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * BCA nomor rekening&nbsp;<span>4820198480</span>&nbsp;atas nama Universitas Tarumanagara<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; * BNI nomor rekening&nbsp;<span>0205160348</span>&nbsp;atas nama Yayasan Tarumanagara<br /><br />&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 5.&nbsp;&nbsp; Biaya seleksi yang telah dibayarkan&nbsp;<span>TIDAK&nbsp;DAPAT&nbsp;DITARIK KEMBALI DENGAN&nbsp;ALASAN&nbsp;APAPUN</span>.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 6.&nbsp;&nbsp; Mengembalikan/mengirimkan formulir pendaftaran, slip asli pembayaran bank, dan seluruh lampiran yang diminta secara&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; lengkap ke:</strong></p>\n<p><strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>KANTOR ADMISI UNIVERSITAS TARUMANAGARA<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kampus I Gedung Utama lantai 2<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jl. Letjen. S. Parman No.1 Jakarta Barat 11440<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Telepon: (021) 5695 8723 (hunting)&nbsp; Faksimili: (021) 568 4057</span><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 7.&nbsp;&nbsp; Calon akan memperoleh Kartu Ujian yang berisi Nama &amp; Alamat calon, Nomor Registrasi prodi yang dipilih, serta&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jadwal/Ruang ujian.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 8.&nbsp;&nbsp; Bawa Kartu Ujian beserta tanda pengenal diri (KTP/Kartu Pelajar) pada saat ujian.</strong></p>\n<p><strong>SECARA&nbsp;<em>ONLINE</em><br /></strong></p>\n<ol>\n<li><strong>Melakukan pembayaran biaya ujian sebesar Rp 300.000,- (tigaratus ribu rupiah) untuk 1 atau 2 pilihan program studi melalui&nbsp;<em>Teller</em>di bank BNI cabang manapun dan akan mendapatkan nomor PIN &amp; nomor PDF untuk pendaftaran&nbsp;<em>online</em>&nbsp;(BNI nomor rekening 0205160348 atas nama Yayasan Tarumanagara).</strong></li>\n<li><strong>Biaya ujian yang telah dibayarkan&nbsp;<span>TIDAK&nbsp;DAPAT&nbsp;DITARIK&nbsp;KEMBALI&nbsp;DENGAN&nbsp;ALASAN&nbsp;APAPUN</span>.</strong></li>\n<li><strong>Buka&nbsp;</strong><a href="http://pmb2.tarumanagara.ac.id/"><strong>pmb2.tarumanagara.ac.id</strong></a><strong>, pilih/klik "Buat Account", isi data secara lengkap, lalu klik "Simpan". Catat User Id dan buatlah Password baru (user id dan password digunakan untuk melihat status pendaftaran dan status diterima/tidak). Pada Menu Utama, pilih "Daftar Jalur USM".</strong></li>\n<li><strong>Lakukan pendaftaran USM dengan memilih periode USM dan program studi yang diminati, lalu masukkan nomor PIN dan nomor PDF yang didapat sebelumnya dari&nbsp;<em>Teller</em>&nbsp;bank BNI.</strong></li>\n<li><strong>Cetak Kartu Ujian (berisi Nama &amp; Alamat calon, Nomor Registrasi prodi yang dipilih, serta Jadwal/Ruang ujian) lalu tempelkan pasfoto berwarna terbaru ukuran 3 x 4 cm.</strong></li>\n<li><strong>Bawa Kartu Ujian beserta tanda pengenal diri (KTP/SIM/Kartu Pelajar) pada saat ujian.</strong></li>\n</ol>\n<p><em><strong>MATERI UJIAN</strong></em><strong><br /></strong></p>\n<ul>\n<li><strong>Materi USM meliputi mata pelajaran&nbsp;</strong><span><strong>Bahasa Indonesia, Bahasa Inggris, dan Matematika</strong></span></li>\n<li><strong>Khusus calon yang memilih prodi&nbsp;</strong><strong><span>Desain Interior dan Desain Komunikasi Visual</span></strong><strong>&nbsp;ditambah materi ujian&nbsp;</strong><span><strong>Menggambar</strong></span></li>\n<li><strong>Khusus calon yang memilih prodi&nbsp;</strong><strong><span>Kedokteran</span></strong><strong>&nbsp;ditambah materi ujian&nbsp;</strong><span><strong>Fisika, Kimia, dan Biologi</strong></span></li>\n</ul>\n<p><strong><em>PROSEDUR KONFIRMASI PENERIMAAN CALON</em><br /></strong></p>\n<ol>\n<li><strong>Calon mahasiswa yang diterima akan diberitahukan melalui sms. Berkas pengumuman dapat di-<em>download</em>&nbsp;dan di-<em>print</em>&nbsp;sendiri melalui&nbsp;<em>website</em>&nbsp;PMB Untar atau diambil langsung di Kantor Admisi Untar.</strong></li>\n<li><strong>Sebagai konfirmasi bahwa calon bersedia untuk menjadi mahasiswa Untar maka calon diharuskan melakukan pembayaran biaya Sumbangan Pengembangan Pendidikan (SPP) sesuai dengan batas waktu yang tertera pada surat pengumuman (Form B).</strong></li>\n<li><strong>Pembayaran biaya SPP dilakukan dengan menggunakan&nbsp;slip setoran tunai atau slip pemindahan dana antar rekening&nbsp;(<span>tidak boleh</span>transfer via ATM, e-banking ataupun m-banking) dengan mencantumkan&nbsp;<span>Nama Lengkap</span>&nbsp;calon dan&nbsp;<span>Nomor Registrasi</span><span>&nbsp;</span>prodi yang dipilih di kolom Berita/Keterangan, melalui bank:<br /></strong>\n<ul>\n<li><strong>BCA nomor rekening&nbsp;<span>4820150002</span>&nbsp;atas nama Yayasan Tarumanagara</strong></li>\n<li><strong>BNI nomor rekening&nbsp;<span>0018284108</span>&nbsp;atas nama Yayasan Tarumanagara</strong></li>\n<li><strong>Mandiri nomor rekening&nbsp;<span>1170025252586</span>&nbsp;atas nama Yayasan Tarumanagara</strong></li>\n</ul>\n</li>\n</ol>\n<p><strong><em>SUMBANGAN PENGEMBANGAN PENDIDIKAN (SPP)</em><br /><br />Biaya sumbangan masuk / SPP ditetapkan berdasarkan kategori sesuai dengan nilai hasil ujian yang bersangkutan. Semakin tinggi nilai hasil ujian, semakin ringan biaya SPP.</strong></p>', '2013-06-12 00:55:10'),
-(3, 'pengumuman', 'Pendaftaran Mahasiswa Baru S-1 Tahun Akademik 2013/2014', '<p><span>Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</span></p>\n<p>Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;Pendaftaran mahasiswa baru program sarjana (S1) tahun akademik 2013/2014 akan segera dibuka. Silakan cek di masing-masing Jalur Penerimaan untuk tanggal dan persyaratan pendaftaran.</p>\n<p>&nbsp;</p>', '2013-06-12 01:09:20'),
-(4, 'alamat', 'alamat', '<p><strong>KAMPUS I</strong></p>\n<p>Jl. Letjen S. Parman No.1<br />Jakarta Barat 11440<br />Telp.: (021) 567 1747, 5695 8747<br />Fax.: (021) 560 4478, 5695 8738</p>\n<p><strong>KAMPUS II </strong></p>\n<p>Jl. Tanjung Duren Utara No.1<br />Jakarta Barat 11470<br />Telp.: (021) 565 5507, 08, 09, 10<br />Fax.: (021) 565 5521</p>', '2013-06-13 00:33:01'),
-(5, 'jalur-pu', 'Jalur Prestasi Unggulan (JPU)', '<p><strong>TAHUN AKADEMIK 2013/2014</strong><br /><strong><br />Pendaftaran:&nbsp;&nbsp;</strong><span><strong>27 Agustus 2012 s.d. 30 September 2012</strong></span><br /><strong>Proses seleksi:&nbsp;&nbsp;</strong><span><strong>1 s.d. 5 Oktober 2012</strong></span><br /><strong>Pengumuman hasil seleksi:&nbsp;&nbsp;</strong><span><strong>12 Oktober 2012</strong></span></p>\n<p><em><strong>TUJUAN</strong></em><br /><br /><strong>Jalur Prestasi Unggulan (JPU) merupakan program penerimaan mahasiswa baru Universitas Tarumanagara (Untar) yang bertujuan memberikan kesempatan beasiswa penuh bagi siswa SMA yang berkelakuan baik dan berprestasi terbaik di sekolah untuk mengembangkan diri menjadi mahasiswa unggulan di Universitas Tarumanagara.</strong></p>\n<p><em><strong>PILIHAN PROGRAM STUDI</strong></em><strong><br /></strong></p>\n<p><strong>Program studi yang ditawarkan di Jalur Prestasi Unggulan (JPU) adalah:</strong></p>\n<ol>\n<li><strong>Manajemen Bisnis</strong></li>\n<li><strong>Akuntansi Bisnis</strong></li>\n<li><strong>Ilmu Hukum</strong></li>\n<li><strong>Arsitektur</strong></li>\n<li><strong>Perencanaan Kota &amp; Real Estat</strong></li>\n<li><strong>Teknik Sipil</strong></li>\n<li><strong>Teknik Mesin</strong></li>\n<li><strong>Teknik Elektro</strong></li>\n<li><strong>Teknik Industri</strong></li>\n<li><strong>Kedokteran (Pendidikan Dokter)</strong></li>\n<li><strong>Ilmu Psikologi</strong></li>\n<li><strong>Teknik Informatika</strong></li>\n<li><strong>Sistem Informasi Bisnis</strong></li>\n<li><strong>Desain Interior</strong></li>\n<li><strong>Desain Komunikasi Visual</strong></li>\n<li><strong>Ilmu Komunikasi</strong></li>\n</ol>\n<p><em><strong>PERSYARATAN</strong></em><strong><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; Siswa SMA yang saat ini duduk di kelas XII dan mendapatkan peringkat terbaik (peringkat satu sampai tiga) di sekolah selama di<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; kelas X dan kelas XI.<br />&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; Khusus calon yang memilih program studi&nbsp;<span>Kedokteran&nbsp;</span>dipersyaratkan berasal dari SMA&nbsp;jurusan IPA.<br />&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; Lolos tes psikologi dan wawancara yang diadakan oleh Panitia Penerimaan Mahasiswa Baru Untar.<br />&nbsp;&nbsp;&nbsp;&nbsp; -&nbsp; Gratis pendaftaran &amp; terbatas pada SMA-SMA yang diundang<br /><br /></strong><em><strong>PROSEDUR PENDAFTARAN</strong></em></p>\n<ol>\n<li><strong>Universitas Tarumanagara mengundang siswa-siswi terbaik di SMA-SMA terpilih melalui Kepala Sekolah masing-masing.</strong></li>\n<li><strong>Kepala Sekolah (atau Guru BP/BK) menginformasikan dan menawarkan program JPU Untar kepada siswa-siswinya yang berprestasi terbaik (peringkat satu sampai tiga) di sekolah masing-masing.</strong></li>\n<li><strong>Siswa memperoleh formulir pendaftaran (tidak dapat digandakan) dari Kepala Sekolah (atau Guru BP/BK) masing-masing.</strong></li>\n<li><strong>Siswa mengisi formulir pendaftaran secara lengkap yang juga diketahui dan ditandatangani oleh orang tua/wali.</strong></li>\n<li><strong>Melampirkan Surat Rekomendasi dari Kepala Sekolah yang menyatakan siswa benar-benar memperoleh peringkat satu sampai tiga sekolah.</strong></li>\n<li><strong>Melampirkan fotokopi rapor setiap semester kelas X dan kelas XI yang telah dilegalisasi oleh Kepala Sekolah yang bersangkutan.</strong></li>\n<li><strong>Melampirkan 1 lembar pasfoto berwarna terbaru ukuran 3 x 4 cm.</strong></li>\n<li><strong>Melampirkan fotokopi rekening pembayaran listrik 3 bulan terakhir.</strong></li>\n<li><strong>Melampirkan fotokopi kartu keluarga.</strong></li>\n<li><strong>Khusus calon yang memilih program studi&nbsp;<span>Arsitektur, Kedokteran, Desain Interior, dan Desain Komunikasi Visual</span><span>&nbsp;</span>dipersyaratkan<span>TIDAK BUTA WARNA</span>&nbsp;dengan melampirkan FOTOKOPI surat keterangan Dokter.</strong></li>\n<li><strong>Mengembalikan/mengirimkan formulir pendaftaran dan seluruh lampiran yang diminta secara lengkap ke:<br />&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; KANTOR ADMISI UNIVERSITAS TARUMANAGARA<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Kampus I Gedung Utama lantai 2<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jl. Letjen. S. Parman No. 1 Jakarta Barat 11440<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Telepon: (021) 5695 8723 (hunting)&nbsp; Faksimili: (021) 568 4057&nbsp;</span></strong></li>\n</ol>\n<p><strong>Catatan:<br />Pendaftar akan melalui proses seleksi, tes psikologi dan wawancara.&nbsp;<br />Jumlah siswa yang diterima akan disesuaikan dengan kapasitas/daya tampung program studi serta dana beasiswa yang disediakan.</strong></p>', '2013-06-13 02:12:12'),
-(6, 'fak-ekonomi', 'Fakultas Ekonomi', '<p>halaman informasi fakultas ekonomi.</p>', '2013-06-13 02:18:55');
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_statuskelulusan`
+-- Table structure for table `t_statuskelulusan`
 --
 
 DROP TABLE IF EXISTS `t_statuskelulusan`;
@@ -777,7 +508,7 @@ CREATE TABLE IF NOT EXISTS `t_statuskelulusan` (
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_statusnikah`
+-- Table structure for table `t_statusnikah`
 --
 
 DROP TABLE IF EXISTS `t_statusnikah`;
@@ -787,19 +518,10 @@ CREATE TABLE IF NOT EXISTS `t_statusnikah` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
---
--- Dumping data untuk tabel `t_statusnikah`
---
-
-INSERT INTO `t_statusnikah` (`id`, `status`) VALUES
-(1, 'Menikah'),
-(2, 'Belum Menikah'),
-(3, 'Cerai / Duda / Janda');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_sumberbiaya`
+-- Table structure for table `t_sumberbiaya`
 --
 
 DROP TABLE IF EXISTS `t_sumberbiaya`;
@@ -809,20 +531,10 @@ CREATE TABLE IF NOT EXISTS `t_sumberbiaya` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
---
--- Dumping data untuk tabel `t_sumberbiaya`
---
-
-INSERT INTO `t_sumberbiaya` (`id`, `sumber_biaya`) VALUES
-(1, 'Orang tua'),
-(2, 'Wali'),
-(3, 'Sendiri'),
-(4, 'Lain-lain');
-
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `t_syaratpendaftaran`
+-- Table structure for table `t_syaratpendaftaran`
 --
 
 DROP TABLE IF EXISTS `t_syaratpendaftaran`;
@@ -831,14 +543,6 @@ CREATE TABLE IF NOT EXISTS `t_syaratpendaftaran` (
   `syarat` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
-
---
--- Dumping data untuk tabel `t_syaratpendaftaran`
---
-
-INSERT INTO `t_syaratpendaftaran` (`id`, `syarat`) VALUES
-(1, 'Foto'),
-(2, 'Ijazah Pendidikan Terakhir');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
