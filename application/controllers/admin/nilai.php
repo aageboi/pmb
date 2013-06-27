@@ -23,7 +23,19 @@ class nilai extends CI_Controller
 
     public function index ($cetak = NULL)
     {
+        $this->load->model('periode_model', 'periode');
+        $this->data['periode'] = $this->periode->get_all();
+
         $this->data['breadcrumb']['Daftar'] = NULL;
+
+        if ($this->input->get('periode')) {
+            $periode = explode('/',urldecode($this->input->get('periode')));
+            $tgl_mulai      = $periode[0].' 00:00:00';
+            $tgl_selesai    = $periode[1].' 23:59:59';
+            $this->db->where('p.created_at >=', $tgl_mulai);
+            $this->db->where('p.created_at <=', $tgl_selesai);
+        }
+
         $this->data['data'] = $this->hasil->find_user();
         $this->data['total_peserta'] = count ($this->data['data']);
 

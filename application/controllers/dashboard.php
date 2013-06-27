@@ -303,7 +303,10 @@ class dashboard extends CI_Controller
                 set_message('Input data registrasi berhasil');
             }
 
-            redirect('dashboard/registrasi');
+            if ($this->input->post('simpan') && $this->input->post('simpan') == 'next')
+                redirect('dashboard/konfirmasibayar');
+            else
+                redirect('dashboard/registrasi');
         }
 
         $this->data['yield'] = $this->view.'registrasi';

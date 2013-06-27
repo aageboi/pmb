@@ -6,9 +6,21 @@
             <div class="span12">
                 <?=$this->load->view('breadcrumb')?>
                 <?=$this->load->view('admin/error_message')?>
-                <p>
-                    <a href="<?= site_url('admin/absensi/cetak') ?>" target="_blank"><i class="icon-print"></i> cetak</a>
+
+                <form class="form-search pull-left" method="get">
+                    <select name="periode">
+                    <?php foreach ($periode as $q => $per) { ?>
+                    <option value="<?= $per->tgl_mulai ?>/<?= $per->tgl_selesai ?>" <?=($this->input->get('periode')==$per->tgl_mulai.'/'.$per->tgl_selesai)?'selected="selected"':''?>>
+                        <?= $per->nama_per ?> - <?= $per->thn_ajaran ?>
+                    </option>
+                    <?php } ?>
+                    </select>
+                    <button type="submit" class="btn"><i class="icon-search"></i></button>
+                </form>
+                <p class="pull-right">
+                    <a href="<?= site_url('admin/absensi/cetak').($this->input->get('periode')?'?periode='.$this->input->get('periode'):'') ?>" target="_blank"><i class="icon-print"></i> cetak</a>
                 </p>
+
                 <table class="table table-bordered table-condensed">
                     <thead>
                     <tr>

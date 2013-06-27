@@ -32,7 +32,7 @@ class Periode_model extends MY_Model
 
     public function find_all ()
     {
-        $this->db->join('t_jalurpendaftaran', 't_jalurpendaftaran.id = t_periode.id_jalur');
+        // $this->db->join('t_jalurpendaftaran', 't_jalurpendaftaran.id = t_periode.id_jalur');
 
         return $this->get_all();
     }

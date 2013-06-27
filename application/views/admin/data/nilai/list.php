@@ -6,12 +6,25 @@
             <div class="span12">
                 <?=$this->load->view('breadcrumb')?>
                 <?=$this->load->view('admin/error_message')?>
+
+                <form class="form-search pull-left" method="get">
+                    <select name="periode">
+                    <?php foreach ($periode as $q => $per) { ?>
+                    <option value="<?= $per->tgl_mulai ?>/<?= $per->tgl_selesai ?>" <?=($this->input->get('periode')==$per->tgl_mulai.'/'.$per->tgl_selesai)?'selected="selected"':''?>>
+                        <?= $per->nama_per ?> - <?= $per->thn_ajaran ?>
+                    </option>
+                    <?php } ?>
+                    </select>
+                    <button type="submit" class="btn"><i class="icon-search"></i></button>
+                </form>
+                <p><br><br></p>
                 <p class="pull-left">
-                    <a href="<?= site_url('admin/nilai/cetak') ?>" target="_blank"><i class="icon-print"></i> cetak</a>
-                </p>
-                <p class="pull-right">
                     Jumlah Total : &nbsp;&nbsp;&nbsp;&nbsp;<strong><?= $total_peserta ?></strong> peserta
                 </p>
+                <p class="pull-right">
+                    <a href="<?= site_url('admin/nilai/cetak').($this->input->get('periode')?'?periode='.$this->input->get('periode'):'') ?>" target="_blank"><i class="icon-print"></i> cetak</a>
+                </p>
+
                 <table class="table table-bordered table-condensed">
                     <thead>
                     <tr>

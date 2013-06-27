@@ -346,8 +346,7 @@ if (is_array($data) && isset($data['ortu']))
     </div>
     <div class="form-actions">
         <button type="submit" class="btn btn-primary btn-large"><i class="icon-ok"></i> Simpan</button>
-        <a href="<?=site_url('dashboard')?>"><button type="button" class="btn"><i class="icon-remove"></i> Batal</button></a>
-        <a href="<?=site_url('dashboard/konfirmasibayar')?>"><button type="button" class="btn btn-success"><i class="icon-chevron-right"></i> Next</button></a>
+        <button type="submit" class="btn btn-large btn-info" value="next" name="simpan"><i class="icon-chevron-right"></i> Next</button>
     </div>
 </form>
 

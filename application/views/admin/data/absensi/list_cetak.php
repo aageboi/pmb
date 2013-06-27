@@ -1,7 +1,10 @@
 <table class="table">
     <tr>
         <td colspan="2"><img src="<?=base_url()?>assets/img/logo.jpg" width="100px"></td>
-        <td colspan="2"><h3>Daftar Absensi</h3><h3>Universitas Tarumanagara</h3></td>
+        <td colspan="2">
+            <h4>Daftar Absensi</h4><h3>Universitas Tarumanagara</h3>
+            <?=($this->input->get('periode'))?'<h4>Periode '.urldecode($this->input->get('periode')).'</h4>':''?>
+        </td>
     </tr>
     <tr class="table-bordered">
         <th width="10px">No.</th>
